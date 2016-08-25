@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,9 +10,9 @@ using Telling.Api.Models;
 
 namespace Telling.Api.Controllers
 {
-    public class GameController : ApiController
+    public class GamesController : ApiController
     {
-        // GET: api/Game
+        // GET: api/Games
         public IEnumerable<Game> Get()
         {
             using (SqlConnection connection = new SqlConnection("Data Source=41.134.220.74;Initial Catalog=Telling;Persist Security Info=True;User ID=sa;Password=B3achball;"))
@@ -32,7 +31,7 @@ namespace Telling.Api.Controllers
 
                     if (reader.HasRows)
                     {
-                        while(reader.Read())
+                        while (reader.Read())
                         {
                             response.Add(new Game
                             {
@@ -56,7 +55,7 @@ namespace Telling.Api.Controllers
             }
         }
 
-        // GET: api/Game/5
+        // GET: api/Games/83642E19-C56A-E611-B37C-00155D291606
         public Game Get(Guid id)
         {
             using (SqlConnection connection = new SqlConnection("Data Source=41.134.220.74;Initial Catalog=Telling;Persist Security Info=True;User ID=sa;Password=B3achball;"))
@@ -99,17 +98,17 @@ namespace Telling.Api.Controllers
             }
         }
 
-        // POST: api/Game
+        // POST: api/Games
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT: api/Game/5
+        // PUT: api/Games/83642E19-C56A-E611-B37C-00155D291606
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Game/5
+        // DELETE: api/Games/83642E19-C56A-E611-B37C-00155D291606
         public void Delete(int id)
         {
         }
