@@ -13,4 +13,12 @@ namespace Telling.iOS.Converters
             return !value;
         }
     }
+
+    public class DateTimeToStringConverter : MvxValueConverter<DateTime, string>
+    {
+        protected override string Convert(DateTime value, Type targetType, object parameter, CultureInfo cultureInfo)
+        {
+            return value.ToString("dd MMM yyyy");
+        }
+    }
 }

@@ -89,6 +89,7 @@
     <Compile Include="Controls\TImageView.cs" />
     <Compile Include="Controls\TLabel.cs" />
     <Compile Include="Controls\TTableView.cs" />
+    <Compile Include="Controls\TView.cs" />
     <Compile Include="Converters\Converters.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Helpers\ColorPalette.cs" />
@@ -153,7 +154,7 @@
   <ItemGroup>
     <Content Include="Entitlements.plist" />
     <Content Include="FodyWeavers.xml" />
-    <BundleResource Include="Images\dice.png" />
+    <BundleResource Include="Images\gotc.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">
