@@ -11,7 +11,12 @@ namespace Telling.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<ViewModels.FirstViewModel>();
+            CreatableTypes()
+                .EndingWith("Manager")
+                .AsInterfaces()
+                .RegisterAsLazySingleton();
+
+            RegisterAppStart<ViewModels.Sessions.SessionListingViewModel>();
         }
     }
 }

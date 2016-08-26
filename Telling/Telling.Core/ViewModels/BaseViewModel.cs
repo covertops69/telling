@@ -9,5 +9,11 @@ namespace Telling.Core.ViewModels
 {
     public abstract class BaseViewModel : MvxViewModel
     {
+        bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set { SetProperty(ref _isBusy, value); }
+        }
     }
 }
