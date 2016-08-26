@@ -64,7 +64,6 @@ namespace Telling.Core.Services
                 try
                 {
                     var response = await httpClient.GetAsync(url).ConfigureAwait(false);
-
                     var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                     var result = await Task.Run(() => JsonConvert.DeserializeObject<T>(responseString, new JsonSerializerSettings
@@ -116,16 +115,11 @@ namespace Telling.Core.Services
 
                 try
                 {
-
                     var response = await httpClient.PostAsync(url, content).ConfigureAwait(false);
-
                     var uri = new Uri(url);
-
                     var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                     return await Task.Run(() => JsonConvert.DeserializeObject<T>(responseString)).ConfigureAwait(false);
-
-                    
                 }
                 catch (TaskCanceledException tcex)
                 {

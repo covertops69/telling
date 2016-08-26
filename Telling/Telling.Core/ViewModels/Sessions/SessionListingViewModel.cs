@@ -44,20 +44,6 @@ namespace Telling.Core.ViewModels.Sessions
                 IsBusy = true;
 
                 SessionsCollection = new ObservableCollection<Session>(await SessionManager.GetSessionsAsync());
-
-                //await GetSubscriptionDetailsAsync();
-                //await LoadFreeResourcesAsync();
-
-                //if (ProductId != null && PlanType != PlanType.Prepaid && PlanType != PlanType.Unknown)
-                //{
-                //    var response = await ProductsManager.GetAccountDetailsAsync(ProductId).ConfigureAwait(false);
-
-                //    if (response != null)
-                //        IsEligibleToUpgrade = response.RenewalDate < DateTime.Today;
-                //}
-
-                //if (!SettingsManager.GetONNET() || Utilities.IsLoggedIn())
-                //    await LoadUsageHistoryDetailAsync();
             }
             //catch (NotConnectedException)
             //{
@@ -69,7 +55,6 @@ namespace Telling.Core.ViewModels.Sessions
             //}
             catch (Exception ex)
             {
-                //ShowGenericErrorModalPopup(ex);
                 throw ex;
             }
             finally
