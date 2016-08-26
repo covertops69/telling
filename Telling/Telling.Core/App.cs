@@ -1,4 +1,5 @@
 using MvvmCross.Platform.IoC;
+using Telling.Core.ViewModels.Sessions;
 
 namespace Telling.Core
 {
@@ -16,7 +17,7 @@ namespace Telling.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<ViewModels.Sessions.SessionListingViewModel>();
+            RegisterAppStart<SessionListingViewModel>();
         }
     }
 }

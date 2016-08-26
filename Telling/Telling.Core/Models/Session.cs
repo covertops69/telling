@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Telling.Core.ViewModels;
 
 namespace Telling.Core.Models
 {
-    public class Session
+    public class Session : BaseViewModel
     {
         public Guid SessionId { get; set; }
         public Guid GameId { get; set; }

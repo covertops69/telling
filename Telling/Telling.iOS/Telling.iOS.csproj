@@ -86,20 +86,37 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\TImageView.cs" />
+    <Compile Include="Controls\TLabel.cs" />
+    <Compile Include="Controls\TTableView.cs" />
+    <Compile Include="Converters\Converters.cs" />
     <Compile Include="DebugTrace.cs" />
+    <Compile Include="Helpers\ColorPalette.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <None Include="Info.plist" />
+    <None Include="Info.plist">
+      <SubType>Designer</SubType>
+    </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
+    <BundleResource Include="Resources\Fonts\BrookeS8.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Setup.cs" />
-    <Compile Include="Views\SessionListingView.cs" />
+    <Compile Include="TableSources\SessionTableSource.cs" />
+    <Compile Include="TellingPresenter.cs" />
+    <Compile Include="Views\BaseViewController.cs" />
+    <Compile Include="Views\Cells\BaseItemCell.cs" />
+    <Compile Include="Views\Cells\SessionListingItemCell.cs" />
+    <Compile Include="Views\Sessions\SessionListingView.cs" />
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Cirrious.FluentLayouts.Touch, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Cirrious.FluentLayout.2.5.0\lib\Xamarin.iOS10\Cirrious.FluentLayouts.Touch.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmCross.Binding.4.2.3\lib\Xamarin.iOS10\MvvmCross.Binding.dll</HintPath>
       <Private>True</Private>
@@ -136,6 +153,7 @@
   <ItemGroup>
     <Content Include="Entitlements.plist" />
     <Content Include="FodyWeavers.xml" />
+    <BundleResource Include="Images\dice.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">
@@ -143,5 +161,6 @@
       <Name>Telling.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

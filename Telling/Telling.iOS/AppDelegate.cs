@@ -19,6 +19,7 @@ namespace Telling.iOS
         {
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
+            var presenter = new TellingPresenter(this, Window);
             var setup = new Setup(this, Window);
             setup.Initialize();
 
