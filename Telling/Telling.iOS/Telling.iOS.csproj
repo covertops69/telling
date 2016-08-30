@@ -93,6 +93,7 @@
     <Compile Include="Converters\Converters.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Helpers\ColorPalette.cs" />
+    <Compile Include="Interfaces\IMyModal.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Views\BaseViewController.cs" />
     <Compile Include="Views\Cells\BaseItemCell.cs" />
     <Compile Include="Views\Cells\SessionListingItemCell.cs" />
+    <Compile Include="Views\Modals\ModalView.cs" />
     <Compile Include="Views\Sessions\SessionListingView.cs" />
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
   </ItemGroup>

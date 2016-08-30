@@ -28,7 +28,7 @@ namespace Telling.iOS.Views.Sessions
 
             var tableSource = new SessionTableSource(_table);
             bindingSet.Bind(tableSource).To(vm => vm.SessionsCollection);
-            //bindingSet.Bind(tableSource).For(vm => vm.SelectionChangedCommand).To(vm => vm.NavigateCommand);
+            bindingSet.Bind(tableSource).For(vm => vm.SelectionChangedCommand).To(vm => vm.NavigateCommand);
 
             View.AddConstraints(new FluentLayout[]
             {

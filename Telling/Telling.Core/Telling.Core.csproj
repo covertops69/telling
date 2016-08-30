@@ -51,6 +51,7 @@
     <Compile Include="Services\SessionService.cs" />
     <Compile Include="ViewModels\BaseValidationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Modals\ModalViewModel.cs" />
     <Compile Include="ViewModels\Sessions\AddSessionViewModel.cs" />
     <Compile Include="ViewModels\Sessions\SessionListingViewModel.cs" />
   </ItemGroup>

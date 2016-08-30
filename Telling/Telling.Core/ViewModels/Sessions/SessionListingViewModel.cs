@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvvmCross.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Telling.Core.Managers;
 using Telling.Core.Models;
+using Telling.Core.ViewModels.Modals;
 
 namespace Telling.Core.ViewModels.Sessions
 {
@@ -60,6 +62,18 @@ namespace Telling.Core.ViewModels.Sessions
             finally
             {
                 IsBusy = false;
+            }
+        }
+
+        private MvxCommand<Session> _navigateCommand;
+        public MvxCommand<Session> NavigateCommand
+        {
+            get
+            {
+                return _navigateCommand ?? (_navigateCommand = new MvxCommand<Session>(menuItem =>
+                {
+                    ShowViewModel<ModalViewModel>();
+                }));
             }
         }
     }
