@@ -47,6 +47,11 @@ namespace Telling.iOS.Views
         {
             base.ViewWillAppear(animated);
 
+            NavigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes()
+            {
+                ForegroundColor = UIColor.White
+            };
+
             NavigationController.NavigationBar.Translucent = false;
 
             NavigationController.NavigationBar.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);

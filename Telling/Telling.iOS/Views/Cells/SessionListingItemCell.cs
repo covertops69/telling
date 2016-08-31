@@ -5,6 +5,7 @@ using MvvmCross.Binding.iOS.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Telling.Core.Constants;
 using Telling.Core.Models;
 using Telling.Core.ViewModels.Sessions;
 using Telling.iOS.Controls;
@@ -49,11 +50,11 @@ namespace Telling.iOS.Views.Cells
                 CenterRuler.WithSameCenterY(ContentView),
 
                 Title.Above(CenterRuler),
-                Title.AtLeftOf(ContentView, 15f),
+                Title.AtLeftOf(ContentView, Constants.Margin),
                 //Title.Width().EqualTo(ContentView.Frame.Size.Width)
 
                 SubTitle.Below(CenterRuler),
-                SubTitle.AtLeftOf(ContentView, 15f),
+                SubTitle.AtLeftOf(ContentView, Constants.Margin),
 
                 Seperator.AtBottomOf(ContentView),
                 Seperator.Height().EqualTo(1f),

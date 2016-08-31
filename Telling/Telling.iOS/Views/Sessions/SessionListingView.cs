@@ -22,6 +22,7 @@ namespace Telling.iOS.Views.Sessions
 
             var bindingSet = this.CreateBindingSet<SessionListingView, SessionListingViewModel>();
             bindingSet.Bind(Loader).For(b => b.Hidden).To(vm => vm.IsBusy).WithConversion(new LoaderVisibilityConverter()).Apply();
+            bindingSet.Bind(this).For(c => c.Title).To(vm => vm.Title).Apply();
 
             _table = new TTableView();
             Add(_table);

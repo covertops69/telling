@@ -1,14 +1,12 @@
 ﻿using Cirrious.FluentLayouts.Touch;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.iOS.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Drawing;
+using Telling.Core.Constants;
 using Telling.Core.ViewModels.Modals;
 using Telling.iOS.Controls;
-using Telling.iOS.Helpers;
+using Telling.iOS.Converters;
 using UIKit;
-using Foundation;
-using Telling.iOS.Interfaces;
 
 namespace Telling.iOS.Views.Modals
 {
@@ -18,43 +16,35 @@ namespace Telling.iOS.Views.Modals
         {
             base.ViewDidLoad();
 
-            //View.BackgroundColor = UIColor.FromHSBA(0f, 0f, 0f, 0.5f);
+            var bindingSet = this.CreateBindingSet<ModalView, ModalViewModel>();
+            bindingSet.Bind(Loader).For(b => b.Hidden).To(vm => vm.IsBusy).WithConversion(new LoaderVisibilityConverter()).Apply();
+            bindingSet.Bind(this).For(c => c.Title).To(vm => vm.Title).Apply();
 
-            //TLabel myLabel = new TLabel();
-            //myLabel.Text = "This is my label";
+            var exceptionDetails = new TLabel();
+            Add(exceptionDetails);
 
-            //Add(myLabel);
+            bindingSet.Bind(exceptionDetails).To(vm => vm.Exception).Apply();
 
-            //View.AddConstraints(new FluentLayout[] {
-            //    myLabel.AtTopOf(View),
-            //    myLabel.AtLeftOf(View)
-            //});
+            var closeButton = new UIButton(UIButtonType.Custom);
+            closeButton.SetImage(UIImage.FromBundle("images/close.png"), UIControlState.Normal);
+            closeButton.Frame = new RectangleF(0, 0, 35, 35);
+            NavigationItem.SetLeftBarButtonItems(new UIBarButtonItem[] {
+                new UIBarButtonItem(UIBarButtonSystemItem.FixedSpace, null, null)
+                {
+                    Width = -5f
+                },
+                new UIBarButtonItem(closeButton)
+            }, false);
 
-            //View.UserInteractionEnabled = true;
-            //View.AddGestureRecognizer(new UITapGestureRecognizer(tap =>
-            //{
-            //    NavigationController.SetNavigationBarHidden(true, true);
-            //})
-            //{
-            //    NumberOfTapsRequired = 1
-            //});
-        }
+            bindingSet.Bind(closeButton)
+                .For("TouchUpInside")
+                .To(vm => vm.CloseCommand).Apply();
 
-        public override void ViewWillAppear(bool animated)
-        {
-            base.ViewWillAppear(animated);
-
-            //this.ModalPresentationStyle = UIKit.UIModalPresentationStyle.CurrentContext;
-
-            //NavigationController.NavigationBar.Translucent = false;
-
-            //NavigationController.NavigationBar.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
-            //NavigationController.NavigationBar.ShadowImage = new UIImage();
-
-            //NavigationController.NavigationBar.BackgroundColor = ColorPalette.DarkRed;
-            //NavigationController.NavigationBar.BarTintColor = ColorPalette.DarkRed;
-
-            //NavigationController.View.BackgroundColor = UIColor.Clear;
+            View.AddConstraints(new FluentLayout[] {
+                exceptionDetails.AtTopOf(View, Constants.Margin),
+                exceptionDetails.AtLeftOf(View, Constants.Margin),
+                exceptionDetails.WithSameWidth(View).Minus(Constants.Margin * 2)
+            });
         }
     }
 }

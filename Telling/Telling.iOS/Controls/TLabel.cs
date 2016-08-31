@@ -12,7 +12,7 @@ namespace Telling.iOS.Controls
         {
             Lines = 0;
             LineBreakMode = UILineBreakMode.WordWrap;
-            TextColor = UIColor.Black;
+            TextColor = UIColor.White;
             //Font = UIFont.FromName("BrookeShappell8", 28f);
             TranslatesAutoresizingMaskIntoConstraints = false;
         }

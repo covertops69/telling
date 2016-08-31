@@ -31,6 +31,7 @@ namespace Telling.Core.ViewModels.Sessions
         public SessionListingViewModel(ISessionManager sessionManager)
         {
             SessionManager = sessionManager;
+            Title = "Sessions";
         }
 
         public async override void Start()
@@ -57,12 +58,17 @@ namespace Telling.Core.ViewModels.Sessions
             //}
             catch (Exception ex)
             {
-                throw ex;
+                ShowException(ex);
             }
             finally
             {
                 IsBusy = false;
             }
+        }
+
+        private void ShowException(Exception ex)
+        {
+            ShowViewModel<ModalViewModel>(new { exceptionMessage = ex.Message });
         }
 
         private MvxCommand<Session> _navigateCommand;

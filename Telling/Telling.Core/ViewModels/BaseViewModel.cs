@@ -15,5 +15,12 @@ namespace Telling.Core.ViewModels
             get { return _isBusy; }
             set { SetProperty(ref _isBusy, value); }
         }
+
+        string _title;
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
     }
 }

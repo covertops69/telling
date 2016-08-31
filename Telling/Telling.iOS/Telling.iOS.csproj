@@ -93,7 +93,6 @@
     <Compile Include="Converters\Converters.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Helpers\ColorPalette.cs" />
-    <Compile Include="Interfaces\IMyModal.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -102,6 +101,9 @@
     </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
+    <BundleResource Include="Images\close%402x.png" />
+    <BundleResource Include="Images\close%403x.png" />
+    <BundleResource Include="Images\close.png" />
     <BundleResource Include="Resources\Fonts\BrookeS8.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +159,9 @@
     <Content Include="Entitlements.plist" />
     <Content Include="FodyWeavers.xml" />
     <BundleResource Include="Images\gotc.jpg" />
+    <BundleResource Include="Images\refresh.png" />
+    <BundleResource Include="Images\refresh%402x.png" />
+    <BundleResource Include="Images\refresh%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">
@@ -164,6 +169,8 @@
       <Name>Telling.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

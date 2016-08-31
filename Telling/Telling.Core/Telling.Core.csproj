@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Constants\Constants.cs" />
     <Compile Include="Enumerations\ConnectionType.cs" />
     <Compile Include="Extensions\AsObservableDictionary.cs" />
     <Compile Include="Helpers\ObservableDictionary.cs" />
