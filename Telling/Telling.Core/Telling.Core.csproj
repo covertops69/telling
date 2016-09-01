@@ -41,14 +41,17 @@
     <Compile Include="Enumerations\ConnectionType.cs" />
     <Compile Include="Extensions\AsObservableDictionary.cs" />
     <Compile Include="Helpers\ObservableDictionary.cs" />
+    <Compile Include="Managers\GameManager.cs" />
     <Compile Include="Managers\SessionManager.cs" />
     <Compile Include="Models\EventModel.cs" />
+    <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\ValidationError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\ConnectivityService.cs" />
     <Compile Include="Services\JsonRestService.cs" />
+    <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\SessionService.cs" />
     <Compile Include="ViewModels\BaseValidationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

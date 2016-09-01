@@ -67,11 +67,38 @@ namespace Telling.Api.Controllers
         // POST: api/Sessions
         public void Post([FromBody]string value)
         {
+            var x = 1;
+            //using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionString))
+            //{
+            //    try
+            //    {
+            //        connection.Open();
+
+            //        SqlCommand command = new SqlCommand("spInsertSession", connection);
+            //        command.CommandType = CommandType.StoredProcedure;
+            //        command.CommandTimeout = 5;
+
+            //        command.Parameters.Add("@GameId", SqlDbType.UniqueIdentifier).Value = id;
+            //        command.Parameters.Add("@GameId", SqlDbType.Date).Value = id;
+
+            //        command.ExecuteNonQueryAsync();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        throw ex;
+            //    }
+
+            //    //return new List<Game>()
+            //    //{
+            //    //    new Game { Name = "Game 1" }
+            //    //};
+            //}
         }
 
         // PUT: api/Sessions/83642E19-C56A-E611-B37C-00155D291606
         public void Put(int id, [FromBody]string value)
         {
+            
         }
 
         // DELETE: api/Sessions/83642E19-C56A-E611-B37C-00155D291606

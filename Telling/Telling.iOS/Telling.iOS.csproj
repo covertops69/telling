@@ -86,14 +86,17 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\TButton.cs" />
     <Compile Include="Controls\TCorneredImageView.cs" />
     <Compile Include="Controls\TImageView.cs" />
     <Compile Include="Controls\TLabel.cs" />
     <Compile Include="Controls\TTableView.cs" />
+    <Compile Include="Controls\TTextField.cs" />
     <Compile Include="Controls\TView.cs" />
     <Compile Include="Converters\Converters.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Helpers\ColorPalette.cs" />
+    <Compile Include="Helpers\NotificationCenterConstants.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />

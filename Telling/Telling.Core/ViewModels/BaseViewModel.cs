@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Telling.Core.ViewModels.Modals;
 
 namespace Telling.Core.ViewModels
 {
@@ -21,6 +22,11 @@ namespace Telling.Core.ViewModels
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
+        }
+
+        protected void ShowException(Exception ex)
+        {
+            ShowViewModel<ModalViewModel>(new { exceptionMessage = ex.Message });
         }
     }
 }

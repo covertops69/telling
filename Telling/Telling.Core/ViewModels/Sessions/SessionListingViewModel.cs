@@ -66,11 +66,6 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
-        private void ShowException(Exception ex)
-        {
-            ShowViewModel<ModalViewModel>(new { exceptionMessage = ex.Message });
-        }
-
         private MvxCommand<Session> _navigateCommand;
         public MvxCommand<Session> NavigateCommand
         {

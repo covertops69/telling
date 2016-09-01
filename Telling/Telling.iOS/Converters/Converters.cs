@@ -23,6 +23,14 @@ namespace Telling.iOS.Converters
         }
     }
 
+    public class StringToDateTimeConverter : MvxValueConverter<string, DateTime>
+    {
+        protected override DateTime Convert(string value, Type targetType, object parameter, CultureInfo cultureInfo)
+        {
+            return System.Convert.ToDateTime(value);
+        }
+    }
+
     public class StringToImageConverter : MvxValueConverter<string, UIImage>
     {
         protected override UIImage Convert(string value, Type targetType, object parameter, CultureInfo cultureInfo)

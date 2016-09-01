@@ -17,7 +17,7 @@ namespace Telling.iOS.Controls
         {
             if (color == null)
             {
-                color = ColorPalette.DeepLemon;
+                color = ColorPalette.DarkPumpkin;
             }
 
             var seperator = new TView
