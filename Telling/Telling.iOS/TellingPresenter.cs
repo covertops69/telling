@@ -28,11 +28,6 @@ namespace Telling.iOS
             }
 
             base.Show((IMvxIosView)viewControllerToShow);
-
-            //if (MasterNavigationController == null)
-            //    ShowFirstView(viewControllerToShow);
-            //else
-            //    ((UINavigationController)CurrentTopViewController).PushViewController(viewControllerToShow, true);
         }
 
         public override void Close(IMvxViewModel toClose)
@@ -40,7 +35,6 @@ namespace Telling.iOS
             if (toClose is ModalViewModel)
             {
                 _modalNavigationController?.DismissViewController(true, null);
-                _modalNavigationController = null;
                 return;
             }
 

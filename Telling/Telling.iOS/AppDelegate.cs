@@ -23,6 +23,8 @@ namespace Telling.iOS
             var setup = new Setup(this, presenter);
             setup.Initialize();
 
+            //app.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);
+
             var startup = Mvx.Resolve<IMvxAppStart>();
             startup.Start();
 

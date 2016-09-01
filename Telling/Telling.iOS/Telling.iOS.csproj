@@ -106,6 +106,9 @@
     <BundleResource Include="Images\close%403x.png" />
     <BundleResource Include="Images\close.png" />
     <BundleResource Include="Resources\Fonts\BrookeS8.ttf" />
+    <InterfaceDefinition Include="Resources\Launch.storyboard">
+      <SubType>Designer</SubType>
+    </InterfaceDefinition>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Setup.cs" />
@@ -116,7 +119,6 @@
     <Compile Include="Views\Cells\SessionListingItemCell.cs" />
     <Compile Include="Views\Modals\ModalView.cs" />
     <Compile Include="Views\Sessions\SessionListingView.cs" />
-    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Cirrious.FluentLayouts.Touch, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -163,6 +165,9 @@
     <BundleResource Include="Images\refresh%403x.png" />
     <BundleResource Include="Images\refresh.png" />
     <BundleResource Include="Images\refresh%402x.png" />
+    <BundleResource Include="Images\splashtop.png" />
+    <BundleResource Include="Images\splashbottom.png" />
+    <BundleResource Include="Images\bam.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">
