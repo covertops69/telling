@@ -65,34 +65,28 @@ namespace Telling.Api.Controllers
         }
 
         // POST: api/Sessions
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Session session)
         {
-            var x = 1;
-            //using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionString))
-            //{
-            //    try
-            //    {
-            //        connection.Open();
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
 
-            //        SqlCommand command = new SqlCommand("spInsertSession", connection);
-            //        command.CommandType = CommandType.StoredProcedure;
-            //        command.CommandTimeout = 5;
+                    SqlCommand command = new SqlCommand("spInsertSession", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandTimeout = 5;
 
-            //        command.Parameters.Add("@GameId", SqlDbType.UniqueIdentifier).Value = id;
-            //        command.Parameters.Add("@GameId", SqlDbType.Date).Value = id;
+                    command.Parameters.Add("@GameId", SqlDbType.UniqueIdentifier).Value = session.GameId;
+                    command.Parameters.Add("@SessionDate", SqlDbType.Date).Value = session.SessionDate;
 
-            //        command.ExecuteNonQueryAsync();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        throw ex;
-            //    }
-
-            //    //return new List<Game>()
-            //    //{
-            //    //    new Game { Name = "Game 1" }
-            //    //};
-            //}
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
         }
 
         // PUT: api/Sessions/83642E19-C56A-E611-B37C-00155D291606
