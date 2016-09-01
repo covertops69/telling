@@ -27,7 +27,7 @@ namespace Telling.iOS.Views.Modals
 
             var closeButton = new UIButton(UIButtonType.Custom);
             closeButton.SetImage(UIImage.FromBundle("images/close.png"), UIControlState.Normal);
-            closeButton.Frame = new RectangleF(0, 0, 35, 35);
+            closeButton.Frame = new RectangleF(0, 0, 30, 30);
             NavigationItem.SetLeftBarButtonItems(new UIBarButtonItem[] {
                 new UIBarButtonItem(UIBarButtonSystemItem.FixedSpace, null, null)
                 {

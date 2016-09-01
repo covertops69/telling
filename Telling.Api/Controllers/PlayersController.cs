@@ -15,7 +15,7 @@ namespace Telling.Api.Controllers
         // GET: api/Players
         public IEnumerable<Player> Get()
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=41.134.220.74;Initial Catalog=Telling;Persist Security Info=True;User ID=sa;Password=B3achball;"))
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionString))
             {
                 try
                 {
@@ -58,7 +58,7 @@ namespace Telling.Api.Controllers
         // GET: api/Players/83642E19-C56A-E611-B37C-00155D291606
         public Player Get(Guid id)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=41.134.220.74;Initial Catalog=Telling;Persist Security Info=True;User ID=sa;Password=B3achball;"))
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionString))
             {
                 try
                 {

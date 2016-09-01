@@ -3,12 +3,14 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.iOS.Views;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using Telling.Core.ViewModels;
 using Telling.Core.ViewModels.Sessions;
 using Telling.iOS.Controls;
 using Telling.iOS.Converters;
 using Telling.iOS.TableSources;
+using UIKit;
 
 namespace Telling.iOS.Views.Sessions
 {
@@ -23,6 +25,21 @@ namespace Telling.iOS.Views.Sessions
             var bindingSet = this.CreateBindingSet<SessionListingView, SessionListingViewModel>();
             bindingSet.Bind(Loader).For(b => b.Hidden).To(vm => vm.IsBusy).WithConversion(new LoaderVisibilityConverter()).Apply();
             bindingSet.Bind(this).For(c => c.Title).To(vm => vm.Title).Apply();
+
+            var refreshButton = new UIButton(UIButtonType.Custom);
+            refreshButton.SetImage(UIImage.FromBundle("images/refresh.png"), UIControlState.Normal);
+            refreshButton.Frame = new RectangleF(0, 0, 30, 30);
+            NavigationItem.SetRightBarButtonItems(new UIBarButtonItem[] {
+                new UIBarButtonItem(refreshButton),
+                new UIBarButtonItem(UIBarButtonSystemItem.FixedSpace, null, null)
+                {
+                    Width = -5f
+                }
+            }, false);
+
+            bindingSet.Bind(refreshButton)
+                .For("TouchUpInside")
+                .To(vm => vm.RefreshCommand).Apply();
 
             _table = new TTableView();
             Add(_table);

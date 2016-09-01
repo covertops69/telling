@@ -15,7 +15,7 @@ namespace Telling.Api.Controllers
         // GET: api/Sessions
         public IEnumerable<Session> Get()
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=41.134.220.74;Initial Catalog=Telling;Persist Security Info=True;User ID=sa;Password=B3achball;"))
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionString))
             {
                 try
                 {

@@ -82,5 +82,17 @@ namespace Telling.Core.ViewModels.Sessions
                 }));
             }
         }
+
+        IMvxAsyncCommand _refreshCommand;
+        public IMvxAsyncCommand RefreshCommand
+        {
+            get
+            {
+                return _refreshCommand ?? (_refreshCommand = new MvxAsyncCommand(async () =>
+                {
+                    await LoadDataAsync();
+                }));
+            }
+        }
     }
 }

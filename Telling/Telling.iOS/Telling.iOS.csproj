@@ -86,6 +86,7 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\TCorneredImageView.cs" />
     <Compile Include="Controls\TImageView.cs" />
     <Compile Include="Controls\TLabel.cs" />
     <Compile Include="Controls\TTableView.cs" />
@@ -159,9 +160,9 @@
     <Content Include="Entitlements.plist" />
     <Content Include="FodyWeavers.xml" />
     <BundleResource Include="Images\gotc.jpg" />
+    <BundleResource Include="Images\refresh%403x.png" />
     <BundleResource Include="Images\refresh.png" />
     <BundleResource Include="Images\refresh%402x.png" />
-    <BundleResource Include="Images\refresh%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">

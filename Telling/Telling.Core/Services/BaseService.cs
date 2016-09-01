@@ -8,7 +8,7 @@ namespace Telling.Core.Services
 {
     public abstract class BaseService
     {
-        protected const string API_URL = "http://192.168.0.167/telling.api/api";
+        protected const string API_URL = "http://telling.fullstack.co.za/api";
 
         protected IRestService RestService { get; private set; }
 

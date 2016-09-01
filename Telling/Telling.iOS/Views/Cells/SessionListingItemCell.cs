@@ -31,6 +31,9 @@ namespace Telling.iOS.Views.Cells
 
         void CreateLayout()
         {
+            TCorneredImageView imageIcon = new TCorneredImageView(UIImage.FromBundle("images/gotc.jpg"));
+            ContentView.AddSubviews(imageIcon);
+
             Title = new TLabel();
             ContentView.AddSubviews(Title);
 
@@ -49,12 +52,17 @@ namespace Telling.iOS.Views.Cells
 
                 CenterRuler.WithSameCenterY(ContentView),
 
+                imageIcon.AtLeftOf(ContentView, Constants.Margin),
+                imageIcon.WithSameCenterY(ContentView),
+                imageIcon.Height().EqualTo(40f),
+                imageIcon.Width().EqualTo(40f),
+
                 Title.Above(CenterRuler),
-                Title.AtLeftOf(ContentView, Constants.Margin),
+                Title.ToRightOf(imageIcon, Constants.Margin),
                 //Title.Width().EqualTo(ContentView.Frame.Size.Width)
 
                 SubTitle.Below(CenterRuler),
-                SubTitle.AtLeftOf(ContentView, Constants.Margin),
+                SubTitle.ToRightOf(imageIcon, Constants.Margin),
 
                 Seperator.AtBottomOf(ContentView),
                 Seperator.Height().EqualTo(1f),
