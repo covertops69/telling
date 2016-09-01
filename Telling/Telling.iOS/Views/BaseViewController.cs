@@ -59,6 +59,7 @@ namespace Telling.iOS.Views
 
             NavigationController.NavigationBar.BackgroundColor = ColorPalette.DarkRed;
             NavigationController.NavigationBar.BarTintColor = ColorPalette.DarkRed;
+            NavigationController.NavigationBar.TintColor = UIColor.White;
 
             NavigationController.View.BackgroundColor = ColorPalette.Carnelian;
         }

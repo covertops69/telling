@@ -97,5 +97,17 @@ namespace Telling.Core.ViewModels.Sessions
                 }));
             }
         }
+
+        private MvxCommand _navigateToAddCommand;
+        public MvxCommand NavigateToAddCommand
+        {
+            get
+            {
+                return _navigateToAddCommand ?? (_navigateToAddCommand = new MvxCommand(() =>
+                {
+                    ShowViewModel<AddSessionViewModel>();
+                }));
+            }
+        }
     }
 }

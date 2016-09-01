@@ -15,6 +15,11 @@ namespace Telling.iOS
         {
         }
 
+        //public override void Show(MvxViewModelRequest request)
+        //{
+        //    base.Show(request);
+        //}
+
         public override void Show(IMvxIosView view)
         {
             var viewControllerToShow = (UIViewController)view;

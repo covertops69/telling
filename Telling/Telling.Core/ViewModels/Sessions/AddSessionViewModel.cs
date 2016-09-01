@@ -7,22 +7,27 @@ using System.Threading.Tasks;
 
 namespace Telling.Core.ViewModels.Sessions
 {
-    class AddSessionViewModel : BaseValidationViewModel
+    public class AddSessionViewModel : BaseValidationViewModel
     {
-        private DateTime _sessionDate;
-        public DateTime SessionDate
+        //private DateTime _sessionDate;
+        //public DateTime SessionDate
+        //{
+        //    get
+        //    {
+        //        return _sessionDate;
+        //    }
+        //    set
+        //    {
+        //        if (SetProperty(ref _sessionDate, value))
+        //        {
+        //            SetError(() => SessionDate);
+        //        }
+        //    }
+        //}
+
+        public AddSessionViewModel()
         {
-            get
-            {
-                return _sessionDate;
-            }
-            set
-            {
-                if (SetProperty(ref _sessionDate, value))
-                {
-                    SetError(() => SessionDate);
-                }
-            }
+            Title = "New";
         }
     }
 }

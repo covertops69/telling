@@ -118,6 +118,7 @@
     <Compile Include="Views\Cells\BaseItemCell.cs" />
     <Compile Include="Views\Cells\SessionListingItemCell.cs" />
     <Compile Include="Views\Modals\ModalView.cs" />
+    <Compile Include="Views\Sessions\AddSessionView.cs" />
     <Compile Include="Views\Sessions\SessionListingView.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -30,9 +30,17 @@ namespace Telling.iOS.Views.Sessions
             refreshButton.SetImage(UIImage.FromBundle("images/refresh.png"), UIControlState.Normal);
             refreshButton.Frame = new RectangleF(0, 0, 30, 30);
 
+            bindingSet.Bind(refreshButton)
+                .For("TouchUpInside")
+                .To(vm => vm.RefreshCommand).Apply();
+
             var addButton = new UIButton(UIButtonType.Custom);
             addButton.SetImage(UIImage.FromBundle("images/add.png"), UIControlState.Normal);
             addButton.Frame = new RectangleF(0, 0, 30, 30);
+
+            bindingSet.Bind(addButton)
+                .For("TouchUpInside")
+                .To(vm => vm.NavigateToAddCommand).Apply();
 
             NavigationItem.SetRightBarButtonItems(new UIBarButtonItem[] {
                 new UIBarButtonItem(UIBarButtonSystemItem.FixedSpace, null, null)
@@ -43,16 +51,12 @@ namespace Telling.iOS.Views.Sessions
                 new UIBarButtonItem(addButton),
             }, false);
 
-            bindingSet.Bind(refreshButton)
-                .For("TouchUpInside")
-                .To(vm => vm.RefreshCommand).Apply();
-
             _table = new TTableView();
             Add(_table);
 
             var tableSource = new SessionTableSource(_table);
-            bindingSet.Bind(tableSource).To(vm => vm.SessionsCollection);
-            bindingSet.Bind(tableSource).For(vm => vm.SelectionChangedCommand).To(vm => vm.NavigateCommand);
+            bindingSet.Bind(tableSource).To(vm => vm.SessionsCollection).Apply();
+            bindingSet.Bind(tableSource).For(vm => vm.SelectionChangedCommand).To(vm => vm.NavigateCommand).Apply();
 
             View.AddConstraints(new FluentLayout[]
             {
@@ -61,8 +65,6 @@ namespace Telling.iOS.Views.Sessions
                 _table.WithSameWidth(View),
                 _table.AtBottomOf(View)
             });
-
-            bindingSet.Apply();
 
             _table.Source = tableSource;
             _table.ReloadData();
