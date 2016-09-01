@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using UIKit;
 
 namespace Telling.iOS.Converters
 {
@@ -19,6 +20,26 @@ namespace Telling.iOS.Converters
         protected override string Convert(DateTime value, Type targetType, object parameter, CultureInfo cultureInfo)
         {
             return value.ToString("dd MMM yyyy");
+        }
+    }
+
+    public class StringToImageConverter : MvxValueConverter<string, UIImage>
+    {
+        protected override UIImage Convert(string value, Type targetType, object parameter, CultureInfo cultureInfo)
+        {
+            try
+            {
+                if (value != null)
+                {
+                    return UIImage.FromBundle("images/games/" + value);
+                }
+            }
+            catch(Exception ex)
+            {
+                // don't care
+            }
+
+            return UIImage.FromBundle("images/missing.png");
         }
     }
 }

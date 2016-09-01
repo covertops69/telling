@@ -161,13 +161,29 @@
   <ItemGroup>
     <Content Include="Entitlements.plist" />
     <Content Include="FodyWeavers.xml" />
-    <BundleResource Include="Images\gotc.jpg" />
+    <BundleResource Include="Images\Games\gotc.jpg" />
     <BundleResource Include="Images\refresh%403x.png" />
     <BundleResource Include="Images\refresh.png" />
     <BundleResource Include="Images\refresh%402x.png" />
     <BundleResource Include="Images\splashtop.png" />
     <BundleResource Include="Images\splashbottom.png" />
     <BundleResource Include="Images\bam.png" />
+    <BundleResource Include="Images\more%402x.png" />
+    <BundleResource Include="Images\more.png" />
+    <BundleResource Include="Images\add%403x.png" />
+    <BundleResource Include="Images\add.png" />
+    <BundleResource Include="Images\add%402x.png" />
+    <BundleResource Include="Images\Games\doomtown.jpg" />
+    <BundleResource Include="Images\noimage%402x.png" />
+    <BundleResource Include="Images\noimage.png" />
+    <BundleResource Include="Images\missing.png" />
+    <BundleResource Include="Images\Games\poker.jpg" />
+    <BundleResource Include="Images\Games\mageknight.jpg" />
+    <BundleResource Include="Images\Games\gotb.jpg" />
+    <BundleResource Include="Images\Games\smallworld.jpg" />
+    <BundleResource Include="Images\Games\terramystica.jpg" />
+    <BundleResource Include="Images\Games\throughtheages.jpg" />
+    <BundleResource Include="Images\Games\tickettoride.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">

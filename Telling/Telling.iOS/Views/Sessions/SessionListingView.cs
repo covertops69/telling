@@ -29,12 +29,18 @@ namespace Telling.iOS.Views.Sessions
             var refreshButton = new UIButton(UIButtonType.Custom);
             refreshButton.SetImage(UIImage.FromBundle("images/refresh.png"), UIControlState.Normal);
             refreshButton.Frame = new RectangleF(0, 0, 30, 30);
+
+            var addButton = new UIButton(UIButtonType.Custom);
+            addButton.SetImage(UIImage.FromBundle("images/add.png"), UIControlState.Normal);
+            addButton.Frame = new RectangleF(0, 0, 30, 30);
+
             NavigationItem.SetRightBarButtonItems(new UIBarButtonItem[] {
-                new UIBarButtonItem(refreshButton),
                 new UIBarButtonItem(UIBarButtonSystemItem.FixedSpace, null, null)
                 {
-                    Width = -5f
-                }
+                    Width = -10f
+                },
+                new UIBarButtonItem(refreshButton),
+                new UIBarButtonItem(addButton),
             }, false);
 
             bindingSet.Bind(refreshButton)

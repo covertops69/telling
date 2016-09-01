@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Telling.iOS.Controls;
+using Telling.iOS.Helpers;
 using UIKit;
 
 namespace Telling.iOS.Views.Cells
@@ -12,6 +14,11 @@ namespace Telling.iOS.Views.Cells
             : base(handle)
         {
             BackgroundColor = UIColor.Clear;
+            SelectedBackgroundView = new TView
+            {
+                TranslatesAutoresizingMaskIntoConstraints = false,
+                BackgroundColor = ColorPalette.DarkRed
+            };
         }
     }
 }

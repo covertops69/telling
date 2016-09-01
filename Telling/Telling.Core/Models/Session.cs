@@ -12,6 +12,7 @@ namespace Telling.Core.Models
         public Guid SessionId { get; set; }
         public Guid GameId { get; set; }
         public string GameName { get; set; }
+        public string ImageName { get; set; }
         public DateTime SessionDate { get; set; }
     }
 }

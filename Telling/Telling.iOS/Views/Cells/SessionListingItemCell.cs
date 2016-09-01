@@ -28,11 +28,12 @@ namespace Telling.iOS.Views.Cells
 
         public TLabel Title, SubTitle;
         public TView Seperator, CenterRuler;
+        public TCorneredImageView Icon;
 
         void CreateLayout()
         {
-            TCorneredImageView imageIcon = new TCorneredImageView(UIImage.FromBundle("images/gotc.jpg"));
-            ContentView.AddSubviews(imageIcon);
+            Icon = new TCorneredImageView(UIImage.FromBundle("images/missing.png"));
+            ContentView.AddSubviews(Icon);
 
             Title = new TLabel();
             ContentView.AddSubviews(Title);
@@ -52,17 +53,17 @@ namespace Telling.iOS.Views.Cells
 
                 CenterRuler.WithSameCenterY(ContentView),
 
-                imageIcon.AtLeftOf(ContentView, Constants.Margin),
-                imageIcon.WithSameCenterY(ContentView),
-                imageIcon.Height().EqualTo(40f),
-                imageIcon.Width().EqualTo(40f),
+                Icon.AtLeftOf(ContentView, Constants.Margin),
+                Icon.WithSameCenterY(ContentView),
+                Icon.Height().EqualTo(40f),
+                Icon.Width().EqualTo(40f),
 
                 Title.Above(CenterRuler),
-                Title.ToRightOf(imageIcon, Constants.Margin),
+                Title.ToRightOf(Icon, Constants.Margin),
                 //Title.Width().EqualTo(ContentView.Frame.Size.Width)
 
                 SubTitle.Below(CenterRuler),
-                SubTitle.ToRightOf(imageIcon, Constants.Margin),
+                SubTitle.ToRightOf(Icon, Constants.Margin),
 
                 Seperator.AtBottomOf(ContentView),
                 Seperator.Height().EqualTo(1f),
@@ -78,6 +79,7 @@ namespace Telling.iOS.Views.Cells
                 var set = this.CreateBindingSet<SessionListingItemCell, Session>();
                 set.Bind(Title).To(vm => vm.GameName);//.WithConversion(new StringToNSAttributedStringConverter(), 16.0f);
                 set.Bind(SubTitle).To(vm => vm.SessionDate).WithConversion(new DateTimeToStringConverter());
+                set.Bind(Icon).For(c => c.Image).To(vm => vm.ImageName).WithConversion(new StringToImageConverter());
                 //set.Bind(IconImageView).For(c => c.Image).To(vm => vm.ImageName).WithConversion(new StringToUIImageValueConverter());
                 //set.Bind(NewImage).For(c => c.Hidden).To(vm => vm.New).WithConversion(new VisibleConverter());
                 set.Apply();

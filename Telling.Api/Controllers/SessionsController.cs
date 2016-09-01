@@ -38,6 +38,7 @@ namespace Telling.Api.Controllers
                                 SessionId = Guid.Parse(reader["SessionId"].ToString()),
                                 GameId = Guid.Parse(reader["GameId"].ToString()),
                                 GameName = reader["GameName"].ToString(),
+                                ImageName = reader["ImageName"].ToString(),
                                 SessionDate = DateTime.Parse(reader["SessionDate"].ToString())
                             });
                         }

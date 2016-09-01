@@ -90,7 +90,10 @@ namespace Telling.Core.ViewModels.Sessions
             {
                 return _refreshCommand ?? (_refreshCommand = new MvxAsyncCommand(async () =>
                 {
-                    await LoadDataAsync();
+                    if (!IsBusy)
+                    {
+                        await LoadDataAsync();
+                    }
                 }));
             }
         }
