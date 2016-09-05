@@ -9,6 +9,6 @@ namespace Telling.Core.Constants
     public static class Constants
     {
         public const float Margin = 15f;
-        public const float ButtonHeight = 39f;
+        public const float ButtonHeight = 44f;
     }
 }

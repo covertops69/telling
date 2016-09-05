@@ -28,8 +28,8 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
-        private string _sessionDate;
-        public string SessionDate
+        private DateTime _sessionDate = DateTime.Now;
+        public DateTime SessionDate
         {
             get
             {
@@ -41,16 +41,16 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
-        private Guid _gameId;
-        public Guid GameId
+        private Game _selectedGame;
+        public Game SelectedGame
         {
             get
             {
-                return _gameId;
+                return _selectedGame;
             }
             set
             {
-                SetProperty(ref _gameId, value);
+                SetProperty(ref _selectedGame, value);
             }
         }
 
@@ -75,6 +75,7 @@ namespace Telling.Core.ViewModels.Sessions
                 IsBusy = true;
 
                 GamesCollection = new ObservableCollection<Game>(await GameManager.GetGamesAsync());
+                SelectedGame = GamesCollection[0];
             }
             //catch (NotConnectedException)
             //{
@@ -109,8 +110,8 @@ namespace Telling.Core.ViewModels.Sessions
 
                             await SessionManager.CreateSessionAsync(new Session
                             {
-                                GameId = GameId,
-                                SessionDate = DateTime.Parse(SessionDate)
+                                GameId = SelectedGame.GameId,
+                                SessionDate = SessionDate
                             });
 
                             Close(this);

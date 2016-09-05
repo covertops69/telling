@@ -11,5 +11,10 @@ namespace Telling.Core.Models
         public Guid GameId { get; set; }
 
         public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -23,12 +23,12 @@ namespace Telling.iOS.Views.Sessions
             var bindingSet = this.CreateBindingSet<AddSessionView, AddSessionViewModel>();
             bindingSet = BindLoader(bindingSet);
 
-            var sessionDate = new TTextField
+            var sessionDateTextField = new TTextField
             {
                 Placeholder = "When?"
             };
-            Add(sessionDate);
-            //bindingSet.Bind(sessionDate).To(vm => vm.SessionDate).Apply();
+            Add(sessionDateTextField);
+            bindingSet.Bind(sessionDateTextField).To("Format('{0:d MMM yyyy}', SessionDate)").Apply();
 
             /* picker */
             /* ******************************************************* */
@@ -37,19 +37,19 @@ namespace Telling.iOS.Views.Sessions
 
             var sessionDateToolbar = new UIToolbar(new CGRect(0.0f, 0.0f, sessionDatePicker.Frame.Size.Width, 44.0f));
 
-            sessionDate.InputAccessoryView = sessionDateToolbar;
-            sessionDate.InputView = sessionDatePicker;
+            sessionDateTextField.InputAccessoryView = sessionDateToolbar;
+            sessionDateTextField.InputView = sessionDatePicker;
 
             sessionDateToolbar.Items = new[]
             {
                 new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
                 new UIBarButtonItem(UIBarButtonSystemItem.Done, delegate
                 {
-                    sessionDate.Text = NSDateToDateTime(sessionDatePicker.Date).ToString("dd MMM yyyy");
-                    ViewModel.SessionDate = sessionDate.Text;
-                    sessionDate.ResignFirstResponder();
+                    sessionDateTextField.ResignFirstResponder();
                 })
             };
+
+            bindingSet.Bind(sessionDatePicker).To(vm => vm.SessionDate).Apply();
             /* ******************************************************* */
 
             var gameTextField = new TTextField
@@ -57,15 +57,13 @@ namespace Telling.iOS.Views.Sessions
                 Placeholder = "What?"
             };
             Add(gameTextField);
+            bindingSet.Bind(gameTextField).To(vm => vm.SelectedGame).Apply();
 
             /* picker */
             /* ******************************************************* */
             var gamePicker = new UIPickerView();
-            var gamePickerViewModel = new GamePickerViewModel(gamePicker);
+            var gamePickerViewModel = new MvxPickerViewModel(gamePicker);
             gamePicker.Model = gamePickerViewModel;
-            gamePicker.ShowSelectionIndicator = true;
-
-            bindingSet.Bind(gamePickerViewModel).For(p => p.ItemsSource).To(vm => vm.GamesCollection).Apply();
 
             var gamePickerToolbar = new UIToolbar(new CGRect(0.0f, 0.0f, gamePicker.Frame.Size.Width, 44.0f));
 
@@ -77,15 +75,12 @@ namespace Telling.iOS.Views.Sessions
                 new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace),
                 new UIBarButtonItem(UIBarButtonSystemItem.Done, delegate
                 {
-                    var i = gamePicker.SelectedRowInComponent(0);
-                    var selected = ((ObservableCollection<Game>)gamePickerViewModel.ItemsSource)[Convert.ToInt32(i.ToString())];
-
-                    ViewModel.GameId = selected.GameId;
-                    gameTextField.Text = selected.Name;
-
                     gameTextField.ResignFirstResponder();
                 })
             };
+
+            bindingSet.Bind(gamePickerViewModel).For(p => p.SelectedItem).To(vm => vm.SelectedGame).Apply();
+            bindingSet.Bind(gamePickerViewModel).For(p => p.ItemsSource).To(vm => vm.GamesCollection).Apply();
             /* ******************************************************* */
 
             var saveButton = new TButtonView("Save");
@@ -94,18 +89,18 @@ namespace Telling.iOS.Views.Sessions
 
             View.AddConstraints(new FluentLayout[] {
 
-                sessionDate.AtTopOf(View, Constants.Margin),
-                sessionDate.AtLeftOf(View, Constants.Margin),
-                sessionDate.WithSameWidth(View).Minus(Constants.Margin * 2),
+                sessionDateTextField.AtTopOf(View, Constants.Margin),
+                sessionDateTextField.AtLeftOf(View, Constants.Margin),
+                sessionDateTextField.WithSameWidth(View).Minus(Constants.Margin * 2),
 
-                gameTextField.Below(sessionDate, Constants.Margin),
+                gameTextField.Below(sessionDateTextField, Constants.Margin),
                 gameTextField.AtLeftOf(View, Constants.Margin),
                 gameTextField.WithSameWidth(View).Minus(Constants.Margin * 2),
 
                 saveButton.Below(gameTextField, Constants.Margin),
                 saveButton.AtLeftOf(View, Constants.Margin),
                 saveButton.WithSameWidth(View).Minus(Constants.Margin * 2),
-                saveButton.Height().EqualTo(44f)
+                saveButton.Height().EqualTo(Constants.ButtonHeight)
 
             });
         }
@@ -114,18 +109,6 @@ namespace Telling.iOS.Views.Sessions
         {
             DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(2001, 1, 1, 0, 0, 0));
             return reference.AddSeconds(date.SecondsSinceReferenceDate);
-        }
-    }
-
-    public class GamePickerViewModel : MvxPickerViewModel
-    {
-        public GamePickerViewModel(UIPickerView pickerView) : base(pickerView)
-        {
-        }
-
-        protected override string RowTitle(nint row, object item)
-        {
-            return ((Game)item).Name;
         }
     }
 }
