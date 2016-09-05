@@ -123,7 +123,8 @@
     <Compile Include="Views\BaseViewController.cs" />
     <Compile Include="Views\Cells\BaseItemCell.cs" />
     <Compile Include="Views\Cells\SessionListingItemCell.cs" />
-    <Compile Include="Views\Modals\ModalView.cs" />
+    <Compile Include="Views\Modals\ExceptionModalView.cs" />
+    <Compile Include="Views\Modals\PickerModalView.cs" />
     <Compile Include="Views\Sessions\AddSessionView.cs" />
     <Compile Include="Views\Sessions\SessionListingView.cs" />
   </ItemGroup>
@@ -191,6 +192,10 @@
     <BundleResource Include="Images\Games\terramystica.jpg" />
     <BundleResource Include="Images\Games\throughtheages.jpg" />
     <BundleResource Include="Images\Games\tickettoride.jpg" />
+    <BundleResource Include="Images\checked%402x.png" />
+    <BundleResource Include="Images\unchecked.png" />
+    <BundleResource Include="Images\unchecked%402x.png" />
+    <BundleResource Include="Images\checked.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">

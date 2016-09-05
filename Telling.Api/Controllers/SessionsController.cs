@@ -50,11 +50,6 @@ namespace Telling.Api.Controllers
                 {
                     throw ex;
                 }
-
-                //return new List<Game>()
-                //{
-                //    new Game { Name = "Game 1" }
-                //};
             }
         }
 

@@ -10,13 +10,13 @@ using UIKit;
 
 namespace Telling.iOS.Views.Modals
 {
-    class ModalView : BaseViewController<ModalViewModel>, IMvxModalIosView
+    class ExceptionModalView : BaseViewController<ModalViewModel>, IMvxModalIosView
     {
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            var bindingSet = this.CreateBindingSet<ModalView, ModalViewModel>();
+            var bindingSet = this.CreateBindingSet<ExceptionModalView, ModalViewModel>();
             bindingSet = BindLoader(bindingSet);
 
             var exceptionDetails = new TLabelView();
