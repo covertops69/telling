@@ -29,17 +29,7 @@ namespace Telling.iOS.Controls
             Layer.BorderColor = UIColor.White.CGColor;
             Layer.BorderWidth = 1.0f;
             Layer.MasksToBounds = true;
-
-            //Font = UIFont.FromName("Telkom123-Bold", 15.0f);
-            //_arrowImage = UIImage.FromBundle("images/white_arrow_right.png");
-
-            //SetImage(_arrowImage, UIControlState.Normal);
         }
-
-        //public override void Draw(CGRect frame)
-        //{
-        //    ImageEdgeInsets = new UIEdgeInsets(0, Frame.Size.Width - (_arrowImage.Size.Width + 20), 0, 0);
-        //}
 
         public override bool Highlighted
         {

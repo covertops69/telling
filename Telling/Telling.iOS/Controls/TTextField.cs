@@ -104,7 +104,6 @@ namespace Telling.iOS.Controls
 
                 var label = new UILabel(new CGRect(0, 7, 10, 40))
                 {
-                    //Font = UIFont.FromName("Telkom123-Regular", 14.0f),
                     Text = "*",
                     TextAlignment = UITextAlignment.Right
                 };
@@ -139,7 +138,6 @@ namespace Telling.iOS.Controls
 
                 var label = new UILabel(new CGRect(0, 0, 10, 40))
                 {
-                    //Font = UIFont.FromName("Telkom123-Regular", 14.0f),
                     Text = "*",
                     TextAlignment = UITextAlignment.Right
                 };
@@ -209,8 +207,6 @@ namespace Telling.iOS.Controls
 
                 Layer.AddSublayer(border);
                 Layer.MasksToBounds = true;
-
-                //Font = UIFont.FromName("Telkom123-Regular", 14.0f);
 
                 _initialized = true;
             }
