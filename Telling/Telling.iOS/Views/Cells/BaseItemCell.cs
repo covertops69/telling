@@ -14,6 +14,7 @@ namespace Telling.iOS.Views.Cells
             : base(handle)
         {
             BackgroundColor = UIColor.Clear;
+
             SelectedBackgroundView = new TView
             {
                 TranslatesAutoresizingMaskIntoConstraints = false,

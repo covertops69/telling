@@ -63,6 +63,8 @@ namespace Telling.iOS.Views
         {
             base.ViewWillAppear(animated);
 
+            View.BackgroundColor = ColorPalette.Carnelian;
+
             NavigationController.NavigationBar.TitleTextAttributes = new UIStringAttributes()
             {
                 ForegroundColor = UIColor.White

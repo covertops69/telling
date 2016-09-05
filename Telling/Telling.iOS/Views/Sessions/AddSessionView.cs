@@ -105,6 +105,7 @@ namespace Telling.iOS.Views.Sessions
                 saveButton.Below(gameTextField, Constants.Margin),
                 saveButton.AtLeftOf(View, Constants.Margin),
                 saveButton.WithSameWidth(View).Minus(Constants.Margin * 2),
+                saveButton.Height().EqualTo(44f)
 
             });
         }
