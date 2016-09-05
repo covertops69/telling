@@ -16,5 +16,10 @@ namespace Telling.Core.Services
         {
             RestService = restService;
         }
+
+        //protected static void AddParamsVersion(Dictionary<string, object> parameters, int versionNumber = 1)
+        //{
+        //    parameters.Add("version", versionNumber);
+        //}
     }
 }

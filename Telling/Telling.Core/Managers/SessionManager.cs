@@ -11,6 +11,7 @@ namespace Telling.Core.Managers
     public interface ISessionManager
     {
         Task<List<Session>> GetSessionsAsync();
+        Task CreateSessionAsync(Session session);
     }
 
     public class SessionManager : ISessionManager
@@ -25,6 +26,11 @@ namespace Telling.Core.Managers
         public async Task<List<Session>> GetSessionsAsync()
         {
             return await SessionService.GetSessionsAsync();
+        }
+
+        public async Task CreateSessionAsync(Session session)
+        {
+            await SessionService.CreateSessionAsync(session);
         }
     }
 }

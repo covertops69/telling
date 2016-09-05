@@ -23,8 +23,7 @@ namespace Telling.iOS.Views.Sessions
             base.ViewDidLoad();
 
             var bindingSet = this.CreateBindingSet<SessionListingView, SessionListingViewModel>();
-            bindingSet.Bind(Loader).For(b => b.Hidden).To(vm => vm.IsBusy).WithConversion(new LoaderVisibilityConverter()).Apply();
-            bindingSet.Bind(this).For(c => c.Title).To(vm => vm.Title).Apply();
+            bindingSet = BindLoader(bindingSet);
 
             var refreshButton = new UIButton(UIButtonType.Custom);
             refreshButton.SetImage(UIImage.FromBundle("images/refresh.png"), UIControlState.Normal);

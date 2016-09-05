@@ -1,9 +1,13 @@
 ﻿using Cirrious.FluentLayouts.Touch;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Telling.Core.ViewModels;
+using Telling.iOS.Controls;
+using Telling.iOS.Converters;
 using Telling.iOS.Helpers;
 using UIKit;
 
@@ -12,7 +16,7 @@ namespace Telling.iOS.Views
     public abstract class BaseViewController<TViewModel> : MvxViewController<TViewModel>
         where TViewModel : class, IMvxViewModel
     {
-        public UIActivityIndicatorView Loader { get; private set; }
+        public TLoadingOverlayView Loader { get; private set; }
 
         public BaseViewController()
         {
@@ -22,24 +26,36 @@ namespace Telling.iOS.Views
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            AddLoader();
+        }
 
-            Loader = new UIActivityIndicatorView
+        private void AddLoader()
+        {
+            Loader = new TLoadingOverlayView();
+            NavigationController.View.Add(Loader);
+
+            NavigationController.View.AddConstraints(new FluentLayout[] {
+                Loader.AtTopOf(NavigationController.View),
+                Loader.AtLeftOf(NavigationController.View),
+                Loader.WithSameWidth(NavigationController.View),
+                Loader.WithSameHeight(NavigationController.View),
+            });
+
+            var activityIndicator = new UIActivityIndicatorView
             {
                 Hidden = true
             };
-            Loader.StartAnimating();
+            activityIndicator.StartAnimating();
 
-            Loader.TranslatesAutoresizingMaskIntoConstraints = false;
-            Add(Loader);
+            activityIndicator.TranslatesAutoresizingMaskIntoConstraints = false;
+            Loader.AddSubview(activityIndicator);
 
-            View.BringSubviewToFront(Loader);
-
-            View.AddConstraints(new FluentLayout[]
+            Loader.AddConstraints(new FluentLayout[]
             {
-                Loader.WithSameCenterX(View),
-                Loader.WithSameCenterY(View),
-                Loader.Width().EqualTo(50f),
-                Loader.Height().EqualTo(50f),
+                activityIndicator.WithSameCenterX(Loader),
+                activityIndicator.WithSameCenterY(Loader),
+                activityIndicator.Width().EqualTo(50f),
+                activityIndicator.Height().EqualTo(50f),
             });
         }
 
@@ -62,6 +78,16 @@ namespace Telling.iOS.Views
             NavigationController.NavigationBar.TintColor = UIColor.White;
 
             NavigationController.View.BackgroundColor = ColorPalette.Carnelian;
+        }
+
+        public MvxFluentBindingDescriptionSet<ViewController, ViewModel> BindLoader<ViewController, ViewModel>(MvxFluentBindingDescriptionSet<ViewController, ViewModel> bindingSet)
+            where ViewController : class, IMvxBindingContextOwner
+            where ViewModel : BaseViewModel
+        {
+            bindingSet.Bind(Loader).For(b => b.Hidden).To(vm => vm.IsBusy).WithConversion(new LoaderVisibilityConverter()).Apply();
+            bindingSet.Bind(this).For(c => c.Title).To(vm => vm.Title).Apply();
+
+            return bindingSet;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Telling.Core.ViewModels.Sessions
 {
     public class AddSessionViewModel : BaseValidationViewModel
     {
+        protected ISessionManager SessionManager { get; }
         protected IGameManager GameManager { get; }
 
         private ObservableCollection<Game> _gamesCollection;
@@ -53,9 +54,11 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
-        public AddSessionViewModel(IGameManager gameManager)
+        public AddSessionViewModel(ISessionManager sessionManager, IGameManager gameManager)
         {
+            SessionManager = sessionManager;
             GameManager = gameManager;
+
             Title = "New";
         }
 
@@ -100,7 +103,34 @@ namespace Telling.Core.ViewModels.Sessions
                 {
                     if (!IsBusy)
                     {
-                        Close(this);
+                        try
+                        {
+                            IsBusy = true;
+
+                            await SessionManager.CreateSessionAsync(new Session
+                            {
+                                GameId = GameId,
+                                SessionDate = DateTime.Parse(SessionDate)
+                            });
+
+                            Close(this);
+                        }
+                        //catch (NotConnectedException)
+                        //{
+                        //    ShowNotConnectedModalPopup();
+                        //}
+                        //catch (WebServiceException wsex)
+                        //{
+                        //    ShowWebServiceErrorModalPopup(wsex);
+                        //}
+                        catch (Exception ex)
+                        {
+                            ShowException(ex);
+                        }
+                        finally
+                        {
+                            IsBusy = false;
+                        }
                     }
                 }));
             }

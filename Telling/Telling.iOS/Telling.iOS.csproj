@@ -86,10 +86,11 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Controls\TButton.cs" />
+    <Compile Include="Controls\TButtonView.cs" />
     <Compile Include="Controls\TCorneredImageView.cs" />
     <Compile Include="Controls\TImageView.cs" />
-    <Compile Include="Controls\TLabel.cs" />
+    <Compile Include="Controls\TLabelView.cs" />
+    <Compile Include="Controls\TLoadingOverlayView.cs" />
     <Compile Include="Controls\TTableView.cs" />
     <Compile Include="Controls\TTextField.cs" />
     <Compile Include="Controls\TView.cs" />

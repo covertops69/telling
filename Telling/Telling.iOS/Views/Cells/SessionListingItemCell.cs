@@ -26,7 +26,7 @@ namespace Telling.iOS.Views.Cells
             InitializeBindings();
         }
 
-        public TLabel Title, SubTitle;
+        public TLabelView Title, SubTitle;
         public TView Seperator, CenterRuler;
         public TCorneredImageView Icon;
 
@@ -35,10 +35,10 @@ namespace Telling.iOS.Views.Cells
             Icon = new TCorneredImageView(UIImage.FromBundle("images/missing.png"));
             ContentView.AddSubviews(Icon);
 
-            Title = new TLabel();
+            Title = new TLabelView();
             ContentView.AddSubviews(Title);
 
-            SubTitle = new TLabel();
+            SubTitle = new TLabelView();
             UIFont font = SubTitle.Font;
             SubTitle.Font = font.WithSize(10f);
             ContentView.AddSubviews(SubTitle);

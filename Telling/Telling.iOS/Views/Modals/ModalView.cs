@@ -17,10 +17,9 @@ namespace Telling.iOS.Views.Modals
             base.ViewDidLoad();
 
             var bindingSet = this.CreateBindingSet<ModalView, ModalViewModel>();
-            bindingSet.Bind(Loader).For(b => b.Hidden).To(vm => vm.IsBusy).WithConversion(new LoaderVisibilityConverter()).Apply();
-            bindingSet.Bind(this).For(c => c.Title).To(vm => vm.Title).Apply();
+            bindingSet = BindLoader(bindingSet);
 
-            var exceptionDetails = new TLabel();
+            var exceptionDetails = new TLabelView();
             Add(exceptionDetails);
 
             bindingSet.Bind(exceptionDetails).To(vm => vm.Exception).Apply();

@@ -5,9 +5,9 @@ using UIKit;
 
 namespace Telling.iOS.Controls
 {
-    public class TLabel : UILabel
+    public class TLabelView : UILabel
     {
-        public TLabel()
+        public TLabelView()
             : base()
         {
             Lines = 0;

@@ -21,15 +21,14 @@ namespace Telling.iOS.Views.Sessions
             base.ViewDidLoad();
 
             var bindingSet = this.CreateBindingSet<AddSessionView, AddSessionViewModel>();
-            bindingSet.Bind(Loader).For(b => b.Hidden).To(vm => vm.IsBusy).WithConversion(new LoaderVisibilityConverter()).Apply();
-            bindingSet.Bind(this).For(c => c.Title).To(vm => vm.Title).Apply();
+            bindingSet = BindLoader(bindingSet);
 
             var sessionDate = new TTextField
             {
                 Placeholder = "When?"
             };
             Add(sessionDate);
-            bindingSet.Bind(sessionDate).To(vm => vm.SessionDate).WithConversion(new StringToDateTimeConverter()).OneWayToSource().Apply();
+            //bindingSet.Bind(sessionDate).To(vm => vm.SessionDate).Apply();
 
             /* picker */
             /* ******************************************************* */
@@ -47,6 +46,7 @@ namespace Telling.iOS.Views.Sessions
                 new UIBarButtonItem(UIBarButtonSystemItem.Done, delegate
                 {
                     sessionDate.Text = NSDateToDateTime(sessionDatePicker.Date).ToString("dd MMM yyyy");
+                    ViewModel.SessionDate = sessionDate.Text;
                     sessionDate.ResignFirstResponder();
                 })
             };
@@ -88,7 +88,7 @@ namespace Telling.iOS.Views.Sessions
             };
             /* ******************************************************* */
 
-            var saveButton = new TButton("Save");
+            var saveButton = new TButtonView("Save");
             Add(saveButton);
             bindingSet.Bind(saveButton).To(vm => vm.SaveCommand).Apply();
 

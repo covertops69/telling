@@ -7,13 +7,13 @@ using UIKit;
 
 namespace Telling.iOS.Controls
 {
-    public class TButton : UIButton
+    public class TButtonView : UIButton
     {
         //UIImage _arrowImage;
 
         public nfloat Height { get; set; } = Constants.ButtonHeight;
 
-        public TButton(string title)
+        public TButtonView(string title)
         {
             TranslatesAutoresizingMaskIntoConstraints = false;
             //BackgroundColor = ColorPalette.Green;
