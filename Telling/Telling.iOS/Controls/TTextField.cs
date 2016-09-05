@@ -223,11 +223,5 @@ namespace Telling.iOS.Controls
 
             base.Dispose(disposing);
         }
-
-        //public static ModalPopupView ShowModalPopup(string title, string message, string subTitle = "", string iconImagePath = "", UIView contentView = null, UIView titleView = null)
-        //{
-        //    var modalpopup = Mvx.Resolve<IModalPopup>();
-        //    return modalpopup.ShowModalPopup(title, message, subTitle, iconImagePath, contentView, titleView) as ModalPopupView;
-        //}
     }
 }

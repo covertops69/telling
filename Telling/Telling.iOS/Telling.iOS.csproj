@@ -93,6 +93,8 @@
     <Compile Include="Controls\TLoadingOverlayView.cs" />
     <Compile Include="Controls\TTableView.cs" />
     <Compile Include="Controls\TTextField.cs" />
+    <Compile Include="Controls\TTextFieldLabelView.cs" />
+    <Compile Include="Controls\TTextFieldWithLabel.cs" />
     <Compile Include="Controls\TView.cs" />
     <Compile Include="Converters\Converters.cs" />
     <Compile Include="DebugTrace.cs" />

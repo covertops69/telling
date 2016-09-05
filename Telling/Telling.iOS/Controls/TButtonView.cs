@@ -10,10 +10,7 @@ namespace Telling.iOS.Controls
 {
     public class TButtonView : UIButton
     {
-        //UIImage _arrowImage;
-
         public nfloat TopPadding { get; set; } = 0f;
-        //public nfloat Height { get; set; } = BaseViewHelper.ButtonHeight;
 
         public TButtonView(string title)
         {

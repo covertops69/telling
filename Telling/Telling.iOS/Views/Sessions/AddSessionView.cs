@@ -23,6 +23,12 @@ namespace Telling.iOS.Views.Sessions
             var bindingSet = this.CreateBindingSet<AddSessionView, AddSessionViewModel>();
             bindingSet = BindLoader(bindingSet);
 
+            var sessionDateTextFieldLabel = new TTextFieldLabelView
+            {
+                Text = "When?"
+            };
+            Add(sessionDateTextFieldLabel);
+
             var sessionDateTextField = new TTextField
             {
                 Placeholder = "When?"
@@ -51,6 +57,12 @@ namespace Telling.iOS.Views.Sessions
 
             bindingSet.Bind(sessionDatePicker).To(vm => vm.SessionDate).Apply();
             /* ******************************************************* */
+
+            var gameTextFieldLabel = new TTextFieldLabelView
+            {
+                Text = "What?"
+            };
+            Add(gameTextFieldLabel);
 
             var gameTextField = new TTextField
             {
@@ -89,11 +101,19 @@ namespace Telling.iOS.Views.Sessions
 
             View.AddConstraints(new FluentLayout[] {
 
-                sessionDateTextField.AtTopOf(View, Constants.Margin),
+                sessionDateTextFieldLabel.AtTopOf(View, Constants.Margin),
+                sessionDateTextFieldLabel.AtLeftOf(View, Constants.Margin),
+                sessionDateTextFieldLabel.WithSameWidth(View).Minus(Constants.Margin * 2),
+
+                sessionDateTextField.Below(sessionDateTextFieldLabel),
                 sessionDateTextField.AtLeftOf(View, Constants.Margin),
                 sessionDateTextField.WithSameWidth(View).Minus(Constants.Margin * 2),
 
-                gameTextField.Below(sessionDateTextField, Constants.Margin),
+                gameTextFieldLabel.Below(sessionDateTextField, Constants.Margin),
+                gameTextFieldLabel.AtLeftOf(View, Constants.Margin),
+                gameTextFieldLabel.WithSameWidth(View).Minus(Constants.Margin * 2),
+
+                gameTextField.Below(gameTextFieldLabel),
                 gameTextField.AtLeftOf(View, Constants.Margin),
                 gameTextField.WithSameWidth(View).Minus(Constants.Margin * 2),
 
