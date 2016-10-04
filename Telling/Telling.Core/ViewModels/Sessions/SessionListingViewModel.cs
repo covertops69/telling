@@ -37,10 +37,10 @@ namespace Telling.Core.ViewModels.Sessions
         public async override void Start()
         {
             base.Start();
-            await LoadDataAsync();
+            //await LoadDataAsync();
         }
 
-        private async Task LoadDataAsync()
+        public async Task LoadDataAsync()
         {
             try
             {

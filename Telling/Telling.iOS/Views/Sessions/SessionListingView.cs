@@ -26,7 +26,7 @@ namespace Telling.iOS.Views.Sessions
             bindingSet = BindLoader(bindingSet);
 
             var refreshButton = new UIButton(UIButtonType.Custom);
-            refreshButton.SetImage(UIImage.FromBundle("images/refresh.png"), UIControlState.Normal);
+            refreshButton.SetImage(UIImage.FromBundle("Images/refresh.png"), UIControlState.Normal);
             refreshButton.Frame = new RectangleF(0, 0, 30, 30);
 
             bindingSet.Bind(refreshButton)
@@ -34,7 +34,7 @@ namespace Telling.iOS.Views.Sessions
                 .To(vm => vm.RefreshCommand).Apply();
 
             var addButton = new UIButton(UIButtonType.Custom);
-            addButton.SetImage(UIImage.FromBundle("images/add.png"), UIControlState.Normal);
+            addButton.SetImage(UIImage.FromBundle("Images/add.png"), UIControlState.Normal);
             addButton.Frame = new RectangleF(0, 0, 30, 30);
 
             bindingSet.Bind(addButton)
@@ -67,6 +67,12 @@ namespace Telling.iOS.Views.Sessions
 
             _table.Source = tableSource;
             _table.ReloadData();
+        }
+
+        public async override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+            await ViewModel.LoadDataAsync();
         }
     }
 }

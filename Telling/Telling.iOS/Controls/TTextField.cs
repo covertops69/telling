@@ -108,7 +108,7 @@ namespace Telling.iOS.Controls
                     TextAlignment = UITextAlignment.Right
                 };
 
-                //var questionMark = new TImageButton("images/helpIcon.png");
+                //var questionMark = new TImageButton("Images/helpIcon.png");
 
                 //questionMark.TouchUpInside += (sender, e) => {
                 //    ShowModalPopup(TooltipTitle, TooltipBody);
@@ -148,7 +148,7 @@ namespace Telling.iOS.Controls
             {
                 RightViewMode = UITextFieldViewMode.Always;
 
-                //var questionMark = new TImageButton("images/helpIcon.png")
+                //var questionMark = new TImageButton("Images/helpIcon.png")
                 //{
                 //    Frame = new CGRect(0, 0, 40, 40)
                 //};
@@ -164,7 +164,7 @@ namespace Telling.iOS.Controls
             {
                 RightViewMode = UITextFieldViewMode.Always;
 
-                var dropdownImage = new UIImageView(UIImage.FromBundle("images/down_section_arrow_blue.png"))
+                var dropdownImage = new UIImageView(UIImage.FromBundle("Images/down_section_arrow_blue.png"))
                 {
                     Frame = new CGRect(0, 0, 12, 40),
                     ContentMode = UIViewContentMode.ScaleAspectFit

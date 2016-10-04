@@ -39,7 +39,7 @@ namespace Telling.iOS.Converters
             {
                 if (value != null)
                 {
-                    return UIImage.FromBundle("images/games/" + value);
+                    return UIImage.FromBundle("Images/Games/" + value);
                 }
             }
             catch(Exception ex)
@@ -47,7 +47,7 @@ namespace Telling.iOS.Converters
                 // don't care
             }
 
-            return UIImage.FromBundle("images/missing.png");
+            return UIImage.FromBundle("Images/missing.png");
         }
     }
 }
