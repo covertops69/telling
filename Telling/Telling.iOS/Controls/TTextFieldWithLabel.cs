@@ -11,8 +11,8 @@ namespace Telling.iOS.Controls
     {
         bool _initialized = false;
 
-        TTextField _textField;
-        public TTextField TextField
+        TFloatingTextField _textField;
+        public TFloatingTextField TextField
         {
             get { return _textField; }
             set { _textField = value; }
@@ -30,7 +30,7 @@ namespace Telling.iOS.Controls
             ContentMode = UIViewContentMode.Redraw;
 
             _labelView = new TLabelView();
-            _textField = new TTextField();
+            _textField = new TFloatingTextField(new CGRect());
 
             TranslatesAutoresizingMaskIntoConstraints = false;
         }
