@@ -111,6 +111,7 @@
     <BundleResource Include="Resources\Icon-Small-50.png" />
     <BundleResource Include="Resources\Icon-Small.png" />
     <BundleResource Include="Resources\Icon.png" />
+    <Compile Include="Bindings\TFloatingTextFieldErrorTargetBinding.cs" />
     <Compile Include="Controls\TButtonView.cs" />
     <Compile Include="Controls\TCorneredImageView.cs" />
     <Compile Include="Controls\TFloatingTextField.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Helpers\ColorPalette.cs" />
     <Compile Include="Helpers\NotificationCenterConstants.cs" />
+    <Compile Include="Interfaces\IValidatable.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -232,9 +234,7 @@
       <Name>Telling.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />

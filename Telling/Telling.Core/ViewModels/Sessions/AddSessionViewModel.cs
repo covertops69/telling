@@ -1,4 +1,5 @@
-﻿using MvvmCross.Core.ViewModels;
+﻿using FluentValidation.Results;
+using MvvmCross.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Telling.Core.Managers;
 using Telling.Core.Models;
+using Telling.Core.Validators;
 
 namespace Telling.Core.ViewModels.Sessions
 {
-    public class AddSessionViewModel : BaseValidationViewModel
+    public class AddSessionViewModel : BaseViewModel
     {
+        private SessionValidator _validator;
+
         protected ISessionManager SessionManager { get; }
         protected IGameManager GameManager { get; }
 
@@ -54,8 +58,23 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
+        private string _venue;
+        public string Venue
+        {
+            get
+            {
+                return _venue;
+            }
+            set
+            {
+                SetProperty(ref _venue, value);
+            }
+        }
+
         public AddSessionViewModel(ISessionManager sessionManager, IGameManager gameManager)
         {
+            _validator = new SessionValidator();
+
             SessionManager = sessionManager;
             GameManager = gameManager;
 
@@ -106,24 +125,20 @@ namespace Telling.Core.ViewModels.Sessions
                     {
                         try
                         {
-                            IsBusy = true;
-
-                            await SessionManager.CreateSessionAsync(new Session
+                            if (Validate())
                             {
-                                GameId = SelectedGame.GameId,
-                                SessionDate = SessionDate
-                            });
+                                IsBusy = true;
 
-                            Close(this);
+                                await SessionManager.CreateSessionAsync(new Session
+                                {
+                                    GameId = SelectedGame.GameId,
+                                    SessionDate = SessionDate,
+                                    Venue = Venue
+                                });
+
+                                Close(this);
+                            }
                         }
-                        //catch (NotConnectedException)
-                        //{
-                        //    ShowNotConnectedModalPopup();
-                        //}
-                        //catch (WebServiceException wsex)
-                        //{
-                        //    ShowWebServiceErrorModalPopup(wsex);
-                        //}
                         catch (Exception ex)
                         {
                             ShowException(ex);
@@ -135,6 +150,32 @@ namespace Telling.Core.ViewModels.Sessions
                     }
                 }));
             }
+        }
+
+        public override bool Validate()
+        {
+            ValidationErrors.Clear();
+
+            _validator = new SessionValidator();
+
+            var results = _validator.Validate(new Session
+            {
+                GameId = SelectedGame.GameId,
+                SessionDate = SessionDate,
+                Venue = Venue
+            });
+
+            IList<ValidationFailure> failures = results.Errors;
+
+            foreach (var f in failures)
+            {
+                if (!ValidationErrors.ContainsKey(f.PropertyName))
+                {
+                    ValidationErrors.Add(f.PropertyName, f.ErrorMessage);
+                }
+            }
+
+            return results.IsValid;
         }
     }
 }

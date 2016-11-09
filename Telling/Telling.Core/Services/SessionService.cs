@@ -35,6 +35,7 @@ namespace Telling.Core.Services
             var parameters = new Dictionary<string, object>();
             parameters.Add("GameId", session.GameId);
             parameters.Add("SessionDate", session.SessionDate);
+            parameters.Add("Venue", session.Venue);
 
             await RestService.PostAsync<MyClass>(SESSIONS_URL, parameters).ConfigureAwait(false);
         }

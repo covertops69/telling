@@ -1,15 +1,33 @@
-﻿using CoreGraphics;
+﻿using CoreAnimation;
+using CoreGraphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Telling.iOS.Helpers;
+using Telling.iOS.Interfaces;
 using UIKit;
 
 namespace Telling.iOS.Controls
 {
-    public class TFloatingTextField : UITextField
+    public class TFloatingTextField : UITextField, IValidatable
     {
         private readonly UILabel _floatingLabel;
+        private readonly UILabel _validationLabel;
+
+        string _validationErrorMessage;
+        public string ValidationErrorMessage
+        {
+            get
+            {
+                return _validationErrorMessage;
+            }
+
+            set
+            {
+                _validationErrorMessage = value;
+                _validationLabel.Text = _validationErrorMessage;
+            }
+        }
 
         public UIColor FloatingLabelTextColor { get; set; }
         public UIColor FloatingLabelActiveTextColor { get; set; }
@@ -19,11 +37,15 @@ namespace Telling.iOS.Controls
             set { _floatingLabel.Font = value; }
         }
 
+        CALayer _bottomBorder;
+
         public TFloatingTextField(CGRect frame)
             : base(frame)
         {
             TextColor = UIColor.White;
             TranslatesAutoresizingMaskIntoConstraints = false;
+
+            AddBottomLine();
 
             _floatingLabel = new UILabel()
             {
@@ -35,6 +57,25 @@ namespace Telling.iOS.Controls
             FloatingLabelTextColor = ColorPalette.DarkRed;
             FloatingLabelActiveTextColor = ColorPalette.DarkPumpkin;
             FloatingLabelFont = UIFont.BoldSystemFontOfSize(12);
+
+            _validationLabel = new UILabel()
+            {
+                Text = String.Empty,
+                Font = UIFont.BoldSystemFontOfSize(12),
+                TextColor = ColorPalette.DeepLemon
+            };
+
+            AddSubview(_validationLabel);
+        }
+
+        private void AddBottomLine()
+        {
+            _bottomBorder = new CALayer
+            {
+                BackgroundColor = ColorPalette.Pumpkin.CGColor
+            };
+
+            Layer.AddSublayer(_bottomBorder);
         }
 
         public override string Placeholder
@@ -84,6 +125,14 @@ namespace Telling.iOS.Controls
         public override void LayoutSubviews()
         {
             base.LayoutSubviews();
+
+            // update bottom border frame
+            _bottomBorder.Frame = new CGRect(0.0f, Frame.Size.Height - 1.0f, Frame.Size.Width, 1.0f);
+
+            _validationLabel.SizeToFit();
+            _validationLabel.Frame = new CGRect(
+                        0, Frame.Height,
+                        Frame.Width, _validationLabel.Font.LineHeight);
 
             Action updateLabel = () =>
             {

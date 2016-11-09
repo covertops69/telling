@@ -1,7 +1,10 @@
+using MvvmCross.Binding.Bindings.Target.Construction;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.iOS.Views.Presenters;
 using MvvmCross.Platform.Platform;
+using Telling.iOS.Bindings;
+using Telling.iOS.Controls;
 using UIKit;
 
 namespace Telling.iOS
@@ -26,6 +29,13 @@ namespace Telling.iOS
         protected override IMvxTrace CreateDebugTrace()
         {
             return new DebugTrace();
+        }
+
+        protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)
+        {
+            base.FillTargetFactories(registry);
+
+            registry.RegisterCustomBindingFactory<TFloatingTextField>("ValidationError", inputField => new TFloatingTextFieldValidationTargetBinding(inputField));
         }
     }
 }

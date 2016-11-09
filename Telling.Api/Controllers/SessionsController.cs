@@ -39,7 +39,8 @@ namespace Telling.Api.Controllers
                                 GameId = Guid.Parse(reader["GameId"].ToString()),
                                 GameName = reader["GameName"].ToString(),
                                 ImageName = reader["ImageName"].ToString(),
-                                SessionDate = DateTime.Parse(reader["SessionDate"].ToString())
+                                SessionDate = DateTime.Parse(reader["SessionDate"].ToString()),
+                                Venue = reader["Venue"].ToString()
                             });
                         }
                     }
@@ -74,6 +75,7 @@ namespace Telling.Api.Controllers
 
                     command.Parameters.Add("@GameId", SqlDbType.UniqueIdentifier).Value = session.GameId;
                     command.Parameters.Add("@SessionDate", SqlDbType.Date).Value = session.SessionDate;
+                    command.Parameters.Add("@Venue", SqlDbType.NVarChar).Value = session.Venue;
 
                     command.ExecuteNonQuery();
                 }

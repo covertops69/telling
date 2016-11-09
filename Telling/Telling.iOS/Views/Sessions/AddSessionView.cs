@@ -29,6 +29,7 @@ namespace Telling.iOS.Views.Sessions
             };
             Add(sessionDateTextField);
             bindingSet.Bind(sessionDateTextField).To("Format('{0:d MMM yyyy}', SessionDate)").Apply();
+            bindingSet.Bind(sessionDateTextField).For("ValidationError").To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.SessionDate)]).Apply();
 
             /* picker */
             /* ******************************************************* */
@@ -58,6 +59,7 @@ namespace Telling.iOS.Views.Sessions
             };
             Add(gameTextField);
             bindingSet.Bind(gameTextField).To(vm => vm.SelectedGame).Apply();
+            bindingSet.Bind(gameTextField).For("ValidationError").To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.SelectedGame)]).Apply();
 
             /* picker */
             /* ******************************************************* */
@@ -83,6 +85,14 @@ namespace Telling.iOS.Views.Sessions
             bindingSet.Bind(gamePickerViewModel).For(p => p.ItemsSource).To(vm => vm.GamesCollection).Apply();
             /* ******************************************************* */
 
+            var whereTextField = new TFloatingTextField(new CGRect())
+            {
+                Placeholder = "Where?"
+            };
+            Add(whereTextField);
+            bindingSet.Bind(whereTextField).To(vm => vm.Venue).Apply();
+            bindingSet.Bind(whereTextField).For("ValidationError").To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.Venue)]).Apply();
+
             var saveButton = new TButtonView("Save");
             Add(saveButton);
             bindingSet.Bind(saveButton).To(vm => vm.SaveCommand).Apply();
@@ -97,7 +107,11 @@ namespace Telling.iOS.Views.Sessions
                 gameTextField.AtLeftOf(View, Constants.Margin),
                 gameTextField.WithSameWidth(View).Minus(Constants.Margin * 2),
 
-                saveButton.Below(gameTextField, Constants.Margin),
+                whereTextField.Below(gameTextField, Constants.Margin),
+                whereTextField.AtLeftOf(View, Constants.Margin),
+                whereTextField.WithSameWidth(View).Minus(Constants.Margin * 2),
+
+                saveButton.Below(whereTextField, Constants.Margin + 10f),
                 saveButton.AtLeftOf(View, Constants.Margin),
                 saveButton.WithSameWidth(View).Minus(Constants.Margin * 2),
                 saveButton.Height().EqualTo(Constants.ButtonHeight)

@@ -12,5 +12,6 @@ namespace Telling.Api.Models
         public string GameName { get; set; }
         public string ImageName { get; set; }
         public DateTime SessionDate { get; set; }
+        public string Venue { get; set; }
     }
 }
