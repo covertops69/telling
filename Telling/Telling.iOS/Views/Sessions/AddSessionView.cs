@@ -10,6 +10,7 @@ using Telling.Core.Models;
 using Telling.Core.ViewModels.Sessions;
 using Telling.iOS.Controls;
 using Telling.iOS.Converters;
+using Telling.iOS.TableSources;
 using UIKit;
 
 namespace Telling.iOS.Views.Sessions
@@ -23,11 +24,17 @@ namespace Telling.iOS.Views.Sessions
             var bindingSet = this.CreateBindingSet<AddSessionView, AddSessionViewModel>();
             bindingSet = BindLoader(bindingSet);
 
-            var sessionDateTextField = new TFloatingTextField(new CGRect())
+            var scrollView = new UIScrollView
+            {
+                TranslatesAutoresizingMaskIntoConstraints = false
+            };
+            Add(scrollView);
+
+            var sessionDateTextField = new TFloatingPicker(new CGRect())
             {
                 Placeholder = "When?"
             };
-            Add(sessionDateTextField);
+            scrollView.Add(sessionDateTextField);
             bindingSet.Bind(sessionDateTextField).To("Format('{0:d MMM yyyy}', SessionDate)").Apply();
             bindingSet.Bind(sessionDateTextField).For("ValidationError").To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.SessionDate)]).Apply();
 
@@ -57,7 +64,7 @@ namespace Telling.iOS.Views.Sessions
             {
                 Placeholder = "What?"
             };
-            Add(gameTextField);
+            scrollView.Add(gameTextField);
             bindingSet.Bind(gameTextField).To(vm => vm.SelectedGame).Apply();
             bindingSet.Bind(gameTextField).For("ValidationError").To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.SelectedGame)]).Apply();
 
@@ -89,34 +96,58 @@ namespace Telling.iOS.Views.Sessions
             {
                 Placeholder = "Where?"
             };
-            Add(whereTextField);
+            scrollView.Add(whereTextField);
             bindingSet.Bind(whereTextField).To(vm => vm.Venue).Apply();
             bindingSet.Bind(whereTextField).For("ValidationError").To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.Venue)]).Apply();
 
+            var playerListing = new TTableView();
+            scrollView.Add(playerListing);
+
+            var tableSource = new PlayerTableSource(playerListing);
+            bindingSet.Bind(tableSource).To(vm => vm.PlayerCollection).Apply();
+
             var saveButton = new TButtonView("Save");
-            Add(saveButton);
+            scrollView.Add(saveButton);
             bindingSet.Bind(saveButton).To(vm => vm.SaveCommand).Apply();
 
             View.AddConstraints(new FluentLayout[] {
 
-                sessionDateTextField.AtTopOf(View, Constants.Margin),
-                sessionDateTextField.AtLeftOf(View, Constants.Margin),
-                sessionDateTextField.WithSameWidth(View).Minus(Constants.Margin * 2),
-
-                gameTextField.Below(sessionDateTextField, Constants.Margin),
-                gameTextField.AtLeftOf(View, Constants.Margin),
-                gameTextField.WithSameWidth(View).Minus(Constants.Margin * 2),
-
-                whereTextField.Below(gameTextField, Constants.Margin),
-                whereTextField.AtLeftOf(View, Constants.Margin),
-                whereTextField.WithSameWidth(View).Minus(Constants.Margin * 2),
-
-                saveButton.Below(whereTextField, Constants.Margin + 10f),
-                saveButton.AtLeftOf(View, Constants.Margin),
-                saveButton.WithSameWidth(View).Minus(Constants.Margin * 2),
-                saveButton.Height().EqualTo(Constants.ButtonHeight)
+                scrollView.AtTopOf(View),
+                scrollView.WithSameWidth(View),
+                scrollView.AtBottomOf(View),
 
             });
+
+            scrollView.AddConstraints(new FluentLayout[] {
+
+                sessionDateTextField.AtTopOf(scrollView, Constants.Margin),
+                sessionDateTextField.AtLeftOf(scrollView, Constants.Margin),
+                sessionDateTextField.WithSameWidth(scrollView).Minus(Constants.Margin * 2),
+
+                gameTextField.Below(sessionDateTextField, Constants.Margin),
+                gameTextField.AtLeftOf(scrollView, Constants.Margin),
+                gameTextField.WithSameWidth(scrollView).Minus(Constants.Margin * 2),
+
+                whereTextField.Below(gameTextField, Constants.Margin),
+                whereTextField.AtLeftOf(scrollView, Constants.Margin),
+                whereTextField.WithSameWidth(scrollView).Minus(Constants.Margin * 2),
+
+                playerListing.Below(whereTextField, Constants.Margin),
+                playerListing.AtLeftOf(scrollView, Constants.Margin),
+                playerListing.WithSameWidth(scrollView).Minus(Constants.Margin * 2),
+                playerListing.Height().EqualTo(175f),
+
+                saveButton.Below(playerListing, Constants.Margin + 10f),
+                saveButton.AtLeftOf(scrollView, Constants.Margin),
+                saveButton.WithSameWidth(scrollView).Minus(Constants.Margin * 2),
+                saveButton.Height().EqualTo(Constants.ButtonHeight),
+
+                saveButton.AtBottomOf(scrollView, Constants.Margin)
+
+            });
+
+            playerListing.Source = tableSource;
+            playerListing.ReloadData();
         }
 
         public static DateTime NSDateToDateTime(NSDate date)

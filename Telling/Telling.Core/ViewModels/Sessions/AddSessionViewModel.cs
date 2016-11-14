@@ -18,6 +18,7 @@ namespace Telling.Core.ViewModels.Sessions
 
         protected ISessionManager SessionManager { get; }
         protected IGameManager GameManager { get; }
+        protected IPlayerManager PlayerManager { get; }
 
         private ObservableCollection<Game> _gamesCollection;
         public ObservableCollection<Game> GamesCollection
@@ -29,6 +30,19 @@ namespace Telling.Core.ViewModels.Sessions
             set
             {
                 SetProperty(ref _gamesCollection, value);
+            }
+        }
+
+        private ObservableCollection<Player> _playerCollection;
+        public ObservableCollection<Player> PlayerCollection
+        {
+            get
+            {
+                return _playerCollection;
+            }
+            set
+            {
+                SetProperty(ref _playerCollection, value);
             }
         }
 
@@ -58,6 +72,19 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
+        private ObservableCollection<Player> _selectedPlayers;
+        public ObservableCollection<Player> SelectedPlayers
+        {
+            get
+            {
+                return _selectedPlayers;
+            }
+            set
+            {
+                SetProperty(ref _selectedPlayers, value);
+            }
+        }
+
         private string _venue;
         public string Venue
         {
@@ -71,12 +98,13 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
-        public AddSessionViewModel(ISessionManager sessionManager, IGameManager gameManager)
+        public AddSessionViewModel(ISessionManager sessionManager, IGameManager gameManager, IPlayerManager playerManager)
         {
             _validator = new SessionValidator();
 
             SessionManager = sessionManager;
             GameManager = gameManager;
+            PlayerManager = playerManager;
 
             Title = "New";
         }
@@ -84,7 +112,9 @@ namespace Telling.Core.ViewModels.Sessions
         public async override void Start()
         {
             base.Start();
+
             await LoadGamesAsync();
+            await LoadPlayerAsync();
         }
 
         private async Task LoadGamesAsync()
@@ -95,6 +125,32 @@ namespace Telling.Core.ViewModels.Sessions
 
                 GamesCollection = new ObservableCollection<Game>(await GameManager.GetGamesAsync());
                 SelectedGame = GamesCollection[0];
+            }
+            //catch (NotConnectedException)
+            //{
+            //    ShowNotConnectedModalPopup();
+            //}
+            //catch (WebServiceException wsex)
+            //{
+            //    ShowWebServiceErrorModalPopup(wsex);
+            //}
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        private async Task LoadPlayerAsync()
+        {
+            try
+            {
+                IsBusy = true;
+
+                PlayerCollection = new ObservableCollection<Player>(await PlayerManager.GetPlayersAsync());
             }
             //catch (NotConnectedException)
             //{

@@ -36,6 +36,8 @@
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchFloat32>False</MtouchFloat32>
+    <BuildIpa>False</BuildIpa>
+    <IpaIncludeArtwork>False</IpaIncludeArtwork>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -46,6 +48,8 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>i386</MtouchArch>
     <ConsolePause>false</ConsolePause>
+    <BuildIpa>True</BuildIpa>
+    <IpaIncludeArtwork>False</IpaIncludeArtwork>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -113,7 +117,9 @@
     <BundleResource Include="Resources\Icon.png" />
     <Compile Include="Bindings\TFloatingTextFieldErrorTargetBinding.cs" />
     <Compile Include="Controls\TButtonView.cs" />
+    <Compile Include="Controls\TCheckbox.cs" />
     <Compile Include="Controls\TCorneredImageView.cs" />
+    <Compile Include="Controls\TFloatingPicker.cs" />
     <Compile Include="Controls\TFloatingTextField.cs" />
     <Compile Include="Controls\TImageView.cs" />
     <Compile Include="Controls\TLabelView.cs" />
@@ -146,10 +152,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Setup.cs" />
+    <Compile Include="TableSources\PlayerTableSource.cs" />
     <Compile Include="TableSources\SessionTableSource.cs" />
     <Compile Include="TellingPresenter.cs" />
     <Compile Include="Views\BaseViewController.cs" />
     <Compile Include="Views\Cells\BaseItemCell.cs" />
+    <Compile Include="Views\Cells\PlayerListingItemCell.cs" />
     <Compile Include="Views\Cells\SessionListingItemCell.cs" />
     <Compile Include="Views\Modals\ExceptionModalView.cs" />
     <Compile Include="Views\Modals\PickerModalView.cs" />
@@ -221,12 +229,9 @@
     <BundleResource Include="Images\Games\throughtheages.jpg" />
     <BundleResource Include="Images\Games\tickettoride.jpg" />
     <BundleResource Include="Images\checked%402x.png" />
-    <BundleResource Include="Images\unchecked.png" />
     <BundleResource Include="Images\unchecked%402x.png" />
     <BundleResource Include="Images\checked.png" />
-    <BundleResource Include="Images\checkmark%403x.png" />
-    <BundleResource Include="Images\checkmark%402x.png" />
-    <BundleResource Include="Images\checkmark.png" />
+    <BundleResource Include="Images\unchecked.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">

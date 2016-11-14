@@ -41,10 +41,12 @@
     <Compile Include="Enumerations\ConnectionType.cs" />
     <Compile Include="Extensions\AsObservableDictionary.cs" />
     <Compile Include="Helpers\ObservableDictionary.cs" />
+    <Compile Include="Managers\PlayerManager.cs" />
     <Compile Include="Managers\GameManager.cs" />
     <Compile Include="Managers\SessionManager.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\ValidationError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,6 +54,7 @@
     <Compile Include="Services\ConnectivityService.cs" />
     <Compile Include="Services\JsonRestService.cs" />
     <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\PlayerService.cs" />
     <Compile Include="Services\SessionService.cs" />
     <Compile Include="Validators\SessionValidator.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -92,7 +95,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModels\Players\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
