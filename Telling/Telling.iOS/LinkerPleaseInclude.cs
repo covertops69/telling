@@ -105,5 +105,10 @@ namespace Telling.iOS
         {
             changed.PropertyChanged += (sender, e) => { var test = e.PropertyName; };
         }
+
+        public void Include(MvvmCross.Binding.BindingContext.MvxTaskBasedBindingContext context)
+        {
+            context = new MvvmCross.Binding.BindingContext.MvxTaskBasedBindingContext();
+        }
     }
 }
