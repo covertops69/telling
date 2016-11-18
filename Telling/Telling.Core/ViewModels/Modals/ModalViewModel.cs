@@ -4,11 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Telling.Core.StateMachine;
 
 namespace Telling.Core.ViewModels.Modals
 {
     public class ModalViewModel : BaseViewModel
     {
+        protected override Trigger StateTrigger
+        {
+            get
+            {
+                return Trigger.Modal;
+            }
+        }
+
         private string _exception;
         public string Exception
         {

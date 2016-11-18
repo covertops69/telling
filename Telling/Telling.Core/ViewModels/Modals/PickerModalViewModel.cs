@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Telling.Core.StateMachine;
 
 namespace Telling.Core.ViewModels.Modals
 {
@@ -20,6 +21,14 @@ namespace Telling.Core.ViewModels.Modals
             set
             {
                 SetProperty(ref _collection, value);
+            }
+        }
+
+        protected override Trigger StateTrigger
+        {
+            get
+            {
+                throw new NotImplementedException();
             }
         }
 

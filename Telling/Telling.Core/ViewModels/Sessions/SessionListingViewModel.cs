@@ -7,12 +7,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Telling.Core.Managers;
 using Telling.Core.Models;
+using Telling.Core.StateMachine;
 using Telling.Core.ViewModels.Modals;
 
 namespace Telling.Core.ViewModels.Sessions
 {
     public class SessionListingViewModel : BaseViewModel
     {
+        protected override Trigger StateTrigger
+        {
+            get
+            {
+                return Trigger.List;
+            }
+        }
+
         protected ISessionManager SessionManager { get; }
 
         private ObservableCollection<Session> _sessionsCollection;
@@ -34,11 +43,10 @@ namespace Telling.Core.ViewModels.Sessions
             Title = "Sessions";
         }
 
-        public async override void Start()
-        {
-            base.Start();
-            //await LoadDataAsync();
-        }
+        //public async override void Start()
+        //{
+        //    base.Start();
+        //}
 
         public async Task LoadDataAsync()
         {
@@ -100,7 +108,7 @@ namespace Telling.Core.ViewModels.Sessions
             {
                 return _navigateToAddCommand ?? (_navigateToAddCommand = new MvxCommand(() =>
                 {
-                    ShowViewModel<AddSessionViewModel>();
+                    Fire(Trigger.Add);
                 }));
             }
         }

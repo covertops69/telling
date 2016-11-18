@@ -8,12 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Telling.Core.Managers;
 using Telling.Core.Models;
+using Telling.Core.StateMachine;
 using Telling.Core.Validators;
 
 namespace Telling.Core.ViewModels.Sessions
 {
     public class AddSessionViewModel : BaseViewModel
     {
+        protected override Trigger StateTrigger
+        {
+            get
+            {
+                return Trigger.Add;
+            }
+        }
+
         private SessionValidator _validator;
 
         protected ISessionManager SessionManager { get; }

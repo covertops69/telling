@@ -1,14 +1,9 @@
 ﻿using MvvmCross.Core.ViewModels;
-//using MvvmValidation;
+using MvvmCross.Platform;
+using Stateless;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Telling.Core.Extensions;
 using Telling.Core.Helpers;
-using Telling.Core.Models;
+using Telling.Core.StateMachine;
 using Telling.Core.ViewModels.Modals;
 
 namespace Telling.Core.ViewModels
@@ -29,11 +24,6 @@ namespace Telling.Core.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        protected void ShowException(Exception ex)
-        {
-            ShowViewModel<ModalViewModel>(new { exceptionMessage = ex.Message });
-        }
-
         ObservableDictionary<string, string> _validationErrors;
         public ObservableDictionary<string, string> ValidationErrors
         {
@@ -41,14 +31,44 @@ namespace Telling.Core.ViewModels
             set { SetProperty(ref _validationErrors, value); }
         }
 
+        StateMachine<State, Trigger> _stateMachine;
+        protected abstract Trigger StateTrigger { get; }
+
         public BaseViewModel()
         {
+            _stateMachine = Mvx.Resolve<StateMachine<State, Trigger>>();
+            UpdateState();
+
             ValidationErrors = new ObservableDictionary<string, string>();
+
+            var x = RequestedBy;
+        }
+
+        void UpdateState()
+        {
+            try
+            {
+                _stateMachine.Fire(StateTrigger);
+            }
+            catch (InvalidOperationException ioex)
+            {
+                ShowException(ioex);
+            }
         }
 
         public virtual bool Validate()
         {
             return true;
+        }
+
+        protected void ShowException(Exception ex)
+        {
+            ShowViewModel<ModalViewModel>(new { exceptionMessage = ex.Message });
+        }
+
+        public void Fire(Trigger trigger)
+        {
+            _stateMachine.Fire(trigger);
         }
     }
 }
