@@ -24,13 +24,13 @@ namespace Telling.Core.ViewModels.Modals
             }
         }
 
-        protected override Trigger StateTrigger
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        //protected override Trigger StateTrigger
+        //{
+        //    get
+        //    {
+        //        throw new NotImplementedException();
+        //    }
+        //}
 
         private async Task LoadAsync()
         {

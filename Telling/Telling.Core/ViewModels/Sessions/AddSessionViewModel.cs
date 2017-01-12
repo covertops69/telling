@@ -15,13 +15,13 @@ namespace Telling.Core.ViewModels.Sessions
 {
     public class AddSessionViewModel : BaseViewModel
     {
-        protected override Trigger StateTrigger
-        {
-            get
-            {
-                return Trigger.Add;
-            }
-        }
+        //protected override Trigger StateTrigger
+        //{
+        //    get
+        //    {
+        //        return Trigger.Add;
+        //    }
+        //}
 
         private SessionValidator _validator;
 

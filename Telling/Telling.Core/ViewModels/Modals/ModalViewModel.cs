@@ -10,13 +10,13 @@ namespace Telling.Core.ViewModels.Modals
 {
     public class ModalViewModel : BaseViewModel
     {
-        protected override Trigger StateTrigger
-        {
-            get
-            {
-                return Trigger.Modal;
-            }
-        }
+        //protected override Trigger StateTrigger
+        //{
+        //    get
+        //    {
+        //        return Trigger.Modal;
+        //    }
+        //}
 
         private string _exception;
         public string Exception

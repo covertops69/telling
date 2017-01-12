@@ -14,13 +14,13 @@ namespace Telling.Core.ViewModels.Sessions
 {
     public class SessionListingViewModel : BaseViewModel
     {
-        protected override Trigger StateTrigger
-        {
-            get
-            {
-                return Trigger.List;
-            }
-        }
+        //protected override Trigger StateTrigger
+        //{
+        //    get
+        //    {
+        //        return Trigger.List;
+        //    }
+        //}
 
         protected ISessionManager SessionManager { get; }
 
@@ -43,10 +43,11 @@ namespace Telling.Core.ViewModels.Sessions
             Title = "Sessions";
         }
 
-        //public async override void Start()
-        //{
-        //    base.Start();
-        //}
+        public async override void Start()
+        {
+            base.Start();
+            await LoadDataAsync();
+        }
 
         public async Task LoadDataAsync()
         {
@@ -108,7 +109,8 @@ namespace Telling.Core.ViewModels.Sessions
             {
                 return _navigateToAddCommand ?? (_navigateToAddCommand = new MvxCommand(() =>
                 {
-                    Fire(Trigger.Add);
+                    ShowViewModel<AddSessionViewModel>();
+                    //Fire(Trigger.Add);
                 }));
             }
         }

@@ -31,30 +31,28 @@ namespace Telling.Core.ViewModels
             set { SetProperty(ref _validationErrors, value); }
         }
 
-        StateMachine<State, Trigger> _stateMachine;
-        protected abstract Trigger StateTrigger { get; }
+        //StateMachine<State, Trigger> _stateMachine;
+        //protected abstract Trigger StateTrigger { get; }
 
         public BaseViewModel()
         {
-            _stateMachine = Mvx.Resolve<StateMachine<State, Trigger>>();
-            UpdateState();
+            //_stateMachine = Mvx.Resolve<StateMachine<State, Trigger>>();
+            //UpdateState();
 
             ValidationErrors = new ObservableDictionary<string, string>();
-
-            var x = RequestedBy;
         }
 
-        void UpdateState()
-        {
-            try
-            {
-                _stateMachine.Fire(StateTrigger);
-            }
-            catch (InvalidOperationException ioex)
-            {
-                ShowException(ioex);
-            }
-        }
+        //void UpdateState()
+        //{
+        //    try
+        //    {
+        //        _stateMachine.Fire(StateTrigger);
+        //    }
+        //    catch (InvalidOperationException ioex)
+        //    {
+        //        ShowException(ioex);
+        //    }
+        //}
 
         public virtual bool Validate()
         {
@@ -66,9 +64,9 @@ namespace Telling.Core.ViewModels
             ShowViewModel<ModalViewModel>(new { exceptionMessage = ex.Message });
         }
 
-        public void Fire(Trigger trigger)
-        {
-            _stateMachine.Fire(trigger);
-        }
+        //public void Fire(Trigger trigger)
+        //{
+        //    _stateMachine.Fire(trigger);
+        //}
     }
 }
