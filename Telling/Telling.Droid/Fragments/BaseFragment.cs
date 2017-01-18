@@ -12,6 +12,8 @@ using Android.Widget;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Binding.Droid.BindingContext;
+using Android.Graphics;
+using Android.Support.V4.Content;
 
 namespace Telling.Droid.Fragments
 {
@@ -23,6 +25,8 @@ namespace Telling.Droid.Fragments
         {
             var ignore = base.OnCreateView(inflater, container, savedInstanceState);
             var view = this.BindingInflate(FragmentId, null);
+
+            view.SetBackgroundColor(Color.Transparent);
 
             return view;
         }

@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="85dp">
-    <TextView
-        android:id="@+id/innerText"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginRight="5dp"
-        android:padding="10dp"
-        local:MvxBind="Text GameName" />
-</LinearLayout>
+    android:layout_height="70dp">
+
+  <TImageView
+      android:layout_width="40dp"
+      android:layout_height="40dp"
+      android:layout_marginLeft="15dp"
+      android:layout_alignParentLeft="true"
+      android:layout_centerVertical="true"
+      android:id="@+id/gameImageView"
+      local:MvxBind="DrawableName ImageName(ImageName)"/>
+
+  <TTextView
+      android:id="@+id/titleTextView"
+      android:textSize="18dp"
+      android:layout_marginLeft="15dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignTop="@+id/gameImageView"
+      android:layout_toRightOf="@+id/gameImageView"
+      local:MvxBind="Text GameName" />
+
+  <TTextView
+      android:id="@+id/dateTextView"
+      android:textSize="9dp"
+      android:layout_marginLeft="15dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/titleTextView"
+      android:layout_toRightOf="@+id/gameImageView"
+      local:MvxBind="Text FormatDateTime(SessionDate)" />
+
+  <View
+      android:id="@+id/seperator"
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="@color/pumpkin"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

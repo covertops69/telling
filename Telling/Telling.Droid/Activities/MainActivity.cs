@@ -17,7 +17,7 @@ namespace Telling.Droid.Activities
 {
     [Activity(
         Label = "Main Activity",
-        //Theme = "@style/AppTheme",
+        Theme = "@style/MyTheme",
         LaunchMode = LaunchMode.SingleInstance,
         Name = "telling.droid.activities.MainActivity"
     )]

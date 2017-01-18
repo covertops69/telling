@@ -15,9 +15,14 @@
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
     <item name="colorAccent">@color/accent</item>
+
+    <item name="android:background">@color/carnelian</item>
+    <item name="android:windowBackground">@color/carnelian</item>
+    <item name="android:colorBackground">@color/carnelian</item>
+
     <!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
-    
+
     <!-- Option to hide the drop shadow here
     
       <item name="actionBarStyle">@style/MyTheme.ActionBar</item>
