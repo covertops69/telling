@@ -5,17 +5,12 @@ using MvvmCross.Droid.Views;
 namespace Telling.Droid
 {
     [Activity(
-        Label = "Telling.Droid"
-        , MainLauncher = true
-        , Icon = "@drawable/icon"
-        , Theme = "@style/Theme.Splash"
-        , NoHistory = true
-        , ScreenOrientation = ScreenOrientation.Portrait)]
+        MainLauncher = true,
+        Theme = "@style/Theme.Splash",
+        Label = "Telling",
+        NoHistory = true,
+        ScreenOrientation = ScreenOrientation.Portrait)]
     public class SplashScreen : MvxSplashScreenActivity
     {
-        public SplashScreen()
-            : base(Resource.Layout.SplashScreen)
-        {
-        }
     }
 }

@@ -6,6 +6,7 @@ using MvvmCross.Droid.Shared.Attributes;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using Telling.Core.ViewModels;
 using Telling.Core.ViewModels.Sessions;
+using com.refractored.fab;
 
 namespace Telling.Droid.Fragments
 {
@@ -19,6 +20,9 @@ namespace Telling.Droid.Fragments
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
             var recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.recycler_view);
+
+            var fab = view.FindViewById<FloatingActionButton>(Resource.Id.fab);
+            fab.AttachToRecyclerView(recyclerView);
 
             //var bindingSet = this.CreateBindingSet<SessionListingFragment, SessionListingViewModel>();
             //bindingSet.Bind(recyclerView).For(vm => vm.ItemsSource).To(vm => vm.SessionsCollection);
