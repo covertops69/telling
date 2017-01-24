@@ -48,7 +48,7 @@ namespace Telling.Droid.Controls
             canvas.ClipPath(path);
 
             base.OnDraw(canvas);
-            canvas.Restore();
+            //canvas.Restore();
 
             // add border
             path = new Path();
