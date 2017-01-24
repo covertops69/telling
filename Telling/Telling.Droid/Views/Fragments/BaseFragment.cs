@@ -15,7 +15,7 @@ using MvvmCross.Binding.Droid.BindingContext;
 using Android.Graphics;
 using Android.Support.V4.Content;
 
-namespace Telling.Droid.Fragments
+namespace Telling.Droid.Views.Fragments
 {
     public abstract class BaseFragment : MvxFragment
     {

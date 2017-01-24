@@ -177,8 +177,8 @@
     <Compile Include="Converters\FormatDateTimeValueConverter.cs" />
     <Compile Include="Converters\ImageNameValueConverter.cs" />
     <Compile Include="DebugTrace.cs" />
-    <Compile Include="Fragments\BaseFragment.cs" />
-    <Compile Include="Fragments\SessionListingFragment.cs" />
+    <Compile Include="Views\Fragments\BaseFragment.cs" />
+    <Compile Include="Views\Fragments\SessionListingFragment.cs" />
     <Compile Include="Helper\FontsOverride.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -247,7 +247,6 @@
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
-    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="fab">

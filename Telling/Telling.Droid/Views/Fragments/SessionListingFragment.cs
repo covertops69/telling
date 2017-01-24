@@ -8,10 +8,10 @@ using Telling.Core.ViewModels;
 using Telling.Core.ViewModels.Sessions;
 using com.refractored.fab;
 
-namespace Telling.Droid.Fragments
+namespace Telling.Droid.Views.Fragments
 {
     [MvxFragment(typeof(MainViewModel), Resource.Id.content_frame)]
-    [Register("telling.droid.fragments.SessionListingFragment")]
+    [Register("telling.droid.views.fragments.SessionListingFragment")]
     public class SessionListingFragment : BaseFragment<SessionListingViewModel>
     {
         protected override int FragmentId => Resource.Layout.fragment_sessionlisting;
