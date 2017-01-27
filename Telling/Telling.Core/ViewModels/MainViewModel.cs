@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Telling.Core.ViewModels
 {
-    public class MainViewModel : MvxViewModel
+    public class MainViewModel : BaseViewModel
     {
     }
 }

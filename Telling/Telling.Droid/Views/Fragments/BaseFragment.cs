@@ -1,19 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Binding.Droid.BindingContext;
 using Android.Graphics;
-using Android.Support.V4.Content;
+using Android.Support.V7.App;
 
 namespace Telling.Droid.Views.Fragments
 {
@@ -27,6 +18,12 @@ namespace Telling.Droid.Views.Fragments
             var view = this.BindingInflate(FragmentId, null);
 
             view.SetBackgroundColor(Color.Transparent);
+
+            ((AppCompatActivity)Activity).SupportActionBar.Title = "Title";
+
+            //var toolbar = Activity.FindViewById<Toolbar>(Resource.Id.toolbar);
+            //Activity.Support SetSupportActionBar(toolbar);
+            //SupportActionBar.Title = "Sessions";
 
             return view;
         }
