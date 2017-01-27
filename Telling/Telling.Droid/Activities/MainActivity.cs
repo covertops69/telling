@@ -24,7 +24,6 @@ namespace Telling.Droid.Activities
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
-            //SupportActionBar.Title = "Sessions";
         }
 
         public override void OnBackPressed()

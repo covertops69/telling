@@ -25,12 +25,6 @@ namespace Telling.Droid.Views.Fragments
             bindingSet.Bind(((AppCompatActivity)Activity).SupportActionBar).For(c => c.Title).To(vm => vm.Title);
             bindingSet.Apply();
 
-            //((AppCompatActivity)Activity).SupportActionBar.Title = "Title";
-
-            //var toolbar = Activity.FindViewById<Toolbar>(Resource.Id.toolbar);
-            //Activity.Support SetSupportActionBar(toolbar);
-            //SupportActionBar.Title = "Sessions";
-
             return view;
         }
         //protected Toolbar Toolbar { get; set; }
