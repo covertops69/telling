@@ -177,6 +177,7 @@
     <Compile Include="Converters\FormatDateTimeValueConverter.cs" />
     <Compile Include="Converters\ImageNameValueConverter.cs" />
     <Compile Include="DebugTrace.cs" />
+    <Compile Include="Views\Fragments\AddSessionFragment.cs" />
     <Compile Include="Views\Fragments\BaseFragment.cs" />
     <Compile Include="Views\Fragments\SessionListingFragment.cs" />
     <Compile Include="Helper\FontsOverride.cs" />
@@ -203,6 +204,7 @@
     <AndroidResource Include="Resources\layout\listitem_recycler_view.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\fragment_addsession.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\strings.xml" />

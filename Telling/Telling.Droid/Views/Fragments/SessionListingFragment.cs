@@ -24,9 +24,9 @@ namespace Telling.Droid.Views.Fragments
             var fab = view.FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.AttachToRecyclerView(recyclerView);
 
-            //var bindingSet = this.CreateBindingSet<SessionListingFragment, SessionListingViewModel>();
-            //bindingSet.Bind(recyclerView).For(vm => vm.ItemsSource).To(vm => vm.SessionsCollection);
-            //bindingSet.Apply();
+            var bindingSet = this.CreateBindingSet<SessionListingFragment, SessionListingViewModel>();
+            bindingSet.Bind(fab).For("Click").To(vm => vm.NavigateToAddCommand);
+            bindingSet.Apply();
 
             return view;
         }

@@ -5,6 +5,8 @@ using MvvmCross.Droid.Support.V4;
 using MvvmCross.Binding.Droid.BindingContext;
 using Android.Graphics;
 using Android.Support.V7.App;
+using MvvmCross.Binding.BindingContext;
+using Telling.Core.ViewModels;
 
 namespace Telling.Droid.Views.Fragments
 {
@@ -19,7 +21,11 @@ namespace Telling.Droid.Views.Fragments
 
             view.SetBackgroundColor(Color.Transparent);
 
-            ((AppCompatActivity)Activity).SupportActionBar.Title = "Title";
+            var bindingSet = this.CreateBindingSet<BaseFragment, BaseViewModel>();
+            bindingSet.Bind(((AppCompatActivity)Activity).SupportActionBar).For(c => c.Title).To(vm => vm.Title);
+            bindingSet.Apply();
+
+            //((AppCompatActivity)Activity).SupportActionBar.Title = "Title";
 
             //var toolbar = Activity.FindViewById<Toolbar>(Resource.Id.toolbar);
             //Activity.Support SetSupportActionBar(toolbar);
