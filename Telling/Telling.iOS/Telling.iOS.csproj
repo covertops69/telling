@@ -233,6 +233,7 @@
     <BundleResource Include="Images\unchecked%402x.png" />
     <BundleResource Include="Images\checked.png" />
     <BundleResource Include="Images\unchecked.png" />
+    <AndroidResource Include="Images\Games\low.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">

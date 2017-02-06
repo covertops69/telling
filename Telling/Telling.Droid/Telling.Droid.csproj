@@ -236,6 +236,8 @@
     <AndroidResource Include="Resources\drawable\plus.png" />
     <AndroidResource Include="Resources\drawable\low.jpg" />
     <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\anim\enter_from_right.xml" />
+    <AndroidResource Include="Resources\anim\exit_to_right.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">

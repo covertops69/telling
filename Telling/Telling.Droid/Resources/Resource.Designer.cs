@@ -188,6 +188,12 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f040010
 			public const int design_snackbar_out = 2130968592;
 			
+			// aapt resource value: 0x7f040011
+			public const int enter_from_right = 2130968593;
+			
+			// aapt resource value: 0x7f040012
+			public const int exit_to_right = 2130968594;
+			
 			static Animation()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

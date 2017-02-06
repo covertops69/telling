@@ -42,6 +42,7 @@ namespace Telling.Droid.Activities
         public override void OnBeforeFragmentChanging(IMvxCachedFragmentInfo fragmentInfo, Android.Support.V4.App.FragmentTransaction transaction)
         {
             base.OnBeforeFragmentChanging(fragmentInfo, transaction);
+            //transaction.SetCustomAnimations(Resource.Animation.enter_from_right, Resource.Animation.exit_to_right);
         }
 
         #endregion
