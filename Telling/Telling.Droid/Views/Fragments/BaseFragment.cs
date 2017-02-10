@@ -21,12 +21,26 @@ namespace Telling.Droid.Views.Fragments
 
             view.SetBackgroundColor(Color.Transparent);
 
+            var supportBar = ((AppCompatActivity)Activity).SupportActionBar;
+
             var bindingSet = this.CreateBindingSet<BaseFragment, BaseViewModel>();
-            bindingSet.Bind(((AppCompatActivity)Activity).SupportActionBar).For(c => c.Title).To(vm => vm.Title);
+            bindingSet.Bind(supportBar).For(c => c.Title).To(vm => vm.Title);
             bindingSet.Apply();
+
+            if (!(this is SessionListingFragment))
+            {
+                supportBar.SetDisplayHomeAsUpEnabled(true);
+                supportBar.SetDisplayShowHomeEnabled(true);
+            }
+            else
+            {
+                supportBar.SetDisplayHomeAsUpEnabled(false);
+                supportBar.SetDisplayShowHomeEnabled(false);
+            }
 
             return view;
         }
+
         //protected Toolbar Toolbar { get; set; }
 
         //public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

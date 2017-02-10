@@ -5,6 +5,8 @@ using MvvmCross.Droid.Support.V7.AppCompat;
 using Telling.Core.ViewModels;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using MvvmCross.Droid.Shared.Caching;
+using Android.Views;
+using Telling.Droid.Views.Fragments;
 
 namespace Telling.Droid.Activities
 {
@@ -24,6 +26,9 @@ namespace Telling.Droid.Activities
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
+
+            //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            //SupportActionBar.SetDisplayShowHomeEnabled(false);
         }
 
         public override void OnBackPressed()
@@ -31,12 +36,29 @@ namespace Telling.Droid.Activities
             base.OnBackPressed();
         }
 
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    base.OnBackPressed();
+                    return true;
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
+        }
+
         #region Fragment LifeCycle
 
         public override void OnFragmentCreated(IMvxCachedFragmentInfo fragmentInfo, Android.Support.V4.App.FragmentTransaction transaction)
         {
             base.OnFragmentCreated(fragmentInfo, transaction);
-            fragmentInfo.AddToBackStack = true;
+
+            if (!(fragmentInfo.CachedFragment is SessionListingFragment))
+            {
+                fragmentInfo.AddToBackStack = true;
+            }
         }
 
         public override void OnBeforeFragmentChanging(IMvxCachedFragmentInfo fragmentInfo, Android.Support.V4.App.FragmentTransaction transaction)
