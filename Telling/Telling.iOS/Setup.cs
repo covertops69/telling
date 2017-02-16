@@ -36,6 +36,7 @@ namespace Telling.iOS
             base.FillTargetFactories(registry);
 
             registry.RegisterCustomBindingFactory<TFloatingTextField>("ValidationError", inputField => new TFloatingTextFieldValidationTargetBinding(inputField));
+            registry.RegisterCustomBindingFactory<TCheckbox>("CheckedStatus", inputField => new CheckboxTargetBinding(inputField));
         }
     }
 }

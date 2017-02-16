@@ -116,6 +116,7 @@
     <BundleResource Include="Resources\Icon-Small-50.png" />
     <BundleResource Include="Resources\Icon-Small.png" />
     <BundleResource Include="Resources\Icon.png" />
+    <Compile Include="Bindings\CheckboxTargetBinding.cs" />
     <Compile Include="Bindings\TFloatingTextFieldErrorTargetBinding.cs" />
     <Compile Include="Controls\TButtonView.cs" />
     <Compile Include="Controls\TCheckbox.cs" />
@@ -241,7 +242,14 @@
       <Name>Telling.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ImageAsset Include="Resources\CheckboxTargetBinding.xcassets\AppIcons.appiconset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\CheckboxTargetBinding.xcassets\LaunchImages.launchimage\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+  </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />

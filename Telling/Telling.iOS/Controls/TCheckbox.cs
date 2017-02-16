@@ -12,7 +12,7 @@ namespace Telling.iOS.Controls
 
         public event EventHandler OnChecked;
 
-        bool _checked;
+        bool _checked = false;
         public bool Checked
         {
             get
@@ -51,11 +51,7 @@ namespace Telling.iOS.Controls
             TouchUpInside += (s, e) =>
             {
                 Checked = !Checked;
-
-                if (OnChecked != null)
-                {
-                    OnChecked(this, EventArgs.Empty);
-                }
+                OnChecked?.Invoke(this, EventArgs.Empty);
             };
         }
     }

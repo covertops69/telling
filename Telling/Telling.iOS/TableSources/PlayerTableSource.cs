@@ -2,6 +2,7 @@
 using MvvmCross.Binding.iOS.Views;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Telling.iOS.Controls;
 using Telling.iOS.Views.Cells;
@@ -25,6 +26,12 @@ namespace Telling.iOS.TableSources
         {
             base.RowSelected(tableView, indexPath);
             tableView.DeselectRow(indexPath, true);
+        }
+
+        public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
+        {
+            Debug.Write("indexPath = " + indexPath.ToString());
+            return base.GetCell(tableView, indexPath);
         }
 
         public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)

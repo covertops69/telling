@@ -80,6 +80,7 @@ namespace Telling.iOS.Views.Cells
             {
                 var set = this.CreateBindingSet<PlayerListingItemCell, Player>();
                 set.Bind(NameLabel).To(vm => vm.Name);//.WithConversion(new StringToNSAttributedStringConverter(), 16.0f);
+                set.Bind(CheckBox).For("CheckedStatus").To(vm => vm.IsSelected);
                 //set.Bind(SubTitle).To(vm => vm.PlayerDate).WithConversion(new DateTimeToStringConverter());
                 //set.Bind(Icon).For(c => c.Image).To(vm => vm.ImageName).WithConversion(new StringToImageConverter());
                 //set.Bind(IconImageView).For(c => c.Image).To(vm => vm.ImageName).WithConversion(new StringToUIImageValueConverter());
