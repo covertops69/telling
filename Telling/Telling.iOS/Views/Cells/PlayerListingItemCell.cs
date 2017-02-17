@@ -19,31 +19,16 @@ namespace Telling.iOS.Views.Cells
             InitializeBindings();
         }
 
-        public TLabelView NameLabel;//;, SubTitle;
-        //public TView Seperator, CenterRuler;
+        public TLabelView NameLabel;
         public TCheckbox CheckBox;
 
         void CreateLayout()
         {
-            //Icon = new TCorneredImageView(UIImage.FromBundle("Images/missing.png"));
-            //ContentView.AddSubviews(Icon);
-
             NameLabel = new TLabelView();
             ContentView.Add(NameLabel);
 
             CheckBox = new TCheckbox();
             ContentView.Add(CheckBox);
-
-            //SubTitle = new TLabelView();
-            //UIFont font = SubTitle.Font;
-            //SubTitle.Font = font.WithSize(10f);
-            //ContentView.Add(SubTitle);
-
-            //Seperator = TView.MakeSeperator();
-            //ContentView.Add(Seperator);
-
-            //CenterRuler = TView.MakeSeperator(UIColor.Clear);
-            //ContentView.Add(CenterRuler);
 
             ContentView.AddConstraints(new FluentLayout[] {
 
@@ -53,24 +38,6 @@ namespace Telling.iOS.Views.Cells
                 CheckBox.WithSameCenterY(ContentView),
                 CheckBox.AtRightOf(ContentView),
 
-                //CenterRuler.WithSameCenterY(ContentView),
-
-                //Icon.AtLeftOf(ContentView, Constants.Margin),
-                //Icon.WithSameCenterY(ContentView),
-                //Icon.Height().EqualTo(40f),
-                //Icon.Width().EqualTo(40f),
-
-                //NameLabel.Above(CenterRuler),
-                //NameLabel.AtLeftOf(ContentView, Constants.Margin),
-                //Title.Width().EqualTo(ContentView.Frame.Size.Width)
-
-                //SubTitle.Below(CenterRuler),
-                //SubTitle.ToRightOf(Icon, Constants.Margin),
-
-                //Seperator.AtBottomOf(ContentView),
-                //Seperator.Height().EqualTo(1f),
-                //Seperator.WithSameWidth(ContentView),
-
             });
         }
 
@@ -79,12 +46,8 @@ namespace Telling.iOS.Views.Cells
             this.DelayBind(() =>
             {
                 var set = this.CreateBindingSet<PlayerListingItemCell, Player>();
-                set.Bind(NameLabel).To(vm => vm.Name);//.WithConversion(new StringToNSAttributedStringConverter(), 16.0f);
+                set.Bind(NameLabel).To(vm => vm.Name);
                 set.Bind(CheckBox).For("CheckedStatus").To(vm => vm.IsSelected);
-                //set.Bind(SubTitle).To(vm => vm.PlayerDate).WithConversion(new DateTimeToStringConverter());
-                //set.Bind(Icon).For(c => c.Image).To(vm => vm.ImageName).WithConversion(new StringToImageConverter());
-                //set.Bind(IconImageView).For(c => c.Image).To(vm => vm.ImageName).WithConversion(new StringToUIImageValueConverter());
-                //set.Bind(NewImage).For(c => c.Hidden).To(vm => vm.New).WithConversion(new VisibleConverter());
                 set.Apply();
             });
         }
