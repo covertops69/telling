@@ -24,17 +24,11 @@ namespace Telling.iOS.Views.Sessions
             var bindingSet = this.CreateBindingSet<AddSessionView, AddSessionViewModel>();
             bindingSet = BindLoader(bindingSet);
 
-            var scrollView = new UIScrollView
-            {
-                TranslatesAutoresizingMaskIntoConstraints = false
-            };
-            Add(scrollView);
-
             var sessionDateTextField = new TFloatingPicker(new CGRect())
             {
                 Placeholder = "When?"
             };
-            scrollView.Add(sessionDateTextField);
+            this.View.Add(sessionDateTextField);
             bindingSet.Bind(sessionDateTextField).To("Format('{0:d MMM yyyy}', SessionDate)").Apply();
             bindingSet.Bind(sessionDateTextField).For("ValidationError").To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.SessionDate)]).Apply();
 
@@ -64,7 +58,7 @@ namespace Telling.iOS.Views.Sessions
             {
                 Placeholder = "What?"
             };
-            scrollView.Add(gameTextField);
+            this.View.Add(gameTextField);
             bindingSet.Bind(gameTextField).To(vm => vm.SelectedGame).Apply();
             bindingSet.Bind(gameTextField).For("ValidationError").To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.SelectedGame)]).Apply();
 
@@ -96,53 +90,53 @@ namespace Telling.iOS.Views.Sessions
             {
                 Placeholder = "Where?"
             };
-            scrollView.Add(whereTextField);
+            this.View.Add(whereTextField);
             bindingSet.Bind(whereTextField).To(vm => vm.Venue).Apply();
             bindingSet.Bind(whereTextField).For("ValidationError").To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.Venue)]).Apply();
 
-            var playerListing = new TTableView();
-            scrollView.Add(playerListing);
+            var playerListing = new TTableView
+            {
+                AllowsSelection = false
+            };
+            this.View.Add(playerListing);
 
             var tableSource = new PlayerTableSource(playerListing);
             bindingSet.Bind(tableSource).To(vm => vm.PlayerCollection).Apply();
 
             var saveButton = new TButtonView("Save");
-            scrollView.Add(saveButton);
+            this.View.Add(saveButton);
             bindingSet.Bind(saveButton).To(vm => vm.SaveCommand).Apply();
 
-            View.AddConstraints(new FluentLayout[] {
+            this.View.AddConstraints(new FluentLayout[] {
 
-                scrollView.AtTopOf(View),
-                scrollView.WithSameWidth(View),
-                scrollView.AtBottomOf(View),
-
-            });
-
-            scrollView.AddConstraints(new FluentLayout[] {
-
-                sessionDateTextField.AtTopOf(scrollView, Constants.Margin),
-                sessionDateTextField.AtLeftOf(scrollView, Constants.Margin),
-                sessionDateTextField.WithSameWidth(scrollView).Minus(Constants.Margin * 2),
+                sessionDateTextField.AtTopOf(this.View, Constants.Margin),
+                sessionDateTextField.AtLeftOf(this.View, Constants.Margin),
+                sessionDateTextField.WithSameWidth(this.View).Minus(Constants.Margin * 2),
 
                 gameTextField.Below(sessionDateTextField, Constants.Margin),
-                gameTextField.AtLeftOf(scrollView, Constants.Margin),
-                gameTextField.WithSameWidth(scrollView).Minus(Constants.Margin * 2),
+                gameTextField.AtLeftOf(this.View, Constants.Margin),
+                gameTextField.WithSameWidth(this.View).Minus(Constants.Margin * 2),
 
                 whereTextField.Below(gameTextField, Constants.Margin),
-                whereTextField.AtLeftOf(scrollView, Constants.Margin),
-                whereTextField.WithSameWidth(scrollView).Minus(Constants.Margin * 2),
+                whereTextField.AtLeftOf(this.View, Constants.Margin),
+                whereTextField.WithSameWidth(this.View).Minus(Constants.Margin * 2),
 
                 playerListing.Below(whereTextField, Constants.Margin),
-                playerListing.AtLeftOf(scrollView, Constants.Margin),
-                playerListing.WithSameWidth(scrollView).Minus(Constants.Margin * 2),
+                playerListing.AtLeftOf(this.View, Constants.Margin),
+                playerListing.WithSameWidth(this.View).Minus(Constants.Margin * 2),
                 playerListing.Height().EqualTo(175f),
 
-                saveButton.Below(playerListing, Constants.Margin + 10f),
-                saveButton.AtLeftOf(scrollView, Constants.Margin),
-                saveButton.WithSameWidth(scrollView).Minus(Constants.Margin * 2),
+                saveButton.AtBottomOf(this.View, Constants.Margin),
                 saveButton.Height().EqualTo(Constants.ButtonHeight),
+                saveButton.AtLeftOf(this.View, Constants.Margin),
+                saveButton.WithSameWidth(this.View).Minus(Constants.Margin * 2),
 
-                saveButton.AtBottomOf(scrollView, Constants.Margin)
+                //saveButton.Below(playerListing, Constants.Margin + 10f),
+                //saveButton.AtLeftOf(this.View, Constants.Margin),
+                //saveButton.WithSameWidth(this.View).Minus(Constants.Margin * 2),
+                //saveButton.Height().EqualTo(Constants.ButtonHeight),
+
+                //saveButton.AtBottomOf(this.View, Constants.Margin)
 
             });
 

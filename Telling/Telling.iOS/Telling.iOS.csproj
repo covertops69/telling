@@ -126,6 +126,7 @@
     <Compile Include="Controls\TImageView.cs" />
     <Compile Include="Controls\TLabelView.cs" />
     <Compile Include="Controls\TLoadingOverlayView.cs" />
+    <Compile Include="Controls\TScrollView.cs" />
     <Compile Include="Controls\TTableView.cs" />
     <Compile Include="Controls\TTextField.cs" />
     <Compile Include="Controls\TTextFieldLabelView.cs" />
