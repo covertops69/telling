@@ -35,8 +35,8 @@ namespace Telling.Api.Controllers
                         {
                             response.Add(new Session
                             {
-                                SessionId = Guid.Parse(reader["SessionId"].ToString()),
-                                GameId = Guid.Parse(reader["GameId"].ToString()),
+                                SessionId = Convert.ToInt32(reader["SessionId"].ToString()),
+                                GameId = Convert.ToInt32(reader["GameId"].ToString()),
                                 GameName = reader["GameName"].ToString(),
                                 ImageName = reader["ImageName"].ToString(),
                                 SessionDate = DateTime.Parse(reader["SessionDate"].ToString()),
@@ -69,20 +69,42 @@ namespace Telling.Api.Controllers
                 {
                     connection.Open();
 
-                    SqlCommand command = new SqlCommand("spInsertSession", connection);
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.CommandTimeout = 5;
+                    session.SessionId = InsertSession(session, connection);
+                    InsertPlayers(session, connection);
 
-                    command.Parameters.Add("@GameId", SqlDbType.UniqueIdentifier).Value = session.GameId;
-                    command.Parameters.Add("@SessionDate", SqlDbType.Date).Value = session.SessionDate;
-                    command.Parameters.Add("@Venue", SqlDbType.NVarChar).Value = session.Venue;
-
-                    command.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
                     throw ex;
                 }
+            }
+        }
+
+        private static Int32 InsertSession(Session session, SqlConnection connection)
+        {
+            SqlCommand command = new SqlCommand("spInsertSession", connection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandTimeout = 5;
+
+            command.Parameters.Add("@GameId", SqlDbType.Int).Value = session.GameId;
+            command.Parameters.Add("@SessionDate", SqlDbType.Date).Value = session.SessionDate;
+            command.Parameters.Add("@Venue", SqlDbType.NVarChar).Value = session.Venue;
+
+            return Convert.ToInt32(command.ExecuteScalar().ToString());
+        }
+
+        private static void InsertPlayers(Session session, SqlConnection connection)
+        {
+            foreach (Int32 playerId in session.PlayerIds)
+            {
+                SqlCommand command = new SqlCommand("spInsertSessionPlayer", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandTimeout = 5;
+
+                command.Parameters.Add("@PlayerId", SqlDbType.Int).Value = playerId;
+                command.Parameters.Add("@SessionId", SqlDbType.Int).Value = session.SessionId;
+
+                command.ExecuteNonQuery();
             }
         }
 

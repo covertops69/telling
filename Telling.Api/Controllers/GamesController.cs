@@ -35,7 +35,7 @@ namespace Telling.Api.Controllers
                         {
                             response.Add(new Game
                             {
-                                GameId = Guid.Parse(reader["GameId"].ToString()),
+                                GameId = Convert.ToInt32(reader["GameId"].ToString()),
                                 Name = reader["Name"].ToString()
                             });
                         }
@@ -55,8 +55,8 @@ namespace Telling.Api.Controllers
             }
         }
 
-        // GET: api/Games/83642E19-C56A-E611-B37C-00155D291606
-        public Game Get(Guid id)
+        // GET: api/Games/1
+        public Game Get(Int32 id)
         {
             using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionString))
             {
@@ -65,7 +65,7 @@ namespace Telling.Api.Controllers
                     connection.Open();
 
                     SqlCommand command = new SqlCommand("spGetGame", connection);
-                    command.Parameters.Add("@GameId", SqlDbType.UniqueIdentifier).Value = id;
+                    command.Parameters.Add("@GameId", SqlDbType.Int).Value = id;
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandTimeout = 5;
 
@@ -77,7 +77,7 @@ namespace Telling.Api.Controllers
 
                         return new Game
                         {
-                            GameId = Guid.Parse(reader["GameId"].ToString()),
+                            GameId = Convert.ToInt32(reader["GameId"].ToString()),
                             Name = reader["Name"].ToString()
                         };
                     }
@@ -103,12 +103,12 @@ namespace Telling.Api.Controllers
         {
         }
 
-        // PUT: api/Games/83642E19-C56A-E611-B37C-00155D291606
+        // PUT: api/Games/1
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Games/83642E19-C56A-E611-B37C-00155D291606
+        // DELETE: api/Games/1
         public void Delete(int id)
         {
         }

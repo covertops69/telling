@@ -35,7 +35,7 @@ namespace Telling.Api.Controllers
                         {
                             response.Add(new Player
                             {
-                                PlayerId = Guid.Parse(reader["PlayerId"].ToString()),
+                                PlayerId = Convert.ToInt32(reader["PlayerId"].ToString()),
                                 Name = reader["Name"].ToString()
                             });
                         }
@@ -56,7 +56,7 @@ namespace Telling.Api.Controllers
         }
 
         // GET: api/Players/83642E19-C56A-E611-B37C-00155D291606
-        public Player Get(Guid id)
+        public Player Get(Int32 id)
         {
             using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.ConnectionString))
             {
@@ -65,7 +65,7 @@ namespace Telling.Api.Controllers
                     connection.Open();
 
                     SqlCommand command = new SqlCommand("spGetPlayer", connection);
-                    command.Parameters.Add("@PlayerId", SqlDbType.UniqueIdentifier).Value = id;
+                    command.Parameters.Add("@PlayerId", SqlDbType.Int).Value = id;
                     command.CommandType = CommandType.StoredProcedure;
                     command.CommandTimeout = 5;
 
@@ -77,7 +77,7 @@ namespace Telling.Api.Controllers
 
                         return new Player
                         {
-                            PlayerId = Guid.Parse(reader["PlayerId"].ToString()),
+                            PlayerId = Convert.ToInt32(reader["PlayerId"].ToString()),
                             Name = reader["Name"].ToString()
                         };
                     }

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <declare-styleable name="EditTextValidate">
+        <attr name="errorTextSize" format="dimension" />
+        <attr name="labelTextSize" format="dimension" />
+        <attr name="android:textSize" />
+        <attr name="android:hint"/>
+        <attr name="android:imeOptions"/>
+        <attr name="android:inputType"/>
+    </declare-styleable>
+
+    <dimen name="default_edit_text_validation_edit_textsize">@dimen/text_regular</dimen>
+    <dimen name="default_edit_text_validation_error_textsize">@dimen/text_tinyer</dimen>
+    <dimen name="default_edit_text_validation_label_textsize">@dimen/text_smaller</dimen>
+
+    <style name="EditTextValidationStyle">
+        <item name="android:textSize">@dimen/default_edit_text_validation_edit_textsize</item>
+        <item name="errorTextSize">@dimen/default_edit_text_validation_error_textsize</item>
+        <item name="labelTextSize">@dimen/default_edit_text_validation_label_textsize</item>
+    </style>
+
+    <style name="EditTextValidationStyleTextInputLayout" parent="@android:style/TextAppearance">
+      <item name="android:textColorHint">@color/sanlam_blue</item>
+      <item name="android:textSize">@dimen/default_edit_text_validation_label_textsize</item>
+      <item name="colorAccent">@color/sanlam_blue</item>
+    </style>
+
+</resources>

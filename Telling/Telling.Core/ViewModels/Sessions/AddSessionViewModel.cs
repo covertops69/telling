@@ -81,18 +81,18 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
-        private ObservableCollection<Player> _selectedPlayers;
-        public ObservableCollection<Player> SelectedPlayers
-        {
-            get
-            {
-                return _selectedPlayers;
-            }
-            set
-            {
-                SetProperty(ref _selectedPlayers, value);
-            }
-        }
+        //private ObservableCollection<Player> _selectedPlayers;
+        //public ObservableCollection<Player> SelectedPlayers
+        //{
+        //    get
+        //    {
+        //        return _selectedPlayers;
+        //    }
+        //    set
+        //    {
+        //        SetProperty(ref _selectedPlayers, value);
+        //    }
+        //}
 
         private string _venue;
         public string Venue
@@ -194,12 +194,22 @@ namespace Telling.Core.ViewModels.Sessions
                             {
                                 IsBusy = true;
 
-                                await SessionManager.CreateSessionAsync(new Session
+                                var playerIds = PlayerCollection
+                                        .Where(x => x.IsSelected == true)
+                                        .Select(x => x.PlayerId)
+                                        .ToArray<Int32>();
+
+                                var session = new Session
                                 {
                                     GameId = SelectedGame.GameId,
                                     SessionDate = SessionDate,
-                                    Venue = Venue
-                                });
+                                    Venue = Venue,
+
+                                    PlayerIds = playerIds
+
+                                };
+
+                                await SessionManager.CreateSessionAsync(session);
 
                                 Close(this);
                             }

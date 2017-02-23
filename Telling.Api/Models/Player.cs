@@ -7,7 +7,7 @@ namespace Telling.Api.Models
 {
     public class Player
     {
-        public Guid PlayerId { get; set; }
+        public Int32 PlayerId { get; set; }
 
         public string Name { get; set; }
     }
