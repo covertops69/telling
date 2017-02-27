@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cheesebaron.MvxPlugins.Settings.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,20 +10,29 @@ namespace Telling.Core.Services
 {
     public interface IGameService
     {
-        Task<List<Game>> GetGamesAsync();
+        Task<BaseResponse<List<Game>>> GetGamesAsync();
     }
 
     public class GameService : BaseService, IGameService
     {
-        public const string GAMES_URL = API_URL + "/games";
-
-        public GameService(IRestService restService) : base(restService)
+        public GameService(ISettings settings)
+            : base(settings)
         {
         }
 
-        public async Task<List<Game>> GetGamesAsync()
+        public async virtual Task<BaseResponse<List<Game>>> GetGamesAsync()
         {
-            return await RestService.GetAsync<List<Game>>(GAMES_URL).ConfigureAwait(false);
+            //try
+            //{
+                return await CallToApi<List<Game>>(null, Endpoint.GET_GAMES);
+            //}
+            //catch (Exception ex)
+            //{
+            //    // TODO [JF]: timeout on HTTP client, sometimes causes JAVA IO exception on Android
+            //    return ex.Message.ToLower().Equals("exception of type 'java.io.ioexception' was thrown.") ?
+            //        HandleTimeout<AdviceMailResponse>(Endpoint.CONTACT_US.Verb.ToString(), Endpoint.CONTACT_US, ex, HttpStatusCode.GatewayTimeout, " [Through error]") :
+            //        HandleCrash<AdviceMailResponse>(Endpoint.CONTACT_US.Verb.ToString(), Endpoint.CONTACT_US, ex, HttpStatusCode.InternalServerError);
+            //}
         }
     }
 }

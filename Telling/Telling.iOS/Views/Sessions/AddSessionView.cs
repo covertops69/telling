@@ -109,27 +109,27 @@ namespace Telling.iOS.Views.Sessions
 
             this.View.AddConstraints(new FluentLayout[] {
 
-                sessionDateTextField.AtTopOf(this.View, Constants.Margin),
-                sessionDateTextField.AtLeftOf(this.View, Constants.Margin),
-                sessionDateTextField.WithSameWidth(this.View).Minus(Constants.Margin * 2),
+                sessionDateTextField.AtTopOf(this.View, Constants.MARGIN),
+                sessionDateTextField.AtLeftOf(this.View, Constants.MARGIN),
+                sessionDateTextField.WithSameWidth(this.View).Minus(Constants.MARGIN * 2),
 
-                gameTextField.Below(sessionDateTextField, Constants.Margin),
-                gameTextField.AtLeftOf(this.View, Constants.Margin),
-                gameTextField.WithSameWidth(this.View).Minus(Constants.Margin * 2),
+                gameTextField.Below(sessionDateTextField, Constants.MARGIN),
+                gameTextField.AtLeftOf(this.View, Constants.MARGIN),
+                gameTextField.WithSameWidth(this.View).Minus(Constants.MARGIN * 2),
 
-                whereTextField.Below(gameTextField, Constants.Margin),
-                whereTextField.AtLeftOf(this.View, Constants.Margin),
-                whereTextField.WithSameWidth(this.View).Minus(Constants.Margin * 2),
+                whereTextField.Below(gameTextField, Constants.MARGIN),
+                whereTextField.AtLeftOf(this.View, Constants.MARGIN),
+                whereTextField.WithSameWidth(this.View).Minus(Constants.MARGIN * 2),
 
-                playerListing.Below(whereTextField, Constants.Margin),
-                playerListing.AtLeftOf(this.View, Constants.Margin),
-                playerListing.WithSameWidth(this.View).Minus(Constants.Margin * 2),
+                playerListing.Below(whereTextField, Constants.MARGIN),
+                playerListing.AtLeftOf(this.View, Constants.MARGIN),
+                playerListing.WithSameWidth(this.View).Minus(Constants.MARGIN * 2),
                 playerListing.Height().EqualTo(175f),
 
-                saveButton.AtBottomOf(this.View, Constants.Margin),
-                saveButton.Height().EqualTo(Constants.ButtonHeight),
-                saveButton.AtLeftOf(this.View, Constants.Margin),
-                saveButton.WithSameWidth(this.View).Minus(Constants.Margin * 2),
+                saveButton.AtBottomOf(this.View, Constants.MARGIN),
+                saveButton.Height().EqualTo(Constants.BUTTON_HEIGHT),
+                saveButton.AtLeftOf(this.View, Constants.MARGIN),
+                saveButton.WithSameWidth(this.View).Minus(Constants.MARGIN * 2),
 
                 //saveButton.Below(playerListing, Constants.Margin + 10f),
                 //saveButton.AtLeftOf(this.View, Constants.Margin),

@@ -53,17 +53,17 @@ namespace Telling.iOS.Views.Cells
 
                 CenterRuler.WithSameCenterY(ContentView),
 
-                Icon.AtLeftOf(ContentView, Constants.Margin),
+                Icon.AtLeftOf(ContentView, Constants.MARGIN),
                 Icon.WithSameCenterY(ContentView),
                 Icon.Height().EqualTo(40f),
                 Icon.Width().EqualTo(40f),
 
                 Title.Above(CenterRuler),
-                Title.ToRightOf(Icon, Constants.Margin),
+                Title.ToRightOf(Icon, Constants.MARGIN),
                 //Title.Width().EqualTo(ContentView.Frame.Size.Width)
 
                 SubTitle.Below(CenterRuler),
-                SubTitle.ToRightOf(Icon, Constants.Margin),
+                SubTitle.ToRightOf(Icon, Constants.MARGIN),
 
                 Seperator.AtBottomOf(ContentView),
                 Seperator.Height().EqualTo(1f),

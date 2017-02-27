@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cheesebaron.MvxPlugins.Settings.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,15 +20,14 @@ namespace Telling.Core.Services
 
     public class SessionService : BaseService, ISessionService
     {
-        public const string SESSIONS_URL = API_URL + "/sessions";
-
-        public SessionService(IRestService restService) : base(restService)
+        public SessionService(ISettings settings)
+            : base(settings)
         {
         }
 
         public async Task<List<Session>> GetSessionsAsync()
         {
-            return await RestService.GetAsync<List<Session>>(SESSIONS_URL).ConfigureAwait(false);
+            return await CallToApi<List<Session>>(null, Endpoint.GET_GAMES);
         }
 
         public async Task CreateSessionAsync(Session session)

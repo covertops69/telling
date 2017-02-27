@@ -40,9 +40,9 @@ namespace Telling.iOS.Views.Modals
                 .To(vm => vm.CloseCommand).Apply();
 
             View.AddConstraints(new FluentLayout[] {
-                exceptionDetails.AtTopOf(View, Constants.Margin),
-                exceptionDetails.AtLeftOf(View, Constants.Margin),
-                exceptionDetails.WithSameWidth(View).Minus(Constants.Margin * 2)
+                exceptionDetails.AtTopOf(View, Constants.MARGIN),
+                exceptionDetails.AtLeftOf(View, Constants.MARGIN),
+                exceptionDetails.WithSameWidth(View).Minus(Constants.MARGIN * 2)
             });
         }
     }
