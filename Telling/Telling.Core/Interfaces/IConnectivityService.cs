@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Telling.Core.Enumerations;
 
-namespace Telling.Core.Services
+namespace Telling.Core.Interfaces
 {
-    // from https://github.com/jamesmontemagno/Xamarin.Plugins/tree/master/Connectivity
-
-    /// <summary>
-    /// Interface for Connectivity
-    /// </summary>
     public interface IConnectivityService : IDisposable
     {
         /// <summary>
@@ -70,4 +62,28 @@ namespace Telling.Core.Services
     /// <param name="sender"></param>
     /// <param name="e"></param>
     public delegate void ConnectivityChangedEventHandler(object sender, ConnectivityChangedEventArgs e);
+
+    public enum ConnectionType
+    {
+        /// <summary>
+        /// Cellular connection, 3G, Edge, 4G, LTE
+        /// </summary>
+        Cellular,
+        /// <summary>
+        /// Wifi connection
+        /// </summary>
+        WiFi,
+        /// <summary>
+        /// Desktop or ethernet connection
+        /// </summary>
+        Desktop,
+        /// <summary>
+        /// Wimax (only android)
+        /// </summary>
+        Wimax,
+        /// <summary>
+        /// Other type of connection
+        /// </summary>
+        Other,
+    }
 }

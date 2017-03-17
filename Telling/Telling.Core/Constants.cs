@@ -14,6 +14,6 @@ namespace Telling.Core
         public static string API_ERROR_TIMEOUT { get { return "API_ERROR_TIMEOUT"; } }
         public static string API_ERROR_CRASH { get { return "API_ERROR_CRASH"; } }
         public static string API_ERROR_NONETWORK { get { return "API_ERROR_NONETWORK"; } }
-        public static string API_ERROR_NOMESSAGEBACK { get { return "API_ERROR_NOMESSAGEBACK"; } }
+        public static string API_ERROR_NO_MESSAGE { get { return "API_ERROR_NOMESSAGEBACK"; } }
     }
 }

@@ -1,13 +1,10 @@
 ﻿using MvvmCross.Core.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Telling.Core.Managers;
+using Telling.Core.Extensions;
 using Telling.Core.Models;
-using Telling.Core.StateMachine;
+using Telling.Core.Services;
 using Telling.Core.ViewModels.Modals;
 
 namespace Telling.Core.ViewModels.Sessions
@@ -22,7 +19,7 @@ namespace Telling.Core.ViewModels.Sessions
         //    }
         //}
 
-        protected ISessionManager SessionManager { get; }
+        protected ISessionService SessionService { get; }
 
         private ObservableCollection<Session> _sessionsCollection;
         public ObservableCollection<Session> SessionsCollection
@@ -37,9 +34,9 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
-        public SessionListingViewModel(ISessionManager sessionManager)
+        public SessionListingViewModel(ISessionService sessionService)
         {
-            SessionManager = sessionManager;
+            SessionService = sessionService;
             Title = "Sessions";
         }
 
@@ -53,18 +50,18 @@ namespace Telling.Core.ViewModels.Sessions
         {
             try
             {
-                IsBusy = true;
+                if (!IsBusy)
+                {
+                    IsBusy = true;
 
-                SessionsCollection = new ObservableCollection<Session>(await SessionManager.GetSessionsAsync());
+                    var sessionsResponse = await SessionService.GetSessionsAsync();
+
+                    if (!ProcessResponse(sessionsResponse))
+                        return;
+
+                    SessionsCollection = sessionsResponse.Result.ToObservableCollection();
+                }
             }
-            //catch (NotConnectedException)
-            //{
-            //    ShowNotConnectedModalPopup();
-            //}
-            //catch (WebServiceException wsex)
-            //{
-            //    ShowWebServiceErrorModalPopup(wsex);
-            //}
             catch (Exception ex)
             {
                 ShowException(ex);

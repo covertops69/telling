@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cheesebaron.MvxPlugins.Settings.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,21 +11,21 @@ namespace Telling.Core.Managers
 {
     public interface IGameManager
     {
-        Task<List<Game>> GetGamesAsync();
+        Task<BaseResponse<List<Game>>> GetGamesAsync();
     }
 
-    public class GameManager : IGameManager
+    public class GameManager : BaseService, IGameManager
     {
         public IGameService GameService { get; }
 
-        public GameManager(IGameService gameService)
+        public GameManager(ISettings settings)
+            : base(settings)
         {
-            GameService = gameService;
         }
 
-        public async Task<List<Game>> GetGamesAsync()
+        public async Task<BaseResponse<List<Game>>> GetGamesAsync()
         {
-            return await GameService.GetGamesAsync();
+            return await CallToApi<List<Game>>(null, Endpoint.GET_GAMES);
         }
     }
 }

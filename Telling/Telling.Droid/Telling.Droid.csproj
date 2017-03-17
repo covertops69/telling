@@ -53,6 +53,15 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cheesebaron.MvxPlugins.Settings, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Cheesebaron.MvxPlugins.Settings.2.2.2\lib\MonoAndroid10\Cheesebaron.MvxPlugins.Settings.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cheesebaron.MvxPlugins.Settings.Droid, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Cheesebaron.MvxPlugins.Settings.2.2.2\lib\MonoAndroid10\Cheesebaron.MvxPlugins.Settings.Droid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Java.Interop" />
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Android.Export" />
     <Reference Include="mscorlib" />
@@ -171,12 +180,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\MainActivity.cs" />
-    <Compile Include="Bootstrap\JsonPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="Controls\TImageView.cs" />
     <Compile Include="Controls\TTextView.cs" />
     <Compile Include="Converters\FormatDateTimeValueConverter.cs" />
     <Compile Include="Converters\ImageNameValueConverter.cs" />
     <Compile Include="DebugTrace.cs" />
+    <Compile Include="Services\ConnectivityChangeBroadcastReceiver.cs" />
+    <Compile Include="Services\ConnectivityService.cs" />
     <Compile Include="Views\Fragments\AddSessionFragment.cs" />
     <Compile Include="Views\Fragments\BaseFragment.cs" />
     <Compile Include="Views\Fragments\SessionListingFragment.cs" />

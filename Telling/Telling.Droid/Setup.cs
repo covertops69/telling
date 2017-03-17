@@ -8,6 +8,8 @@ using MvvmCross.Platform;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using System.Collections.Generic;
 using System.Reflection;
+using Telling.Core.Interfaces;
+using Telling.Droid.Services;
 
 namespace Telling.Droid
 {
@@ -33,6 +35,12 @@ namespace Telling.Droid
             //typeof(Android.Support.Design.Widget.NavigationView).Assembly,
             typeof(MvvmCross.Droid.Support.V7.RecyclerView.MvxRecyclerView).Assembly
         };
+
+        protected override void InitializeFirstChance()
+        {
+            base.InitializeFirstChance();
+            Mvx.RegisterSingleton<IConnectivityService>(() => new ConnectivityService());
+        }
 
         //protected override IMvxAndroidViewPresenter CreateViewPresenter()
         //{

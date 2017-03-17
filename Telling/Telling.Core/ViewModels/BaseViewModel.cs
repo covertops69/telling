@@ -3,6 +3,7 @@ using MvvmCross.Platform;
 //using Stateless;
 using System;
 using Telling.Core.Helpers;
+using Telling.Core.Models;
 using Telling.Core.StateMachine;
 using Telling.Core.ViewModels.Modals;
 
@@ -31,42 +32,32 @@ namespace Telling.Core.ViewModels
             set { SetProperty(ref _validationErrors, value); }
         }
 
-        //StateMachine<State, Trigger> _stateMachine;
-        //protected abstract Trigger StateTrigger { get; }
-
         public BaseViewModel()
         {
-            //_stateMachine = Mvx.Resolve<StateMachine<State, Trigger>>();
-            //UpdateState();
-
             ValidationErrors = new ObservableDictionary<string, string>();
         }
-
-        //void UpdateState()
-        //{
-        //    try
-        //    {
-        //        _stateMachine.Fire(StateTrigger);
-        //    }
-        //    catch (InvalidOperationException ioex)
-        //    {
-        //        ShowException(ioex);
-        //    }
-        //}
 
         public virtual bool Validate()
         {
             return true;
         }
 
+        public bool ProcessResponse<TResp>(BaseResponse<TResp> response)
+            where TResp : class
+        {
+            var isSuccess = response?.ReponseType == ServiceReponseType.Successful;
+
+            if (!isSuccess)
+            {
+                ShowViewModel<ModalViewModel>(new { exceptionMessage = response?.Message ?? Constants.API_ERROR_NO_MESSAGE });
+            }
+
+            return isSuccess;
+        }
+
         protected void ShowException(Exception ex)
         {
             ShowViewModel<ModalViewModel>(new { exceptionMessage = ex.Message });
         }
-
-        //public void Fire(Trigger trigger)
-        //{
-        //    _stateMachine.Fire(trigger);
-        //}
     }
 }

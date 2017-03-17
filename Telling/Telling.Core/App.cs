@@ -17,10 +17,10 @@ namespace Telling.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            CreatableTypes()
-                .EndingWith("Manager")
-                .AsInterfaces()
-                .RegisterAsLazySingleton();
+            //CreatableTypes()
+            //    .EndingWith("Manager")
+            //    .AsInterfaces()
+            //    .RegisterAsLazySingleton();
 
             //Mvx.LazyConstructAndRegisterSingleton(() => new StateMachine<State, Trigger>(State.Launch));
             //ConfigureStateMachine();

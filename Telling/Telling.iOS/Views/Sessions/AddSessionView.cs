@@ -4,12 +4,9 @@ using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.iOS.Views;
 using System;
-using System.Collections.ObjectModel;
-using Telling.Core.Constants;
-using Telling.Core.Models;
+using Telling.Core;
 using Telling.Core.ViewModels.Sessions;
 using Telling.iOS.Controls;
-using Telling.iOS.Converters;
 using Telling.iOS.TableSources;
 using UIKit;
 

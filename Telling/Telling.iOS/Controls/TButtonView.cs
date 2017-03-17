@@ -1,8 +1,4 @@
-﻿using CoreGraphics;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Telling.Core.Constants;
+﻿using System;
 using Telling.iOS.Helpers;
 using UIKit;
 

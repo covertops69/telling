@@ -2,10 +2,9 @@
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.iOS.Views;
 using System.Drawing;
-using Telling.Core.Constants;
+using Telling.Core;
 using Telling.Core.ViewModels.Modals;
 using Telling.iOS.Controls;
-using Telling.iOS.Converters;
 using UIKit;
 
 namespace Telling.iOS.Views.Modals

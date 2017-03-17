@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cheesebaron.MvxPlugins.Settings.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,21 +11,21 @@ namespace Telling.Core.Managers
 {
     public interface IPlayerManager
     {
-        Task<List<Player>> GetPlayersAsync();
+        Task<BaseResponse<List<Player>>> GetPlayersAsync();
     }
 
-    public class PlayerManager : IPlayerManager
+    public class PlayerManager : BaseService, IPlayerManager
     {
         public IPlayerService PlayerService { get; }
 
-        public PlayerManager(IPlayerService playerService)
+        public PlayerManager(ISettings settings)
+            : base(settings)
         {
-            PlayerService = playerService;
         }
 
-        public async Task<List<Player>> GetPlayersAsync()
+        public async Task<BaseResponse<List<Player>>> GetPlayersAsync()
         {
-            return await PlayerService.GetPlayersAsync();
+            return await CallToApi<List<Player>>(null, Endpoint.GET_PLAYERS);
         }
     }
 }

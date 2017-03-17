@@ -1,13 +1,9 @@
 ﻿using Cirrious.FluentLayouts.Touch;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Binding.iOS.Views;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Telling.Core.Constants;
+using Telling.Core;
 using Telling.Core.Models;
-using Telling.Core.ViewModels.Sessions;
 using Telling.iOS.Controls;
 using Telling.iOS.Converters;
 using UIKit;

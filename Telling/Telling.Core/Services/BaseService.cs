@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Telling.Core.Interfaces;
 using Telling.Core.Models;
 using Telling.Core.Models.Responses;
 using static Telling.Core.Constants;
@@ -210,7 +211,7 @@ namespace Telling.Core.Services
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    var friendlyErrorMessage = API_ERROR_NOMESSAGEBACK;
+                    var friendlyErrorMessage = API_ERROR_NO_MESSAGE;
                     if (!string.IsNullOrEmpty(responseString) && response.StatusCode != HttpStatusCode.InternalServerError)
                     {
                         var serverErrorResponse = JsonConvert.DeserializeObject<ServerErrorResponse>(responseString);
@@ -329,6 +330,7 @@ namespace Telling.Core.Services
 
         // sessions
         public static readonly Endpoint GET_SESSIONS = new Endpoint("/sessions", HTTP_VERB.GET);
+        public static readonly Endpoint CREATE_SESSION = new Endpoint("/sessions", HTTP_VERB.POST);
 
         // players
         public static readonly Endpoint GET_PLAYERS = new Endpoint("/players", HTTP_VERB.GET);

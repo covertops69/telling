@@ -2,9 +2,12 @@ using MvvmCross.Binding.Bindings.Target.Construction;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.iOS.Views.Presenters;
+using MvvmCross.Platform;
 using MvvmCross.Platform.Platform;
+using Telling.Core.Interfaces;
 using Telling.iOS.Bindings;
 using Telling.iOS.Controls;
+using Telling.iOS.Services;
 using UIKit;
 
 namespace Telling.iOS
@@ -37,6 +40,12 @@ namespace Telling.iOS
 
             registry.RegisterCustomBindingFactory<TFloatingTextField>("ValidationError", inputField => new TFloatingTextFieldValidationTargetBinding(inputField));
             registry.RegisterCustomBindingFactory<TCheckbox>("CheckedStatus", inputField => new CheckboxTargetBinding(inputField));
+        }
+
+        protected override void InitializeFirstChance()
+        {
+            base.InitializeFirstChance();
+            Mvx.RegisterSingleton<IConnectivityService>(new ConnectivityService());
         }
     }
 }

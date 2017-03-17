@@ -6,8 +6,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Telling.Core.Managers;
+using Telling.Core.Extensions;
 using Telling.Core.Models;
+using Telling.Core.Services;
 using Telling.Core.StateMachine;
 using Telling.Core.Validators;
 
@@ -25,9 +26,9 @@ namespace Telling.Core.ViewModels.Sessions
 
         private SessionValidator _validator;
 
-        protected ISessionManager SessionManager { get; }
-        protected IGameManager GameManager { get; }
-        protected IPlayerManager PlayerManager { get; }
+        protected ISessionService SessionService { get; }
+        protected IGameService GameService { get; }
+        protected IPlayerService PlayerService { get; }
 
         private ObservableCollection<Game> _gamesCollection;
         public ObservableCollection<Game> GamesCollection
@@ -107,13 +108,13 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
-        public AddSessionViewModel(ISessionManager sessionManager, IGameManager gameManager, IPlayerManager playerManager)
+        public AddSessionViewModel(ISessionService sessionService, IGameService gameService, IPlayerService playerService)
         {
             _validator = new SessionValidator();
 
-            SessionManager = sessionManager;
-            GameManager = gameManager;
-            PlayerManager = playerManager;
+            SessionService = sessionService;
+            GameService = gameService;
+            PlayerService = playerService;
 
             Title = "New";
         }
@@ -132,17 +133,14 @@ namespace Telling.Core.ViewModels.Sessions
             {
                 IsBusy = true;
 
-                GamesCollection = new ObservableCollection<Game>(await GameManager.GetGamesAsync());
+                var gamesResponse = await GameService.GetGamesAsync();
+
+                if (ProcessResponse(gamesResponse))
+                    return;
+
+                GamesCollection = gamesResponse.Result.ToObservableCollection();
                 SelectedGame = GamesCollection[0];
             }
-            //catch (NotConnectedException)
-            //{
-            //    ShowNotConnectedModalPopup();
-            //}
-            //catch (WebServiceException wsex)
-            //{
-            //    ShowWebServiceErrorModalPopup(wsex);
-            //}
             catch (Exception ex)
             {
                 ShowException(ex);
@@ -159,16 +157,13 @@ namespace Telling.Core.ViewModels.Sessions
             {
                 IsBusy = true;
 
-                PlayerCollection = new ObservableCollection<Player>(await PlayerManager.GetPlayersAsync());
+                var playersResponse = await PlayerService.GetPlayersAsync();
+
+                if (ProcessResponse(playersResponse))
+                    return;
+
+                PlayerCollection = playersResponse.Result.ToObservableCollection();
             }
-            //catch (NotConnectedException)
-            //{
-            //    ShowNotConnectedModalPopup();
-            //}
-            //catch (WebServiceException wsex)
-            //{
-            //    ShowWebServiceErrorModalPopup(wsex);
-            //}
             catch (Exception ex)
             {
                 ShowException(ex);
@@ -209,7 +204,7 @@ namespace Telling.Core.ViewModels.Sessions
 
                                 };
 
-                                await SessionManager.CreateSessionAsync(session);
+                                await SessionService.CreateSessionAsync(session);
 
                                 Close(this);
                             }

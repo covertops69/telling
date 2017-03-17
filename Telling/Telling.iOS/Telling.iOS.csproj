@@ -22,9 +22,9 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>i386, x86_64</MtouchArch>
-    <MtouchLink>Full</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchDebug>True</MtouchDebug>
-    <MtouchSdkVersion>10.1</MtouchSdkVersion>
+    <MtouchSdkVersion>10.2</MtouchSdkVersion>
     <MtouchProfiling>False</MtouchProfiling>
     <MtouchFastDev>False</MtouchFastDev>
     <MtouchUseLlvm>False</MtouchUseLlvm>
@@ -118,6 +118,7 @@
     <BundleResource Include="Resources\Icon.png" />
     <Compile Include="Bindings\CheckboxTargetBinding.cs" />
     <Compile Include="Bindings\TFloatingTextFieldErrorTargetBinding.cs" />
+    <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="Controls\TButtonView.cs" />
     <Compile Include="Controls\TCheckbox.cs" />
     <Compile Include="Controls\TCorneredImageView.cs" />
@@ -154,6 +155,8 @@
     </InterfaceDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\ConnectivityService.cs" />
+    <Compile Include="Services\Reachability.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="TableSources\PlayerTableSource.cs" />
     <Compile Include="TableSources\SessionTableSource.cs" />
@@ -168,6 +171,14 @@
     <Compile Include="Views\Sessions\SessionListingView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Cheesebaron.MvxPlugins.Settings, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Cheesebaron.MvxPlugins.Settings.2.2.2\lib\Xamarin.iOS10\Cheesebaron.MvxPlugins.Settings.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cheesebaron.MvxPlugins.Settings.Touch, Version=2.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Cheesebaron.MvxPlugins.Settings.2.2.2\lib\Xamarin.iOS10\Cheesebaron.MvxPlugins.Settings.Touch.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Cirrious.FluentLayouts.Touch, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Cirrious.FluentLayout.2.5.0\lib\Xamarin.iOS10\Cirrious.FluentLayouts.Touch.dll</HintPath>
       <Private>True</Private>

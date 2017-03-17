@@ -8,14 +8,10 @@ using Telling.Core.Models;
 
 namespace Telling.Core.Services
 {
-    public class MyClass
-    {
-    }
-
     public interface ISessionService
     {
-        Task<List<Session>> GetSessionsAsync();
-        Task CreateSessionAsync(Session session);
+        Task<BaseResponse<List<Session>>> GetSessionsAsync();
+        Task<BaseResponse<EmptyDto>> CreateSessionAsync(Session session);
     }
 
     public class SessionService : BaseService, ISessionService
@@ -25,20 +21,25 @@ namespace Telling.Core.Services
         {
         }
 
-        public async Task<List<Session>> GetSessionsAsync()
+        public async Task<BaseResponse<List<Session>>> GetSessionsAsync()
         {
-            return await CallToApi<List<Session>>(null, Endpoint.GET_GAMES);
+            return await CallToApi<List<Session>>(null, Endpoint.GET_SESSIONS);
         }
 
-        public async Task CreateSessionAsync(Session session)
+        public async Task<BaseResponse<EmptyDto>> CreateSessionAsync(Session session)
         {
-            var parameters = new Dictionary<string, object>();
-            parameters.Add("GameId", session.GameId);
-            parameters.Add("SessionDate", session.SessionDate);
-            parameters.Add("Venue", session.Venue);
-            parameters.Add("PlayerIds", session.PlayerIds);
-
-            await RestService.PostAsync<MyClass>(SESSIONS_URL, parameters).ConfigureAwait(false);
+            return await CallToApi<EmptyDto>(session, Endpoint.CREATE_SESSION);
         }
+
+        //public async Task CreateSessionAsync(Session session)
+        //{
+        //    var parameters = new Dictionary<string, object>();
+        //    parameters.Add("GameId", session.GameId);
+        //    parameters.Add("SessionDate", session.SessionDate);
+        //    parameters.Add("Venue", session.Venue);
+        //    parameters.Add("PlayerIds", session.PlayerIds);
+
+        //    await RestService.PostAsync<MyClass>(SESSIONS_URL, parameters).ConfigureAwait(false);
+        //}
     }
 }
