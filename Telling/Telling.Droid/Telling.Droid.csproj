@@ -198,6 +198,7 @@
     <Compile Include="Setup.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="TellingApplication.cs" />
+    <Compile Include="Views\Fragments\Modals\ExceptionModalFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\BrookeS8.ttf" />
@@ -216,6 +217,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_addsession.axml" />
+    <AndroidResource Include="Resources\layout\fragment_modal.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\strings.xml" />
