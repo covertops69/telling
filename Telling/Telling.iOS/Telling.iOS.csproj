@@ -124,6 +124,7 @@
     <Compile Include="Controls\TCorneredImageView.cs" />
     <Compile Include="Controls\TFloatingPicker.cs" />
     <Compile Include="Controls\TFloatingTextField.cs" />
+    <Compile Include="Controls\TGradientView.cs" />
     <Compile Include="Controls\TImageView.cs" />
     <Compile Include="Controls\TLabelView.cs" />
     <Compile Include="Controls\TLoadingOverlayView.cs" />

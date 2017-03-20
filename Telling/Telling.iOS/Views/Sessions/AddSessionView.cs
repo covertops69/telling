@@ -1,4 +1,5 @@
 ﻿using Cirrious.FluentLayouts.Touch;
+using CoreAnimation;
 using CoreGraphics;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
@@ -7,6 +8,7 @@ using System;
 using Telling.Core;
 using Telling.Core.ViewModels.Sessions;
 using Telling.iOS.Controls;
+using Telling.iOS.Helpers;
 using Telling.iOS.TableSources;
 using UIKit;
 
@@ -106,6 +108,12 @@ namespace Telling.iOS.Views.Sessions
             this.View.Add(saveButton);
             bindingSet.Bind(saveButton).To(vm => vm.SaveCommand).Apply();
 
+            var gradientTopView = new TGradientView(ColorPalette.Carnelian, ColorPalette.Carnelian.ColorWithAlpha(0));
+            this.View.Add(gradientTopView);
+
+            var gradientBottom = new TGradientView(ColorPalette.Carnelian.ColorWithAlpha(0), ColorPalette.Carnelian);
+            this.View.Add(gradientBottom);
+
             this.View.AddConstraints(new FluentLayout[] {
 
                 sessionDateTextField.AtTopOf(this.View, Constants.MARGIN),
@@ -123,19 +131,22 @@ namespace Telling.iOS.Views.Sessions
                 playerListing.Below(whereTextField, Constants.MARGIN),
                 playerListing.AtLeftOf(this.View, Constants.MARGIN),
                 playerListing.WithSameWidth(this.View).Minus(Constants.MARGIN * 2),
-                playerListing.Height().EqualTo(175f),
+                playerListing.Above(saveButton, Constants.MARGIN),
 
                 saveButton.AtBottomOf(this.View, Constants.MARGIN),
                 saveButton.Height().EqualTo(Constants.BUTTON_HEIGHT),
                 saveButton.AtLeftOf(this.View, Constants.MARGIN),
                 saveButton.WithSameWidth(this.View).Minus(Constants.MARGIN * 2),
 
-                //saveButton.Below(playerListing, Constants.Margin + 10f),
-                //saveButton.AtLeftOf(this.View, Constants.Margin),
-                //saveButton.WithSameWidth(this.View).Minus(Constants.Margin * 2),
-                //saveButton.Height().EqualTo(Constants.ButtonHeight),
+                gradientTopView.Below(whereTextField, Constants.MARGIN),
+                gradientTopView.AtLeftOf(this.View, Constants.MARGIN),
+                gradientTopView.WithSameWidth(this.View).Minus(Constants.MARGIN * 2),
+                gradientTopView.Height().EqualTo(10f),
 
-                //saveButton.AtBottomOf(this.View, Constants.Margin)
+                gradientBottom.Above(saveButton, Constants.MARGIN),
+                gradientBottom.AtLeftOf(this.View, Constants.MARGIN),
+                gradientBottom.WithSameWidth(this.View).Minus(Constants.MARGIN * 2),
+                gradientBottom.Height().EqualTo(10f),
 
             });
 
