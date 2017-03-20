@@ -203,7 +203,7 @@ namespace Telling.Core.Services
                 if (!connected)
                     return HandleLostConnnectivity<ReturnT>(endpoint.Verb.ToString(), endpoint, new Exception("ConnectivityService determined no connectivity"), HttpStatusCode.GatewayTimeout);
 
-                var responseStringasd = JsonConvert.SerializeObject(request);
+                //var responseStringasd = JsonConvert.SerializeObject(request);
                 var policy = Policy.Handle<Exception>().WaitAndRetryAsync(5, retryAttempt => TimeSpan.FromSeconds(5));
                 var response = await policy.ExecuteAsync(() => GetResponse(request, endpoint));
 

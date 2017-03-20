@@ -36,6 +36,30 @@ namespace Telling.iOS.Controls
             get { return _floatingLabel.Font; }
             set { _floatingLabel.Font = value; }
         }
+        private bool _editable = true;
+        public bool Editable
+        {
+            get { return _editable; }
+            set {
+
+                _editable = value;
+
+                if (_editable)
+                {
+                    ShouldChangeCharacters = (t, r, s) =>
+                    {
+                        return true;
+                    };
+                }
+                else
+                {
+                    ShouldChangeCharacters = (t, r, s) =>
+                    {
+                        return false;
+                    };
+                }
+            }
+        }
 
         CALayer _bottomBorder;
 
@@ -184,6 +208,18 @@ namespace Telling.iOS.Controls
                 _floatingLabel.TextColor = FloatingLabelTextColor;
 
                 updateLabel();
+            }
+        }
+
+        public override CGRect GetCaretRectForPosition(UITextPosition position)
+        {
+            if (!Editable)
+            {
+                return CGRect.Empty;
+            }
+            else
+            {
+                return base.GetCaretRectForPosition(position);
             }
         }
 

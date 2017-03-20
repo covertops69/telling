@@ -135,7 +135,7 @@ namespace Telling.Core.ViewModels.Sessions
 
                 var gamesResponse = await GameService.GetGamesAsync();
 
-                if (ProcessResponse(gamesResponse))
+                if (!ProcessResponse(gamesResponse))
                     return;
 
                 GamesCollection = gamesResponse.Result.ToObservableCollection();
@@ -159,7 +159,7 @@ namespace Telling.Core.ViewModels.Sessions
 
                 var playersResponse = await PlayerService.GetPlayersAsync();
 
-                if (ProcessResponse(playersResponse))
+                if (!ProcessResponse(playersResponse))
                     return;
 
                 PlayerCollection = playersResponse.Result.ToObservableCollection();

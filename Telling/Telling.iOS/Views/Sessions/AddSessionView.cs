@@ -53,8 +53,10 @@ namespace Telling.iOS.Views.Sessions
 
             var gameTextField = new TFloatingTextField(new CGRect())
             {
-                Placeholder = "What?"
+                Placeholder = "What?",
+                Editable = false
             };
+
             this.View.Add(gameTextField);
             bindingSet.Bind(gameTextField).To(vm => vm.SelectedGame).Apply();
             bindingSet.Bind(gameTextField).For("ValidationError").To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.SelectedGame)]).Apply();
