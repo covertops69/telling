@@ -111,8 +111,8 @@ namespace Telling.iOS.Views.Sessions
             var gradientTopView = new TGradientView(ColorPalette.Carnelian, ColorPalette.Carnelian.ColorWithAlpha(0));
             this.View.Add(gradientTopView);
 
-            var gradientBottom = new TGradientView(ColorPalette.Carnelian.ColorWithAlpha(0), ColorPalette.Carnelian);
-            this.View.Add(gradientBottom);
+            var gradientBottomView = new TGradientView(ColorPalette.Carnelian.ColorWithAlpha(0), ColorPalette.Carnelian);
+            this.View.Add(gradientBottomView);
 
             this.View.AddConstraints(new FluentLayout[] {
 
@@ -143,10 +143,10 @@ namespace Telling.iOS.Views.Sessions
                 gradientTopView.WithSameWidth(this.View).Minus(Constants.MARGIN * 2),
                 gradientTopView.Height().EqualTo(10f),
 
-                gradientBottom.Above(saveButton, Constants.MARGIN),
-                gradientBottom.AtLeftOf(this.View, Constants.MARGIN),
-                gradientBottom.WithSameWidth(this.View).Minus(Constants.MARGIN * 2),
-                gradientBottom.Height().EqualTo(10f),
+                gradientBottomView.Above(saveButton, Constants.MARGIN),
+                gradientBottomView.AtLeftOf(this.View, Constants.MARGIN),
+                gradientBottomView.WithSameWidth(this.View).Minus(Constants.MARGIN * 2),
+                gradientBottomView.Height().EqualTo(10f),
 
             });
 
