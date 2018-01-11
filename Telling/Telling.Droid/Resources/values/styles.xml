@@ -7,7 +7,12 @@
     <item name="windowActionBar">false</item>
     <item name="colorPrimary">@color/dark_red</item>
     <item name="colorPrimaryDark">@color/dark_red</item>
-    <item name="colorAccent">@color/accent</item>
+    <item name="colorAccent">@color/dark_red</item>
     <item name="colorControlHighlight">@color/dark_red</item>
   </style>
+
+  <declare-styleable name="CustomFonts">
+    <attr name="customFont" />
+  </declare-styleable>
+  
 </resources>

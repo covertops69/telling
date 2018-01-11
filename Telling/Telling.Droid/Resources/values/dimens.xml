@@ -1,4 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
+
+  <dimen name="standard_margin">15dp</dimen>
   <dimen name="drawer_width">240dp</dimen>
+
+  <dimen name="text_tinier">9sp</dimen>
+
+  <dimen name="text_small">14sp</dimen>
+  <dimen name="text_smaller">12sp</dimen>
+
+  <dimen name="text_medium">18sp</dimen>
+
 </resources>

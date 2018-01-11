@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
-    <string name="Navigation">Click to Navigate</string>
-    <string name="ApplicationName">Telling.Droid</string>
+  <string name="Hello">Hello World, Click Me!</string>
+  <string name="Navigation">Click to Navigate</string>
+  <string name="ApplicationName">Telling</string>
+
+  <string name="session_venue_hint">Venue</string>
+  <string name="session_date_hint">Date</string>
+  <string name="session_other_hint">Other</string>
 </resources>

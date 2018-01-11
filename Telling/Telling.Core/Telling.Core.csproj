@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Converters\DateTimeConverters.cs" />
     <Compile Include="CustomAppStart.cs" />
     <Compile Include="Enumerations\ConnectionType.cs" />
     <Compile Include="Extensions\LongExtensions.cs" />

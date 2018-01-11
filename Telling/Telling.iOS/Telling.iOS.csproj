@@ -257,10 +257,10 @@
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\CheckboxTargetBinding.xcassets\AppIcons.appiconset\Contents.json">
-      <InProject>false</InProject>
+      <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Resources\CheckboxTargetBinding.xcassets\LaunchImages.launchimage\Contents.json">
-      <InProject>false</InProject>
+      <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>

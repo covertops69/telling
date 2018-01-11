@@ -16,14 +16,6 @@ namespace Telling.Core.ViewModels.Sessions
 {
     public class AddSessionViewModel : BaseViewModel
     {
-        //protected override Trigger StateTrigger
-        //{
-        //    get
-        //    {
-        //        return Trigger.Add;
-        //    }
-        //}
-
         private SessionValidator _validator;
 
         protected ISessionService SessionService { get; }
@@ -81,19 +73,6 @@ namespace Telling.Core.ViewModels.Sessions
                 SetProperty(ref _selectedGame, value);
             }
         }
-
-        //private ObservableCollection<Player> _selectedPlayers;
-        //public ObservableCollection<Player> SelectedPlayers
-        //{
-        //    get
-        //    {
-        //        return _selectedPlayers;
-        //    }
-        //    set
-        //    {
-        //        SetProperty(ref _selectedPlayers, value);
-        //    }
-        //}
 
         private string _venue;
         public string Venue
@@ -189,18 +168,18 @@ namespace Telling.Core.ViewModels.Sessions
                             {
                                 IsBusy = true;
 
-                                var playerIds = PlayerCollection
-                                        .Where(x => x.IsSelected == true)
-                                        .Select(x => x.PlayerId)
-                                        .ToArray<Int32>();
+                                //var playerIds = PlayerCollection
+                                //        .Where(x => x.IsSelected == true)
+                                //        .Select(x => x.PlayerId)
+                                //        .ToArray<Int32>();
 
                                 var session = new Session
                                 {
-                                    GameId = SelectedGame.GameId,
+                                    //GameId = SelectedGame.GameId,
                                     SessionDate = SessionDate,
                                     Venue = Venue,
 
-                                    PlayerIds = playerIds
+                                    //PlayerIds = playerIds
 
                                 };
 

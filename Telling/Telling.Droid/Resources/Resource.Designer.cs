@@ -223,6 +223,15 @@ namespace Telling.Droid
 		public partial class Attribute
 		{
 			
+			// aapt resource value: 0x7f010148
+			public const int CharRepresentation = 2130772296;
+			
+			// aapt resource value: 0x7f010146
+			public const int Mask = 2130772294;
+			
+			// aapt resource value: 0x7f010147
+			public const int MaskFill = 2130772295;
+			
 			// aapt resource value: 0x7f01013e
 			public const int MvxBind = 2130772286;
 			
@@ -454,6 +463,9 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f0100a3
 			public const int buttonTintMode = 2130772131;
 			
+			// aapt resource value: 0x7f010150
+			public const int charRepresentation = 2130772304;
+			
 			// aapt resource value: 0x7f010095
 			public const int checkboxStyle = 2130772117;
 			
@@ -547,6 +559,9 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f01012f
 			public const int counterTextAppearance = 2130772271;
 			
+			// aapt resource value: 0x7f010145
+			public const int customFont = 2130772293;
+			
 			// aapt resource value: 0x7f010013
 			public const int customNavigationLayout = 2130771987;
 			
@@ -564,6 +579,12 @@ namespace Telling.Droid
 			
 			// aapt resource value: 0x7f01000f
 			public const int divider = 2130771983;
+			
+			// aapt resource value: 0x7f01014b
+			public const int dividerColor = 2130772299;
+			
+			// aapt resource value: 0x7f01014c
+			public const int dividerColorFocus = 2130772300;
 			
 			// aapt resource value: 0x7f010066
 			public const int dividerHorizontal = 2130772070;
@@ -603,6 +624,9 @@ namespace Telling.Droid
 			
 			// aapt resource value: 0x7f01012c
 			public const int errorTextAppearance = 2130772268;
+			
+			// aapt resource value: 0x7f010149
+			public const int errorTextSize = 2130772297;
 			
 			// aapt resource value: 0x7f010024
 			public const int expandActivityOverflowButtonDrawable = 2130772004;
@@ -724,6 +748,9 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f0100fe
 			public const int keylines = 2130772222;
 			
+			// aapt resource value: 0x7f01014a
+			public const int labelTextSize = 2130772298;
+			
 			// aapt resource value: 0x7f0100b7
 			public const int layout = 2130772151;
 			
@@ -798,6 +825,12 @@ namespace Telling.Droid
 			
 			// aapt resource value: 0x7f0100dd
 			public const int logoDescription = 2130772189;
+			
+			// aapt resource value: 0x7f01014e
+			public const int mask = 2130772302;
+			
+			// aapt resource value: 0x7f01014f
+			public const int maskFill = 2130772303;
 			
 			// aapt resource value: 0x7f010118
 			public const int maxActionInlineWidth = 2130772248;
@@ -1087,6 +1120,9 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f010071
 			public const int textColorSearchUrl = 2130772081;
 			
+			// aapt resource value: 0x7f01014d
+			public const int textInputPadding = 2130772301;
+			
 			// aapt resource value: 0x7f0100e2
 			public const int theme = 2130772194;
 			
@@ -1239,35 +1275,35 @@ namespace Telling.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0a004e
-			public const int abc_background_cache_hint_selector_material_dark = 2131361870;
-			
-			// aapt resource value: 0x7f0a004f
-			public const int abc_background_cache_hint_selector_material_light = 2131361871;
-			
 			// aapt resource value: 0x7f0a0050
-			public const int abc_btn_colored_borderless_text_material = 2131361872;
+			public const int abc_background_cache_hint_selector_material_dark = 2131361872;
 			
 			// aapt resource value: 0x7f0a0051
-			public const int abc_color_highlight_material = 2131361873;
+			public const int abc_background_cache_hint_selector_material_light = 2131361873;
+			
+			// aapt resource value: 0x7f0a0052
+			public const int abc_btn_colored_borderless_text_material = 2131361874;
+			
+			// aapt resource value: 0x7f0a0053
+			public const int abc_color_highlight_material = 2131361875;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_input_method_navigation_guard = 2131361792;
 			
-			// aapt resource value: 0x7f0a0052
-			public const int abc_primary_text_disable_only_material_dark = 2131361874;
-			
-			// aapt resource value: 0x7f0a0053
-			public const int abc_primary_text_disable_only_material_light = 2131361875;
-			
 			// aapt resource value: 0x7f0a0054
-			public const int abc_primary_text_material_dark = 2131361876;
+			public const int abc_primary_text_disable_only_material_dark = 2131361876;
 			
 			// aapt resource value: 0x7f0a0055
-			public const int abc_primary_text_material_light = 2131361877;
+			public const int abc_primary_text_disable_only_material_light = 2131361877;
 			
 			// aapt resource value: 0x7f0a0056
-			public const int abc_search_url_text = 2131361878;
+			public const int abc_primary_text_material_dark = 2131361878;
+			
+			// aapt resource value: 0x7f0a0057
+			public const int abc_primary_text_material_light = 2131361879;
+			
+			// aapt resource value: 0x7f0a0058
+			public const int abc_search_url_text = 2131361880;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int abc_search_url_text_normal = 2131361793;
@@ -1278,35 +1314,32 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f0a0003
 			public const int abc_search_url_text_selected = 2131361795;
 			
-			// aapt resource value: 0x7f0a0057
-			public const int abc_secondary_text_material_dark = 2131361879;
-			
-			// aapt resource value: 0x7f0a0058
-			public const int abc_secondary_text_material_light = 2131361880;
-			
 			// aapt resource value: 0x7f0a0059
-			public const int abc_tint_btn_checkable = 2131361881;
+			public const int abc_secondary_text_material_dark = 2131361881;
 			
 			// aapt resource value: 0x7f0a005a
-			public const int abc_tint_default = 2131361882;
+			public const int abc_secondary_text_material_light = 2131361882;
 			
 			// aapt resource value: 0x7f0a005b
-			public const int abc_tint_edittext = 2131361883;
+			public const int abc_tint_btn_checkable = 2131361883;
 			
 			// aapt resource value: 0x7f0a005c
-			public const int abc_tint_seek_thumb = 2131361884;
+			public const int abc_tint_default = 2131361884;
 			
 			// aapt resource value: 0x7f0a005d
-			public const int abc_tint_spinner = 2131361885;
+			public const int abc_tint_edittext = 2131361885;
 			
 			// aapt resource value: 0x7f0a005e
-			public const int abc_tint_switch_thumb = 2131361886;
+			public const int abc_tint_seek_thumb = 2131361886;
 			
 			// aapt resource value: 0x7f0a005f
-			public const int abc_tint_switch_track = 2131361887;
+			public const int abc_tint_spinner = 2131361887;
 			
-			// aapt resource value: 0x7f0a0045
-			public const int accent = 2131361861;
+			// aapt resource value: 0x7f0a0060
+			public const int abc_tint_switch_thumb = 2131361888;
+			
+			// aapt resource value: 0x7f0a0061
+			public const int abc_tint_switch_track = 2131361889;
 			
 			// aapt resource value: 0x7f0a0004
 			public const int accent_material_dark = 2131361796;
@@ -1325,9 +1358,6 @@ namespace Telling.Droid
 			
 			// aapt resource value: 0x7f0a0009
 			public const int background_material_light = 2131361801;
-			
-			// aapt resource value: 0x7f0a004d
-			public const int blue = 2131361869;
 			
 			// aapt resource value: 0x7f0a000a
 			public const int bright_foreground_disabled_material_dark = 2131361802;
@@ -1353,20 +1383,20 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f0a0011
 			public const int button_material_light = 2131361809;
 			
-			// aapt resource value: 0x7f0a0049
-			public const int carnelian = 2131361865;
-			
-			// aapt resource value: 0x7f0a004a
-			public const int dark_pumpkin = 2131361866;
+			// aapt resource value: 0x7f0a0047
+			public const int carnelian = 2131361863;
 			
 			// aapt resource value: 0x7f0a0048
-			public const int dark_red = 2131361864;
+			public const int dark_pumpkin = 2131361864;
 			
-			// aapt resource value: 0x7f0a004c
-			public const int deep_lemon = 2131361868;
+			// aapt resource value: 0x7f0a0046
+			public const int dark_red = 2131361862;
 			
-			// aapt resource value: 0x7f0a0060
-			public const int design_error = 2131361888;
+			// aapt resource value: 0x7f0a004a
+			public const int deep_lemon = 2131361866;
+			
+			// aapt resource value: 0x7f0a0062
+			public const int design_error = 2131361890;
 			
 			// aapt resource value: 0x7f0a003a
 			public const int design_fab_shadow_end_color = 2131361850;
@@ -1398,8 +1428,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f0a0043
 			public const int design_textinput_error_color_light = 2131361859;
 			
-			// aapt resource value: 0x7f0a0061
-			public const int design_tint_password_toggle = 2131361889;
+			// aapt resource value: 0x7f0a0063
+			public const int design_tint_password_toggle = 2131361891;
 			
 			// aapt resource value: 0x7f0a0012
 			public const int dim_foreground_disabled_material_dark = 2131361810;
@@ -1412,6 +1442,12 @@ namespace Telling.Droid
 			
 			// aapt resource value: 0x7f0a0015
 			public const int dim_foreground_material_light = 2131361813;
+			
+			// aapt resource value: 0x7f0a004e
+			public const int divider = 2131361870;
+			
+			// aapt resource value: 0x7f0a004f
+			public const int dividerFocused = 2131361871;
 			
 			// aapt resource value: 0x7f0a0044
 			public const int fab_material_blue_500 = 2131361860;
@@ -1427,6 +1463,9 @@ namespace Telling.Droid
 			
 			// aapt resource value: 0x7f0a0019
 			public const int highlighted_text_material_light = 2131361817;
+			
+			// aapt resource value: 0x7f0a004c
+			public const int hint = 2131361868;
 			
 			// aapt resource value: 0x7f0a001a
 			public const int hint_foreground_material_dark = 2131361818;
@@ -1470,12 +1509,6 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f0a0027
 			public const int material_grey_900 = 2131361831;
 			
-			// aapt resource value: 0x7f0a0046
-			public const int primary = 2131361862;
-			
-			// aapt resource value: 0x7f0a0047
-			public const int primaryDark = 2131361863;
-			
 			// aapt resource value: 0x7f0a0028
 			public const int primary_dark_material_dark = 2131361832;
 			
@@ -1500,8 +1533,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f0a002f
 			public const int primary_text_disabled_material_light = 2131361839;
 			
-			// aapt resource value: 0x7f0a004b
-			public const int pumpkin = 2131361867;
+			// aapt resource value: 0x7f0a0049
+			public const int pumpkin = 2131361865;
 			
 			// aapt resource value: 0x7f0a0030
 			public const int ripple_material_dark = 2131361840;
@@ -1527,17 +1560,26 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f0a0037
 			public const int switch_thumb_disabled_material_light = 2131361847;
 			
-			// aapt resource value: 0x7f0a0062
-			public const int switch_thumb_material_dark = 2131361890;
+			// aapt resource value: 0x7f0a0064
+			public const int switch_thumb_material_dark = 2131361892;
 			
-			// aapt resource value: 0x7f0a0063
-			public const int switch_thumb_material_light = 2131361891;
+			// aapt resource value: 0x7f0a0065
+			public const int switch_thumb_material_light = 2131361893;
 			
 			// aapt resource value: 0x7f0a0038
 			public const int switch_thumb_normal_material_dark = 2131361848;
 			
 			// aapt resource value: 0x7f0a0039
 			public const int switch_thumb_normal_material_light = 2131361849;
+			
+			// aapt resource value: 0x7f0a004b
+			public const int text = 2131361867;
+			
+			// aapt resource value: 0x7f0a004d
+			public const int validation = 2131361869;
+			
+			// aapt resource value: 0x7f0a0045
+			public const int white = 2131361861;
 			
 			static Color()
 			{
@@ -1768,6 +1810,15 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f050007
 			public const int abc_text_size_title_material_toolbar = 2131034119;
 			
+			// aapt resource value: 0x7f050081
+			public const int default_edit_text_validation_edit_textsize = 2131034241;
+			
+			// aapt resource value: 0x7f050082
+			public const int default_edit_text_validation_error_textsize = 2131034242;
+			
+			// aapt resource value: 0x7f050083
+			public const int default_edit_text_validation_label_textsize = 2131034243;
+			
 			// aapt resource value: 0x7f05005b
 			public const int design_appbar_elevation = 2131034203;
 			
@@ -1879,8 +1930,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f05004c
 			public const int disabled_alpha_material_light = 2131034188;
 			
-			// aapt resource value: 0x7f05007b
-			public const int drawer_width = 2131034235;
+			// aapt resource value: 0x7f05007c
+			public const int drawer_width = 2131034236;
 			
 			// aapt resource value: 0x7f05007a
 			public const int fab_elevation_lollipop = 2131034234;
@@ -1923,6 +1974,21 @@ namespace Telling.Droid
 			
 			// aapt resource value: 0x7f050052
 			public const int notification_subtext_size = 2131034194;
+			
+			// aapt resource value: 0x7f05007b
+			public const int standard_margin = 2131034235;
+			
+			// aapt resource value: 0x7f050080
+			public const int text_medium = 2131034240;
+			
+			// aapt resource value: 0x7f05007e
+			public const int text_small = 2131034238;
+			
+			// aapt resource value: 0x7f05007f
+			public const int text_smaller = 2131034239;
+			
+			// aapt resource value: 0x7f05007d
+			public const int text_tinier = 2131034237;
 			
 			static Dimension()
 			{
@@ -2187,64 +2253,70 @@ namespace Telling.Droid
 			public const int abc_vector_test = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int design_fab_background = 2130837587;
+			public const int com = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int design_ic_visibility = 2130837588;
+			public const int design_fab_background = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int design_snackbar_background = 2130837589;
+			public const int design_ic_visibility = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int doomtown = 2130837590;
+			public const int design_snackbar_background = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int fab_shadow = 2130837591;
+			public const int doomtown = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int fab_shadow_mini = 2130837592;
+			public const int fab_shadow = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int gotb = 2130837593;
+			public const int fab_shadow_mini = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int gotc = 2130837594;
+			public const int gotb = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int Icon = 2130837595;
+			public const int gotc = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int low = 2130837596;
+			public const int Icon = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int mageknight = 2130837597;
+			public const int low = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int navigation_empty_icon = 2130837598;
-			
-			// aapt resource value: 0x7f020066
-			public const int notification_template_icon_bg = 2130837606;
+			public const int mageknight = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int plus = 2130837599;
+			public const int navigation_empty_icon = 2130837599;
+			
+			// aapt resource value: 0x7f020068
+			public const int notification_template_icon_bg = 2130837608;
 			
 			// aapt resource value: 0x7f020060
-			public const int poker = 2130837600;
+			public const int plus = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int smallworld = 2130837601;
+			public const int poker = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int splash = 2130837602;
+			public const int smallworld = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int terramystica = 2130837603;
+			public const int splash = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int throughtheages = 2130837604;
+			public const int terramystica = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int tickettoride = 2130837605;
+			public const int throughtheages = 2130837605;
+			
+			// aapt resource value: 0x7f020066
+			public const int tick = 2130837606;
+			
+			// aapt resource value: 0x7f020067
+			public const int tickettoride = 2130837607;
 			
 			static Drawable()
 			{
@@ -2265,8 +2337,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f06000c
 			public const int MvxBindingTagUnique = 2131099660;
 			
-			// aapt resource value: 0x7f060082
-			public const int action0 = 2131099778;
+			// aapt resource value: 0x7f060084
+			public const int action0 = 2131099780;
 			
 			// aapt resource value: 0x7f060060
 			public const int action_bar = 2131099744;
@@ -2292,8 +2364,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f060061
 			public const int action_context_bar = 2131099745;
 			
-			// aapt resource value: 0x7f060086
-			public const int action_divider = 2131099782;
+			// aapt resource value: 0x7f060088
+			public const int action_divider = 2131099784;
 			
 			// aapt resource value: 0x7f060003
 			public const int action_menu_divider = 2131099651;
@@ -2337,8 +2409,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f060049
 			public const int buttonPanel = 2131099721;
 			
-			// aapt resource value: 0x7f060083
-			public const int cancel_action = 2131099779;
+			// aapt resource value: 0x7f060085
+			public const int cancel_action = 2131099781;
 			
 			// aapt resource value: 0x7f06002e
 			public const int center = 2131099694;
@@ -2352,8 +2424,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f060057
 			public const int checkbox = 2131099735;
 			
-			// aapt resource value: 0x7f060089
-			public const int chronometer = 2131099785;
+			// aapt resource value: 0x7f06008b
+			public const int chronometer = 2131099787;
 			
 			// aapt resource value: 0x7f060037
 			public const int clip_horizontal = 2131099703;
@@ -2376,8 +2448,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f060054
 			public const int customPanel = 2131099732;
 			
-			// aapt resource value: 0x7f060080
-			public const int dateTextView = 2131099776;
+			// aapt resource value: 0x7f060082
+			public const int dateTextView = 2131099778;
 			
 			// aapt resource value: 0x7f06005e
 			public const int decor_content_parent = 2131099742;
@@ -2409,8 +2481,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f06001f
 			public const int end = 2131099679;
 			
-			// aapt resource value: 0x7f06008e
-			public const int end_padder = 2131099790;
+			// aapt resource value: 0x7f060090
+			public const int end_padder = 2131099792;
 			
 			// aapt resource value: 0x7f060028
 			public const int enterAlways = 2131099688;
@@ -2442,8 +2514,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f06003d
 			public const int @fixed = 2131099709;
 			
-			// aapt resource value: 0x7f06007f
-			public const int gameImageView = 2131099775;
+			// aapt resource value: 0x7f060081
+			public const int gameImageView = 2131099777;
 			
 			// aapt resource value: 0x7f060005
 			public const int home = 2131099653;
@@ -2460,8 +2532,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f060044
 			public const int image = 2131099716;
 			
-			// aapt resource value: 0x7f06008d
-			public const int info = 2131099789;
+			// aapt resource value: 0x7f06008f
+			public const int info = 2131099791;
 			
 			// aapt resource value: 0x7f060000
 			public const int item_touch_helper_previous_elevation = 2131099648;
@@ -2469,11 +2541,11 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f060032
 			public const int left = 2131099698;
 			
-			// aapt resource value: 0x7f060087
-			public const int line1 = 2131099783;
+			// aapt resource value: 0x7f060089
+			public const int line1 = 2131099785;
 			
-			// aapt resource value: 0x7f06008b
-			public const int line3 = 2131099787;
+			// aapt resource value: 0x7f06008d
+			public const int line3 = 2131099789;
 			
 			// aapt resource value: 0x7f06000d
 			public const int listMode = 2131099661;
@@ -2484,8 +2556,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f06006f
 			public const int main_frame = 2131099759;
 			
-			// aapt resource value: 0x7f060085
-			public const int media_actions = 2131099781;
+			// aapt resource value: 0x7f060087
+			public const int media_actions = 2131099783;
 			
 			// aapt resource value: 0x7f060020
 			public const int middle = 2131099680;
@@ -2526,8 +2598,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f060059
 			public const int radio = 2131099737;
 			
-			// aapt resource value: 0x7f06007d
-			public const int recycler_view = 2131099773;
+			// aapt resource value: 0x7f060080
+			public const int recycler_view = 2131099776;
 			
 			// aapt resource value: 0x7f060033
 			public const int right = 2131099699;
@@ -2583,8 +2655,14 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f06006e
 			public const int select_dialog_listview = 2131099758;
 			
-			// aapt resource value: 0x7f060081
-			public const int seperator = 2131099777;
+			// aapt resource value: 0x7f060083
+			public const int seperator = 2131099779;
+			
+			// aapt resource value: 0x7f06007d
+			public const int session_date = 2131099773;
+			
+			// aapt resource value: 0x7f06007c
+			public const int session_venue = 2131099772;
 			
 			// aapt resource value: 0x7f060058
 			public const int shortcut = 2131099736;
@@ -2625,8 +2703,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f060034
 			public const int start = 2131099700;
 			
-			// aapt resource value: 0x7f060084
-			public const int status_bar_latest_event_content = 2131099780;
+			// aapt resource value: 0x7f060086
+			public const int status_bar_latest_event_content = 2131099782;
 			
 			// aapt resource value: 0x7f06005a
 			public const int submenuarrow = 2131099738;
@@ -2637,11 +2715,11 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f06000f
 			public const int tabMode = 2131099663;
 			
-			// aapt resource value: 0x7f06008c
-			public const int text = 2131099788;
+			// aapt resource value: 0x7f06008e
+			public const int text = 2131099790;
 			
-			// aapt resource value: 0x7f06008a
-			public const int text2 = 2131099786;
+			// aapt resource value: 0x7f06008c
+			public const int text2 = 2131099788;
 			
 			// aapt resource value: 0x7f060052
 			public const int textSpacerNoButtons = 2131099730;
@@ -2649,14 +2727,14 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f06007b
 			public const int text_input_password_toggle = 2131099771;
 			
-			// aapt resource value: 0x7f060088
-			public const int time = 2131099784;
+			// aapt resource value: 0x7f06008a
+			public const int time = 2131099786;
 			
 			// aapt resource value: 0x7f060048
 			public const int title = 2131099720;
 			
-			// aapt resource value: 0x7f06007c
-			public const int titleTextView = 2131099772;
+			// aapt resource value: 0x7f06007f
+			public const int titleTextView = 2131099775;
 			
 			// aapt resource value: 0x7f06004d
 			public const int title_template = 2131099725;
@@ -2904,13 +2982,13 @@ namespace Telling.Droid
 			public const int select_dialog_singlechoice_material = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int SplashScreen = 2130903095;
+			public const int splash_screen = 2130903095;
 			
 			// aapt resource value: 0x7f030038
 			public const int support_simple_spinner_dropdown_item = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int toolbar = 2130903097;
+			public const int toolbar_view = 2130903097;
 			
 			static Layout()
 			{
@@ -3041,6 +3119,15 @@ namespace Telling.Droid
 			
 			// aapt resource value: 0x7f070013
 			public const int search_menu_title = 2131165203;
+			
+			// aapt resource value: 0x7f070029
+			public const int session_date_hint = 2131165225;
+			
+			// aapt resource value: 0x7f07002a
+			public const int session_other_hint = 2131165226;
+			
+			// aapt resource value: 0x7f070028
+			public const int session_venue_hint = 2131165224;
 			
 			// aapt resource value: 0x7f070014
 			public const int status_bar_notification_info_overflow = 2131165204;
@@ -3529,11 +3616,14 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f08014f
 			public const int Base_Widget_Design_TabLayout = 2131231055;
 			
-			// aapt resource value: 0x7f080166
-			public const int MyTheme = 2131231078;
+			// aapt resource value: 0x7f080165
+			public const int EditTextValidationStyle = 2131231077;
 			
 			// aapt resource value: 0x7f080167
-			public const int MyTheme_Base = 2131231079;
+			public const int MyTheme = 2131231079;
+			
+			// aapt resource value: 0x7f080168
+			public const int MyTheme_Base = 2131231080;
 			
 			// aapt resource value: 0x7f080019
 			public const int Platform_AppCompat = 2131230745;
@@ -3868,8 +3958,8 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f08015c
 			public const int Theme_Design_NoActionBar = 2131231068;
 			
-			// aapt resource value: 0x7f080165
-			public const int Theme_Splash = 2131231077;
+			// aapt resource value: 0x7f080166
+			public const int Theme_Splash = 2131231078;
 			
 			// aapt resource value: 0x7f0800fc
 			public const int ThemeOverlay_AppCompat = 2131230972;
@@ -5073,6 +5163,12 @@ namespace Telling.Droid
 			// aapt resource value: 3
 			public const int CoordinatorLayout_Layout_layout_keyline = 3;
 			
+			public static int[] CustomFonts = new int[] {
+					2130772293};
+			
+			// aapt resource value: 0
+			public const int CustomFonts_customFont = 0;
+			
 			public static int[] DesignTheme = new int[] {
 					2130772230,
 					2130772231,
@@ -5120,6 +5216,68 @@ namespace Telling.Droid
 			
 			// aapt resource value: 7
 			public const int DrawerArrowToggle_thickness = 7;
+			
+			public static int[] EditTextValidate = new int[] {
+					16842901,
+					16842904,
+					16842906,
+					16843088,
+					16843120,
+					16843296,
+					16843364,
+					2130772297,
+					2130772298,
+					2130772299,
+					2130772300,
+					2130772301,
+					2130772302,
+					2130772303,
+					2130772304};
+			
+			// aapt resource value: 4
+			public const int EditTextValidate_android_drawableRight = 4;
+			
+			// aapt resource value: 3
+			public const int EditTextValidate_android_hint = 3;
+			
+			// aapt resource value: 6
+			public const int EditTextValidate_android_imeOptions = 6;
+			
+			// aapt resource value: 5
+			public const int EditTextValidate_android_inputType = 5;
+			
+			// aapt resource value: 1
+			public const int EditTextValidate_android_textColor = 1;
+			
+			// aapt resource value: 2
+			public const int EditTextValidate_android_textColorHint = 2;
+			
+			// aapt resource value: 0
+			public const int EditTextValidate_android_textSize = 0;
+			
+			// aapt resource value: 14
+			public const int EditTextValidate_charRepresentation = 14;
+			
+			// aapt resource value: 9
+			public const int EditTextValidate_dividerColor = 9;
+			
+			// aapt resource value: 10
+			public const int EditTextValidate_dividerColorFocus = 10;
+			
+			// aapt resource value: 7
+			public const int EditTextValidate_errorTextSize = 7;
+			
+			// aapt resource value: 8
+			public const int EditTextValidate_labelTextSize = 8;
+			
+			// aapt resource value: 12
+			public const int EditTextValidate_mask = 12;
+			
+			// aapt resource value: 13
+			public const int EditTextValidate_maskFill = 13;
+			
+			// aapt resource value: 11
+			public const int EditTextValidate_textInputPadding = 11;
 			
 			public static int[] FloatingActionButton = new int[] {
 					2130772000,
@@ -5264,6 +5422,20 @@ namespace Telling.Droid
 			
 			// aapt resource value: 1
 			public const int ListPopupWindow_android_dropDownVerticalOffset = 1;
+			
+			public static int[] MaskedEditText = new int[] {
+					2130772294,
+					2130772295,
+					2130772296};
+			
+			// aapt resource value: 2
+			public const int MaskedEditText_CharRepresentation = 2;
+			
+			// aapt resource value: 0
+			public const int MaskedEditText_Mask = 0;
+			
+			// aapt resource value: 1
+			public const int MaskedEditText_MaskFill = 1;
 			
 			public static int[] MenuGroup = new int[] {
 					16842766,
