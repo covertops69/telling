@@ -12,7 +12,6 @@
   <color name="pumpkin">#FF7518</color>
   <color name="deep_lemon">#F5C71A</color>
 
-
   <color name="text">@color/white</color>
   <color name="hint">@color/carnelian</color>
   <color name="validation">@color/deep_lemon</color>

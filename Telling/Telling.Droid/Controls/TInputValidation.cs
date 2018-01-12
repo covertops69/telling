@@ -226,7 +226,7 @@ namespace Telling.Droid.Controls
                 if (string.IsNullOrWhiteSpace(ErrorText))
                 {
                     TextViewError.Visibility = ViewStates.Invisible;
-                    DividerLine.SetBackgroundColor(new Color(ContextCompat.GetColor(Context, Resource.Color.divider)));
+                    DividerLine.SetBackgroundColor(new Color(ContextCompat.GetColor(Context, Resource.Color.text)));
                 }
                 else
                 {

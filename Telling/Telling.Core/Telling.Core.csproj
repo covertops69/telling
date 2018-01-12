@@ -41,10 +41,12 @@
     <Compile Include="Converters\DateTimeConverters.cs" />
     <Compile Include="CustomAppStart.cs" />
     <Compile Include="Enumerations\ConnectionType.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Extensions\LongExtensions.cs" />
-    <Compile Include="Extensions\ToObservableCollection.cs" />
+    <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Helpers\ObservableDictionary.cs" />
     <Compile Include="Interfaces\IConnectivityService.cs" />
+    <Compile Include="Interfaces\ISortableCollection.cs" />
     <Compile Include="Models\BaseResponse.cs" />
     <Compile Include="Models\EmptyDto.cs" />
     <Compile Include="Models\EventModel.cs" />
@@ -62,7 +64,12 @@
     <Compile Include="Services\PlayerService.cs" />
     <Compile Include="Services\SessionService.cs" />
     <Compile Include="StateMachine\Enums.cs" />
+    <Compile Include="Validation\IValidateRequest.cs" />
+    <Compile Include="Validation\ValidateResult.cs" />
+    <Compile Include="Validation\ValidationResultExtension.cs" />
+    <Compile Include="Validation\VallidateRequest.cs" />
     <Compile Include="Validators\SessionValidator.cs" />
+    <Compile Include="Validation\ValidationError.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Modals\ModalViewModel.cs" />
@@ -120,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Managers\" />
+    <Folder Include="Validation\Validators\" />
     <Folder Include="ViewModels\Players\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

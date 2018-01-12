@@ -10,6 +10,7 @@ using MvvmCross.Binding.BindingContext;
 using Telling.Core.Converters;
 using Android.Views.InputMethods;
 using com.refractored.fab;
+using Telling.Core;
 
 namespace Telling.Droid.Views.Fragments
 {
@@ -91,10 +92,12 @@ namespace Telling.Droid.Views.Fragments
         {
             var bindingSet = this.CreateBindingSet<AddSessionFragment, AddSessionViewModel>();
 
-            bindingSet.Bind(_sessionVenueInput).To(vm => vm.Venue);
-            bindingSet.Bind(_sessionDateInput).For(cntrl => cntrl.Text).To(vm => vm.SessionDate).WithConversion(new DateToShortDateNullValueConverter()).OneWay();
+            bindingSet.Bind(_sessionVenueInput).For(Constants.INPUT_VALIDATION_TEXT).To(vm => vm.Venue);
+            bindingSet.Bind(_sessionDateInput).For(Constants.INPUT_VALIDATION_TEXT).To(vm => vm.SessionDate).WithConversion(new DateToShortDateNullValueConverter()).OneWay();
 
-            bindingSet.Bind(_floatingActionButton).For("Click").To(vm => vm.SaveCommand);
+            bindingSet.Bind(_sessionVenueInput).For(Constants.INPUT_VALIDATION_ERROR).To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.Venue)]);
+
+            bindingSet.Bind(_floatingActionButton).For(Constants.INPUT_CLICK).To(vm => vm.SaveCommand);
 
             bindingSet.Apply();
         }

@@ -10,6 +10,10 @@ using System.Collections.Generic;
 using System.Reflection;
 using Telling.Core.Interfaces;
 using Telling.Droid.Services;
+using MvvmCross.Binding.Bindings.Target.Construction;
+using Telling.Core;
+using Telling.Droid.Controls;
+using Telling.Droid.Bindings;
 
 namespace Telling.Droid
 {
@@ -40,6 +44,15 @@ namespace Telling.Droid
         {
             base.InitializeFirstChance();
             Mvx.RegisterSingleton<IConnectivityService>(() => new ConnectivityService());
+        }
+
+        protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)
+        {
+            base.FillTargetFactories(registry);
+
+            registry.RegisterCustomBindingFactory<TInputValidation>(Constants.INPUT_VALIDATION_TEXT, input => new InputEditTextTargetBinding(input));
+            registry.RegisterCustomBindingFactory<TInputValidation>(Constants.INPUT_VALIDATION_ERROR, input => new InputEditTextErrorTargetBinding(input));
+
         }
 
         //protected override IMvxAndroidViewPresenter CreateViewPresenter()

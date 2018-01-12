@@ -180,6 +180,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="Bindings\InputEditTextErrorTargetBinding.cs" />
+    <Compile Include="Bindings\InputEditTextTargetBinding.cs" />
     <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="Controls\MaskedEditText.cs" />
     <Compile Include="Controls\TImageView.cs" />

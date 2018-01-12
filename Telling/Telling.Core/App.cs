@@ -5,6 +5,7 @@ using MvvmCross.Platform.IoC;
 using Telling.Core.StateMachine;
 using Telling.Core.ViewModels.Sessions;
 using MvvmCross.Core.ViewModels;
+using Telling.Core.Validation;
 
 namespace Telling.Core
 {
@@ -24,6 +25,8 @@ namespace Telling.Core
 
             //Mvx.LazyConstructAndRegisterSingleton(() => new StateMachine<State, Trigger>(State.Launch));
             //ConfigureStateMachine();
+
+            Mvx.RegisterType<IValidateRequest, ValidateRequest>();
 
             RegisterAppStart<SessionListingViewModel>();
         }

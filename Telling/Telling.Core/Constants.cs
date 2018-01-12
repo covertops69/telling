@@ -15,5 +15,9 @@ namespace Telling.Core
         public static string API_ERROR_CRASH { get { return "API_ERROR_CRASH"; } }
         public static string API_ERROR_NONETWORK { get { return "API_ERROR_NONETWORK"; } }
         public static string API_ERROR_NO_MESSAGE { get { return "API_ERROR_NOMESSAGEBACK"; } }
+
+        public const string INPUT_VALIDATION_ERROR = "Error";
+        public const string INPUT_VALIDATION_TEXT = "Text";
+        public const string INPUT_CLICK = "Click";
     }
 }

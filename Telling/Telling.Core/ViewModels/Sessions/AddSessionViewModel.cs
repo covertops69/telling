@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Telling.Core.Extensions;
+using Telling.Core.Helpers;
 using Telling.Core.Models;
 using Telling.Core.Services;
 using Telling.Core.StateMachine;
+using Telling.Core.Validation;
 using Telling.Core.Validators;
 
 namespace Telling.Core.ViewModels.Sessions
@@ -18,6 +20,7 @@ namespace Telling.Core.ViewModels.Sessions
     {
         private SessionValidator _validator;
 
+        protected IValidateRequest _validateRequest;
         protected ISessionService SessionService { get; }
         protected IGameService GameService { get; }
         protected IPlayerService PlayerService { get; }
@@ -84,16 +87,17 @@ namespace Telling.Core.ViewModels.Sessions
             set
             {
                 SetProperty(ref _venue, value);
+                //ValidateChange<string, Session, SessionValidator>(value, _validateRequest, nameof(Session.Venue));
             }
         }
 
-        public AddSessionViewModel(ISessionService sessionService, IGameService gameService, IPlayerService playerService)
+        public AddSessionViewModel(ISessionService sessionService, IGameService gameService, IPlayerService playerService)//, IValidateRequest validateRequest)
         {
-            _validator = new SessionValidator();
+            //SessionService = sessionService;
+            //GameService = gameService;
+            //PlayerService = playerService;
 
-            SessionService = sessionService;
-            GameService = gameService;
-            PlayerService = playerService;
+            //_validateRequest = validateRequest;
 
             Title = "New";
         }
@@ -102,8 +106,8 @@ namespace Telling.Core.ViewModels.Sessions
         {
             base.Start();
 
-            await LoadGamesAsync();
-            await LoadPlayerAsync();
+            //await LoadGamesAsync();
+            //await LoadPlayerAsync();
         }
 
         private async Task LoadGamesAsync()
@@ -203,28 +207,29 @@ namespace Telling.Core.ViewModels.Sessions
 
         public override bool Validate()
         {
-            ValidationErrors.Clear();
+            //if (ValidationErrors == null)
+            //    ValidationErrors = new ObservableDictionary<string, ValidationError>();
 
-            _validator = new SessionValidator();
+            //ValidationErrors.Clear();
 
-            var results = _validator.Validate(new Session
-            {
-                GameId = SelectedGame.GameId,
-                SessionDate = SessionDate,
-                Venue = Venue
-            });
+            //var validationResults = _validateRequest.Validate<Session, SessionValidator>(new Session
+            //{
+            //    //GameId = SelectedGame.GameId,
+            //    SessionDate = SessionDate,
+            //    Venue = Venue
+            //});
 
-            IList<ValidationFailure> failures = results.Errors;
+            //if (validationResults.Errors.Count == 0)
+            //    validationResults.IsValid = true;
 
-            foreach (var f in failures)
-            {
-                if (!ValidationErrors.ContainsKey(f.PropertyName))
-                {
-                    ValidationErrors.Add(f.PropertyName, f.ErrorMessage);
-                }
-            }
+            //foreach (var error in validationResults.Errors)
+            //    if (!ValidationErrors.ContainsKey(error.Key))
+            //        ValidationErrors.Add(error.Key, error.Value);
 
-            return results.IsValid;
+            //// TODO :: Remove once we know why this isn't happening automatically
+            //RaisePropertyChanged(() => ValidationErrors);
+
+            return true;
         }
     }
 }

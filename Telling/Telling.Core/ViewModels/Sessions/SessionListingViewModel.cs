@@ -107,7 +107,6 @@ namespace Telling.Core.ViewModels.Sessions
                 return _navigateToAddCommand ?? (_navigateToAddCommand = new MvxCommand(() =>
                 {
                     ShowViewModel<AddSessionViewModel>();
-                    //Fire(Trigger.Add);
                 }));
             }
         }
