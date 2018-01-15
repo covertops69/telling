@@ -76,9 +76,9 @@ namespace Telling.Droid.Controls
             _padding10dp = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 10, Resources.DisplayMetrics);
 
             // Load defaults from resources
-            var defaultEditTextSize = Resources.GetDimension(Resource.Dimension.default_edit_text_validation_edit_textsize);
-            var defaultEditTextLabelSize = Resources.GetDimension(Resource.Dimension.default_edit_text_validation_label_textsize);
-            var defaultErrorTextSize = Resources.GetDimension(Resource.Dimension.default_edit_text_validation_error_textsize);
+            var defaultEditTextSize = Resources.GetDimension(Resource.Dimension.default_edit_textsize);
+            var defaultEditTextLabelSize = Resources.GetDimension(Resource.Dimension.default_label_textsize);
+            var defaultErrorTextSize = Resources.GetDimension(Resource.Dimension.default_error_textsize);
 
             // Retrieve styles attributes
             var controlAttrs = context.ObtainStyledAttributes(attrs, Resource.Styleable.EditTextValidate, defStyleAttr, Resource.Style.EditTextValidationStyle);

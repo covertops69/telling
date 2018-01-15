@@ -18,14 +18,14 @@
     <attr name="android:drawableRight" />
   </declare-styleable>
 
-  <dimen name="default_edit_text_validation_edit_textsize">@dimen/text_medium</dimen>
-  <dimen name="default_edit_text_validation_error_textsize">@dimen/text_medium</dimen>
-  <dimen name="default_edit_text_validation_label_textsize">@dimen/text_medium</dimen>
+  <dimen name="default_edit_textsize">@dimen/text_medium</dimen>
+  <dimen name="default_error_textsize">@dimen/text_tinier</dimen>
+  <dimen name="default_label_textsize">@dimen/text_medium</dimen>
 
   <style name="EditTextValidationStyle">
-    <item name="android:textSize">@dimen/default_edit_text_validation_edit_textsize</item>
-    <item name="errorTextSize">@dimen/default_edit_text_validation_error_textsize</item>
-    <item name="labelTextSize">@dimen/default_edit_text_validation_label_textsize</item>
+    <item name="android:textSize">@dimen/default_edit_textsize</item>
+    <item name="errorTextSize">@dimen/default_error_textsize</item>
+    <item name="labelTextSize">@dimen/default_label_textsize</item>
   </style>
 
   <!--<style name="EditTextValidationStyleTextInputLayout" parent="@android:style/TextAppearance">

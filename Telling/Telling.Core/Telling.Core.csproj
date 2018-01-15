@@ -71,6 +71,7 @@
     <Compile Include="Validators\SessionValidator.cs" />
     <Compile Include="Validation\ValidationError.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Games\GameSelectionViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Modals\ModalViewModel.cs" />
     <Compile Include="ViewModels\Modals\PickerModalViewModel.cs" />

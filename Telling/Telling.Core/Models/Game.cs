@@ -12,6 +12,8 @@ namespace Telling.Core.Models
 
         public string Name { get; set; }
 
+        public string ImageName { get; set; }
+
         public override string ToString()
         {
             return Name;

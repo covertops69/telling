@@ -195,6 +195,7 @@
     <Compile Include="Views\Fragments\AddSessionFragment.cs" />
     <Compile Include="Views\Fragments\BaseFragment.cs" />
     <Compile Include="Views\Fragments\DatePickerFragment.cs" />
+    <Compile Include="Views\Fragments\GameSelectionFragment.cs" />
     <Compile Include="Views\Fragments\SessionListingFragment.cs" />
     <Compile Include="Helper\FontsOverride.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
@@ -266,6 +267,29 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\tick.png" />
     <AndroidResource Include="Resources\drawable\com.jpg" />
+    <AndroidResource Include="Resources\layout\fragment_gameselection.xml" />
+    <AndroidResource Include="Resources\layout\gamelistitem_recycler_view.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\7wonders.jpg" />
+    <AndroidResource Include="Resources\drawable\agricola.jpg" />
+    <AndroidResource Include="Resources\drawable\bstar.jpg" />
+    <AndroidResource Include="Resources\drawable\flux.jpg" />
+    <AndroidResource Include="Resources\drawable\formulad.jpg" />
+    <AndroidResource Include="Resources\drawable\legendary.jpg" />
+    <AndroidResource Include="Resources\drawable\longnight.jpg" />
+    <AndroidResource Include="Resources\drawable\loveletter.jpg" />
+    <AndroidResource Include="Resources\drawable\machikoro.jpg" />
+    <AndroidResource Include="Resources\drawable\magic.jpg" />
+    <AndroidResource Include="Resources\drawable\merchant.jpg" />
+    <AndroidResource Include="Resources\drawable\munchkinmarvel.jpg" />
+    <AndroidResource Include="Resources\drawable\pandemic.jpg" />
+    <AndroidResource Include="Resources\drawable\puerto.jpg" />
+    <AndroidResource Include="Resources\drawable\rebellion.jpg" />
+    <AndroidResource Include="Resources\drawable\resistance.jpg" />
+    <AndroidResource Include="Resources\drawable\shadows.jpg" />
+    <AndroidResource Include="Resources\drawable\startrekcatan.jpg" />
+    <AndroidResource Include="Resources\drawable\dixit.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">

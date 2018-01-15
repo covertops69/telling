@@ -36,7 +36,8 @@ namespace Telling.Api.Controllers
                             response.Add(new Game
                             {
                                 GameId = Convert.ToInt32(reader["GameId"].ToString()),
-                                Name = reader["Name"].ToString()
+                                Name = reader["Name"].ToString(),
+                                ImageName = reader["ImageName"].ToString(),
                             });
                         }
                     }

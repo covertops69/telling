@@ -5,20 +5,13 @@ using System.Threading.Tasks;
 using Telling.Core.Extensions;
 using Telling.Core.Models;
 using Telling.Core.Services;
+using Telling.Core.ViewModels.Games;
 using Telling.Core.ViewModels.Modals;
 
 namespace Telling.Core.ViewModels.Sessions
 {
     public class SessionListingViewModel : BaseViewModel
     {
-        //protected override Trigger StateTrigger
-        //{
-        //    get
-        //    {
-        //        return Trigger.List;
-        //    }
-        //}
-
         protected ISessionService SessionService { get; }
 
         private ObservableCollection<Session> _sessionsCollection;

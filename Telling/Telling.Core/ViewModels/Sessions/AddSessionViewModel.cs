@@ -13,6 +13,7 @@ using Telling.Core.Services;
 using Telling.Core.StateMachine;
 using Telling.Core.Validation;
 using Telling.Core.Validators;
+using Telling.Core.ViewModels.Games;
 
 namespace Telling.Core.ViewModels.Sessions
 {
@@ -87,17 +88,17 @@ namespace Telling.Core.ViewModels.Sessions
             set
             {
                 SetProperty(ref _venue, value);
-                //ValidateChange<string, Session, SessionValidator>(value, _validateRequest, nameof(Session.Venue));
+                ValidateChange<string, Session, SessionValidator>(value, _validateRequest, nameof(Session.Venue));
             }
         }
 
-        public AddSessionViewModel(ISessionService sessionService, IGameService gameService, IPlayerService playerService)//, IValidateRequest validateRequest)
+        public AddSessionViewModel(ISessionService sessionService, IGameService gameService, IPlayerService playerService, IValidateRequest validateRequest)
         {
-            //SessionService = sessionService;
-            //GameService = gameService;
-            //PlayerService = playerService;
+            SessionService = sessionService;
+            GameService = gameService;
+            PlayerService = playerService;
 
-            //_validateRequest = validateRequest;
+            _validateRequest = validateRequest;
 
             Title = "New";
         }
@@ -205,29 +206,46 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
+        private MvxCommand _selectGameCommand;
+        public MvxCommand SelectGameCommand
+        {
+            get
+            {
+                return _selectGameCommand ?? (_selectGameCommand = new MvxCommand(() =>
+                {
+                    ShowViewModel<GameSelectionViewModel>();
+                }));
+            }
+        }
+
         public override bool Validate()
         {
-            //if (ValidationErrors == null)
-            //    ValidationErrors = new ObservableDictionary<string, ValidationError>();
+            if (ValidationErrors == null)
+                ValidationErrors = new ObservableDictionary<string, ValidationError>();
 
-            //ValidationErrors.Clear();
+            ValidationErrors.Clear();
 
-            //var validationResults = _validateRequest.Validate<Session, SessionValidator>(new Session
-            //{
-            //    //GameId = SelectedGame.GameId,
-            //    SessionDate = SessionDate,
-            //    Venue = Venue
-            //});
+            var validationResults = _validateRequest.Validate<Session, SessionValidator>(new Session
+            {
+                //GameId = SelectedGame.GameId,
+                SessionDate = SessionDate,
+                Venue = Venue
+            });
 
-            //if (validationResults.Errors.Count == 0)
-            //    validationResults.IsValid = true;
+            if (validationResults.Errors.Count == 0)
+                validationResults.IsValid = true;
 
-            //foreach (var error in validationResults.Errors)
-            //    if (!ValidationErrors.ContainsKey(error.Key))
-            //        ValidationErrors.Add(error.Key, error.Value);
+            foreach (var error in validationResults.Errors)
+                if (!ValidationErrors.ContainsKey(error.Key))
+                    ValidationErrors.Add(error.Key, error.Value);
 
-            //// TODO :: Remove once we know why this isn't happening automatically
-            //RaisePropertyChanged(() => ValidationErrors);
+            // TODO :: Remove once we know why this isn't happening automatically
+            RaisePropertyChanged(() => ValidationErrors);
+
+            if (!validationResults.IsValid || ValidationErrors.Count > 0)
+            {
+                return false;
+            }
 
             return true;
         }

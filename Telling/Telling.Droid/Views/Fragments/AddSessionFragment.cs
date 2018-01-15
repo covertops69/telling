@@ -21,7 +21,7 @@ namespace Telling.Droid.Views.Fragments
     {
         protected override int FragmentId => Resource.Layout.fragment_addsession;
 
-        TInputValidation _sessionVenueInput, _sessionDateInput;
+        TInputValidation _sessionVenueInput, _sessionDateInput, _sessionGameInput;
         FloatingActionButton _floatingActionButton;
 
         EventHandler DateInputTap()
@@ -55,17 +55,42 @@ namespace Telling.Droid.Views.Fragments
                 }
             };
 
+        EventHandler GameInputTap()
+            => delegate
+            {
+                ViewModel.SelectGameCommand.Execute();
+
+                var inputMethodManager = (InputMethodManager)Activity.GetSystemService(Android.Content.Context.InputMethodService);
+                inputMethodManager.HideSoftInputFromWindow(Activity.CurrentFocus?.WindowToken, 0);
+            };
+
+        EventHandler<View.FocusChangeEventArgs> GameInputFocusChange()
+            => (sender, args) =>
+            {
+                if (args.HasFocus)
+                {
+                    ViewModel.SelectGameCommand.Execute();
+
+                    var inputMethodManager = (InputMethodManager)Activity.GetSystemService(Android.Content.Context.InputMethodService);
+                    inputMethodManager.HideSoftInputFromWindow(Activity.CurrentFocus?.WindowToken, 0);
+                }
+            };
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
 
             _sessionVenueInput = view.FindViewById<TInputValidation>(Resource.Id.session_venue);
             _sessionDateInput = view.FindViewById<TInputValidation>(Resource.Id.session_date);
+            _sessionGameInput = view.FindViewById<TInputValidation>(Resource.Id.session_game);
 
             _floatingActionButton = view.FindViewById<FloatingActionButton>(Resource.Id.fab);
 
             _sessionDateInput.EditTextControl.SetCursorVisible(false);
             _sessionDateInput.EditTextControl.ShowSoftInputOnFocus = false;
+
+            _sessionGameInput.EditTextControl.SetCursorVisible(false);
+            _sessionGameInput.EditTextControl.ShowSoftInputOnFocus = false;
 
             Bind();
 
@@ -78,6 +103,9 @@ namespace Telling.Droid.Views.Fragments
 
             _sessionDateInput.EditTextControl.Click += DateInputTap();
             _sessionDateInput.EditTextControl.FocusChange += DateInputFocusChange();
+
+            _sessionGameInput.EditTextControl.Click += GameInputTap();
+            _sessionGameInput.EditTextControl.FocusChange += GameInputFocusChange();
         }
 
         public override void OnPause()
@@ -86,6 +114,9 @@ namespace Telling.Droid.Views.Fragments
 
             _sessionDateInput.EditTextControl.Click -= DateInputTap();
             _sessionDateInput.EditTextControl.FocusChange -= DateInputFocusChange();
+
+            _sessionGameInput.EditTextControl.Click -= GameInputTap();
+            _sessionGameInput.EditTextControl.FocusChange -= GameInputFocusChange();
         }
 
         void Bind()

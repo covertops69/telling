@@ -10,5 +10,7 @@ namespace Telling.Api.Models
         public Int32 GameId { get; set; }
 
         public string Name { get; set; }
+
+        public string ImageName { get; set; }
     }
 }
