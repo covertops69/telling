@@ -271,7 +271,7 @@
     <AndroidResource Include="Resources\layout\gamelistitem_recycler_view.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\7wonders.jpg" />
+    <AndroidResource Include="Resources\drawable\swonders.jpg" />
     <AndroidResource Include="Resources\drawable\agricola.jpg" />
     <AndroidResource Include="Resources\drawable\bstar.jpg" />
     <AndroidResource Include="Resources\drawable\flux.jpg" />
