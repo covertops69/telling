@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Plugins.Messenger;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,6 +26,8 @@ namespace Telling.Core.ViewModels.Sessions
         protected ISessionService SessionService { get; }
         protected IGameService GameService { get; }
         protected IPlayerService PlayerService { get; }
+
+        private MvxSubscriptionToken _messageToken;
 
         private ObservableCollection<Game> _gamesCollection;
         public ObservableCollection<Game> GamesCollection
@@ -92,15 +95,21 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
-        public AddSessionViewModel(ISessionService sessionService, IGameService gameService, IPlayerService playerService, IValidateRequest validateRequest)
+        public AddSessionViewModel(ISessionService sessionService, IGameService gameService, IPlayerService playerService, IValidateRequest validateRequest, IMvxMessenger mvxMessenger)
         {
             SessionService = sessionService;
             GameService = gameService;
             PlayerService = playerService;
 
             _validateRequest = validateRequest;
+            _messageToken = mvxMessenger.Subscribe<SelectedGameMessage>(OnGameSelected);
 
             Title = "New";
+        }
+
+        private void OnGameSelected(SelectedGameMessage obj)
+        {
+            SelectedGame = obj.SelectedGame;
         }
 
         public async override void Start()

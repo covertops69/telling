@@ -1,6 +1,7 @@
 ﻿using Android.OS;
 using Android.Runtime;
 using Android.Views;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.Droid.BindingContext;
 using MvvmCross.Droid.Shared.Attributes;
 using MvvmCross.Droid.Support.V7.RecyclerView;
@@ -26,6 +27,10 @@ namespace Telling.Droid.Views.Fragments
 
             //_recyclerViewAdapter = new GamesRecyclerViewAdapter(BindingContext as IMvxAndroidBindingContext);
             //_recyclerView.SetAdapter(_recyclerViewAdapter);
+
+            var bindingSet = this.CreateBindingSet<GameSelectionFragment, GameSelectionViewModel>();
+            bindingSet.Bind(_recyclerView).For(c => c.ItemClick).To(vm => vm.ItemSelectedCommand);
+            bindingSet.Apply();
 
             return view;
         }

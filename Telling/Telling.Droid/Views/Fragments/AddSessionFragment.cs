@@ -128,6 +128,8 @@ namespace Telling.Droid.Views.Fragments
 
             bindingSet.Bind(_sessionVenueInput).For(Constants.INPUT_VALIDATION_ERROR).To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.Venue)]);
 
+            bindingSet.Bind(_sessionGameInput).For(Constants.INPUT_VALIDATION_TEXT).To(vm => vm.SelectedGame.Name);
+
             bindingSet.Bind(_floatingActionButton).For(Constants.INPUT_CLICK).To(vm => vm.SaveCommand);
 
             bindingSet.Apply();
