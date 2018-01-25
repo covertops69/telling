@@ -27,6 +27,7 @@ namespace Telling.Core.ViewModels.Sessions
         protected IGameService GameService { get; }
         protected IPlayerService PlayerService { get; }
 
+        private IMvxMessenger _mvxMessenger;
         private MvxSubscriptionToken _messageToken;
 
         //private ObservableCollection<Game> _gamesCollection;
@@ -102,9 +103,11 @@ namespace Telling.Core.ViewModels.Sessions
             PlayerService = playerService;
 
             _validateRequest = validateRequest;
-            _messageToken = mvxMessenger.Subscribe<SelectedGameMessage>(OnGameSelected);
 
-            Title = "New";
+            _mvxMessenger = mvxMessenger;
+            _messageToken = _mvxMessenger.Subscribe<SelectedGameMessage>(OnGameSelected);
+
+            Title = "New Session";
         }
 
         private void OnGameSelected(SelectedGameMessage obj)
@@ -112,13 +115,13 @@ namespace Telling.Core.ViewModels.Sessions
             SelectedGame = obj.SelectedGame;
         }
 
-        public async override void Start()
-        {
-            base.Start();
+        //public async override void Start()
+        //{
+        //    base.Start();
 
-            //await LoadGamesAsync();
-            //await LoadPlayerAsync();
-        }
+        //    //await LoadGamesAsync();
+        //    //await LoadPlayerAsync();
+        //}
 
         //private async Task LoadGamesAsync()
         //{
@@ -189,15 +192,13 @@ namespace Telling.Core.ViewModels.Sessions
 
                                 var session = new Session
                                 {
-                                    //GameId = SelectedGame.GameId,
+                                    GameId = SelectedGame.GameId,
                                     SessionDate = SessionDate,
                                     Venue = Venue,
-
-                                    //PlayerIds = playerIds
-
                                 };
 
                                 await SessionService.CreateSessionAsync(session);
+                                _mvxMessenger.Publish<RefreshRequestMessage>(new RefreshRequestMessage(this));
 
                                 Close(this);
                             }
@@ -234,12 +235,16 @@ namespace Telling.Core.ViewModels.Sessions
 
             ValidationErrors.Clear();
 
-            var validationResults = _validateRequest.Validate<Session, SessionValidator>(new Session
+            var model = new Session
             {
-                //GameId = SelectedGame.GameId,
                 SessionDate = SessionDate,
                 Venue = Venue
-            });
+            };
+
+            if (SelectedGame != null)
+                model.GameId = SelectedGame.GameId;
+
+            var validationResults = _validateRequest.Validate<Session, SessionValidator>(model);
 
             if (validationResults.Errors.Count == 0)
                 validationResults.IsValid = true;

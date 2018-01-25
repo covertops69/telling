@@ -1,4 +1,5 @@
 ﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.Plugins.Messenger;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Telling.Core.ViewModels.Sessions
     public class SessionListingViewModel : BaseViewModel
     {
         protected ISessionService SessionService { get; }
+        private MvxSubscriptionToken _messageToken;
 
         private ObservableCollection<Session> _sessionsCollection;
         public ObservableCollection<Session> SessionsCollection
@@ -27,10 +29,17 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
-        public SessionListingViewModel(ISessionService sessionService)
+        public SessionListingViewModel(ISessionService sessionService, IMvxMessenger mvxMessenger)
         {
             SessionService = sessionService;
+            _messageToken = mvxMessenger.Subscribe<RefreshRequestMessage>(OnRefreshRequested);
+
             Title = "Sessions";
+        }
+
+        private void OnRefreshRequested(RefreshRequestMessage obj)
+        {
+            LoadDataAsync();
         }
 
         public async override void Start()

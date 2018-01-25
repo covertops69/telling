@@ -125,10 +125,11 @@ namespace Telling.Droid.Views.Fragments
 
             bindingSet.Bind(_sessionVenueInput).For(Constants.INPUT_VALIDATION_TEXT).To(vm => vm.Venue);
             bindingSet.Bind(_sessionDateInput).For(Constants.INPUT_VALIDATION_TEXT).To(vm => vm.SessionDate).WithConversion(new DateToShortDateNullValueConverter()).OneWay();
-
-            bindingSet.Bind(_sessionVenueInput).For(Constants.INPUT_VALIDATION_ERROR).To(vm => vm.ValidationErrors[nameof(AddSessionViewModel.Venue)]);
-
             bindingSet.Bind(_sessionGameInput).For(Constants.INPUT_VALIDATION_TEXT).To(vm => vm.SelectedGame.Name);
+
+            bindingSet.Bind(_sessionVenueInput).For(Constants.INPUT_VALIDATION_ERROR).To(vm => vm.ValidationErrors[nameof(Core.Models.Session.Venue)]);
+            bindingSet.Bind(_sessionDateInput).For(Constants.INPUT_VALIDATION_ERROR).To(vm => vm.ValidationErrors[nameof(Core.Models.Session.SessionDate)]);
+            bindingSet.Bind(_sessionGameInput).For(Constants.INPUT_VALIDATION_ERROR).To(vm => vm.ValidationErrors[nameof(Core.Models.Session.GameId)]);
 
             bindingSet.Bind(_floatingActionButton).For(Constants.INPUT_CLICK).To(vm => vm.SaveCommand);
 

@@ -53,6 +53,7 @@
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Responses\ServerErrorResponse.cs" />
+    <Compile Include="Models\RefreshRequestMessage.cs" />
     <Compile Include="Models\SelectedGameMessage.cs" />
     <Compile Include="Models\ServiceResponseType.cs" />
     <Compile Include="Models\Session.cs" />

@@ -6,50 +6,42 @@ using Telling.Droid.Controls;
 
 namespace Telling.Droid.Bindings
 {
-    public class InputEditTextErrorTargetBinding : MvxAndroidTargetBinding
+    public class InputEditTextErrorTargetBinding : MvxAndroidTargetBinding<SGInputValidation, ValidationError>
     {
         string _previousValidationError;
 
-        public InputEditTextErrorTargetBinding(TInputValidation textField)
+        public InputEditTextErrorTargetBinding(SGInputValidation textField)
             : base(textField)
         {
         }
 
         public override MvxBindingMode DefaultMode => MvxBindingMode.TwoWay;
 
-        protected override void SetValueImpl(object editTextControl, object errorValue)
+        protected override void SetValueImpl(SGInputValidation editTextControl, ValidationError errorValue)
         {
-            var control = (editTextControl as TInputValidation);
-            var error = (errorValue as ValidationError);
-
-            if (error == null)
+            if (errorValue == null)
             {
-                control.ErrorText = string.Empty;
-                control.Validate();
+                editTextControl.ErrorText = string.Empty;
+                editTextControl.Validate();
                 return;
             }
 
-            control.ErrorText = error.Message;
+            editTextControl.ErrorText = errorValue.Message;
 
-            if (error.ForceValidate || error.DoLiveValidation)
+            if (errorValue.ForceValidate || errorValue.DoLiveValidation)
             {
-                control.Validate();
+                editTextControl.Validate();
                 return;
             }
 
             if (_previousValidationError != null
                 && (!string.IsNullOrEmpty(_previousValidationError))
-                && string.IsNullOrEmpty(error.Message))
+                && string.IsNullOrEmpty(errorValue.Message))
             {
-                control.Validate();
+                editTextControl.Validate();
             }
 
-            _previousValidationError = error.Message;
-        }
-
-        public override Type TargetType
-        {
-            get { return typeof(TInputValidation); }
+            _previousValidationError = errorValue.Message;
         }
     }
 }

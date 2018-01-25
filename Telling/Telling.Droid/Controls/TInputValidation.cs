@@ -76,9 +76,9 @@ namespace Telling.Droid.Controls
             _padding10dp = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 10, Resources.DisplayMetrics);
 
             // Load defaults from resources
-            var defaultEditTextSize = Resources.GetDimension(Resource.Dimension.default_edit_textsize);
-            var defaultEditTextLabelSize = Resources.GetDimension(Resource.Dimension.default_label_textsize);
-            var defaultErrorTextSize = Resources.GetDimension(Resource.Dimension.default_error_textsize);
+            var defaultEditTextSize = Resources.GetDimension(Resource.Dimension.text_medium);
+            var defaultEditTextLabelSize = Resources.GetDimension(Resource.Dimension.text_medium);
+            var defaultErrorTextSize = Resources.GetDimension(Resource.Dimension.text_medium);
 
             // Retrieve styles attributes
             var controlAttrs = context.ObtainStyledAttributes(attrs, Resource.Styleable.EditTextValidate, defStyleAttr, Resource.Style.EditTextValidationStyle);
@@ -180,7 +180,7 @@ namespace Telling.Droid.Controls
             EditTextControl.Text = Text;
             EditTextControl.ImeOptions = ImeOptions;
             EditTextControl.SetTextColor(TextColor ?? ContextCompat.GetColorStateList(Context, Resource.Color.text));
-            EditTextControl.SetHintTextColor(TextHintColor ?? ContextCompat.GetColorStateList(Context, Resource.Color.hint));
+            EditTextControl.SetHintTextColor(TextHintColor ?? ContextCompat.GetColorStateList(Context, Resource.Color.text));
             EditTextControl.Background = null;
             EditTextControl.InputType = InputType;
             EditTextControl.ImeOptions = ImeAction.Done;
@@ -226,7 +226,7 @@ namespace Telling.Droid.Controls
                 if (string.IsNullOrWhiteSpace(ErrorText))
                 {
                     TextViewError.Visibility = ViewStates.Invisible;
-                    DividerLine.SetBackgroundColor(new Color(ContextCompat.GetColor(Context, Resource.Color.text)));
+                    DividerLine.SetBackgroundColor(new Color(ContextCompat.GetColor(Context, Resource.Color.divider)));
                 }
                 else
                 {
