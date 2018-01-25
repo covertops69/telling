@@ -14,7 +14,7 @@ using Refractored.Fab;
 
 namespace Telling.Droid.Views.Fragments
 {
-    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame)]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, AddToBackStack = true)]
     [Register("telling.droid.views.fragments.AddSessionFragment")]
 
     public class AddSessionFragment : BaseFragment<AddSessionViewModel>

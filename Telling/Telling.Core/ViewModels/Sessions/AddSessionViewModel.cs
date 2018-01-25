@@ -66,6 +66,7 @@ namespace Telling.Core.ViewModels.Sessions
             set
             {
                 SetProperty(ref _sessionDate, value);
+                ValidateChange<DateTime, Session, SessionValidator>(value, _validateRequest, nameof(Session.SessionDate));
             }
         }
 
@@ -79,6 +80,7 @@ namespace Telling.Core.ViewModels.Sessions
             set
             {
                 SetProperty(ref _selectedGame, value);
+                ValidateChange<int, Session, SessionValidator>(value.GameId, _validateRequest, nameof(Session.SessionDate));
             }
         }
 
@@ -190,17 +192,17 @@ namespace Telling.Core.ViewModels.Sessions
                                 //        .Select(x => x.PlayerId)
                                 //        .ToArray<Int32>();
 
-                                var session = new Session
-                                {
-                                    GameId = SelectedGame.GameId,
-                                    SessionDate = SessionDate,
-                                    Venue = Venue,
-                                };
+                                //var session = new Session
+                                //{
+                                //    GameId = SelectedGame.GameId,
+                                //    SessionDate = SessionDate,
+                                //    Venue = Venue,
+                                //};
 
-                                await SessionService.CreateSessionAsync(session);
-                                _mvxMessenger.Publish<RefreshRequestMessage>(new RefreshRequestMessage(this));
+                                //await SessionService.CreateSessionAsync(session);
+                                //_mvxMessenger.Publish<RefreshRequestMessage>(new RefreshRequestMessage(this));
 
-                                Close(this);
+                                //Close(this);
                             }
                         }
                         catch (Exception ex)
@@ -228,7 +230,7 @@ namespace Telling.Core.ViewModels.Sessions
             }
         }
 
-        public override bool Validate()
+        public bool Validate()
         {
             if (ValidationErrors == null)
                 ValidationErrors = new ObservableDictionary<string, ValidationError>();
@@ -253,13 +255,13 @@ namespace Telling.Core.ViewModels.Sessions
                 if (!ValidationErrors.ContainsKey(error.Key))
                     ValidationErrors.Add(error.Key, error.Value);
 
-            // TODO :: Remove once we know why this isn't happening automatically
-            RaisePropertyChanged(() => ValidationErrors);
+            //// TODO :: Remove once we know why this isn't happening automatically
+            //RaisePropertyChanged(() => ValidationErrors);
 
-            if (!validationResults.IsValid || ValidationErrors.Count > 0)
-            {
-                return false;
-            }
+            //if (!validationResults.IsValid || ValidationErrors.Count > 0)
+            //{
+            //    return false;
+            //}
 
             return true;
         }

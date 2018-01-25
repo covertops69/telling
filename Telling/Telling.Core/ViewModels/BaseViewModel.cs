@@ -32,17 +32,12 @@ namespace Telling.Core.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        ObservableDictionary<string, ValidationError> _validationErrors;
-        public ObservableDictionary<string, ValidationError> ValidationErrors
-        {
-            get => _validationErrors ?? (_validationErrors = new ObservableDictionary<string, ValidationError>());
-            set => SetProperty(ref _validationErrors, value);
-        }
-
         public BaseViewModel()
         {
             ValidationErrors = new ObservableDictionary<string, ValidationError>();
         }
+
+        #region Validation
 
         public ValidateResult ValidateProperty<TRequest, TValidator>(IValidateRequest validateRequest, TRequest validationInput, bool forceValidate = false, params string[] properties)
             where TRequest : class
@@ -90,10 +85,14 @@ namespace Telling.Core.ViewModels
             ValidateChange<TRequest, TValidator>(validateRequest, request, validationPropertyName, forceValidate);
         }
 
-        public virtual bool Validate()
+        ObservableDictionary<string, ValidationError> _validationErrors;
+        public ObservableDictionary<string, ValidationError> ValidationErrors
         {
-            return true;
+            get => _validationErrors ?? (_validationErrors = new ObservableDictionary<string, ValidationError>());
+            set => SetProperty(ref _validationErrors, value);
         }
+
+        #endregion
 
         public bool ProcessResponse<TResp>(BaseResponse<TResp> response)
             where TResp : class

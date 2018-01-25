@@ -9,7 +9,7 @@ using Telling.Core.ViewModels.Games;
 
 namespace Telling.Droid.Views.Fragments
 {
-    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame)]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, AddToBackStack = true)]
     [Register("telling.droid.views.fragments.GameSelectionFragment")]
 
     public class GameSelectionFragment : BaseFragment<GameSelectionViewModel>

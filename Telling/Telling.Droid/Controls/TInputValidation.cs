@@ -212,7 +212,7 @@ namespace Telling.Droid.Controls
             TextViewError.SetPadding(0, _padding2dp, 0, 0);
             TextViewError.SetTextColor(ContextCompat.GetColorStateList(Context, Resource.Color.validation));
             TextViewError.SetTextSize(ComplexUnitType.Px, ErrorTextSize);
-            TextViewError.Visibility = ViewStates.Invisible;
+            TextViewError.Visibility = ViewStates.Visible;
 
             return TextViewError;
         }
@@ -225,12 +225,12 @@ namespace Telling.Droid.Controls
 
                 if (string.IsNullOrWhiteSpace(ErrorText))
                 {
-                    TextViewError.Visibility = ViewStates.Invisible;
+                    //TextViewError.Visibility = ViewStates.Invisible;
                     DividerLine.SetBackgroundColor(new Color(ContextCompat.GetColor(Context, Resource.Color.divider)));
                 }
                 else
                 {
-                    TextViewError.Visibility = ViewStates.Visible;
+                    //TextViewError.Visibility = ViewStates.Visible;
                     DividerLine.SetBackgroundColor(new Color(ContextCompat.GetColor(Context, Resource.Color.validation)));
                 }
             }
