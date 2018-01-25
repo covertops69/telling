@@ -4,7 +4,6 @@ using Android.Content.PM;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using Telling.Core.ViewModels;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
-using MvvmCross.Droid.Shared.Caching;
 using Android.Views;
 using Telling.Droid.Views.Fragments;
 
@@ -16,7 +15,7 @@ namespace Telling.Droid.Activities
         LaunchMode = LaunchMode.SingleTask,
         Name = "telling.droid.activities.MainActivity"
     )]
-    public class MainActivity : MvxCachingFragmentCompatActivity<MainViewModel>
+    public class MainActivity : MvxAppCompatActivity<MainViewModel>
     {
         protected override void OnCreate(Bundle bundle)
         {
@@ -49,24 +48,24 @@ namespace Telling.Droid.Activities
             }
         }
 
-        #region Fragment LifeCycle
+        //#region Fragment LifeCycle
 
-        public override void OnFragmentCreated(IMvxCachedFragmentInfo fragmentInfo, Android.Support.V4.App.FragmentTransaction transaction)
-        {
-            base.OnFragmentCreated(fragmentInfo, transaction);
+        //public override void OnFragmentCreated(IMvxCachedFragmentInfo fragmentInfo, Android.Support.V4.App.FragmentTransaction transaction)
+        //{
+        //    base.OnFragmentCreated(fragmentInfo, transaction);
 
-            if (!(fragmentInfo.CachedFragment is SessionListingFragment))
-            {
-                fragmentInfo.AddToBackStack = true;
-            }
-        }
+        //    if (!(fragmentInfo.CachedFragment is SessionListingFragment))
+        //    {
+        //        fragmentInfo.AddToBackStack = true;
+        //    }
+        //}
 
-        public override void OnBeforeFragmentChanging(IMvxCachedFragmentInfo fragmentInfo, Android.Support.V4.App.FragmentTransaction transaction)
-        {
-            base.OnBeforeFragmentChanging(fragmentInfo, transaction);
-            //transaction.SetCustomAnimations(Resource.Animation.enter_from_right, Resource.Animation.exit_to_right);
-        }
+        //public override void OnBeforeFragmentChanging(IMvxCachedFragmentInfo fragmentInfo, Android.Support.V4.App.FragmentTransaction transaction)
+        //{
+        //    base.OnBeforeFragmentChanging(fragmentInfo, transaction);
+        //    //transaction.SetCustomAnimations(Resource.Animation.enter_from_right, Resource.Animation.exit_to_right);
+        //}
 
-        #endregion
+        //#endregion
     }
 }

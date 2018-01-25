@@ -6,18 +6,18 @@ using Telling.Droid.Controls;
 
 namespace Telling.Droid.Bindings
 {
-    public class InputEditTextErrorTargetBinding : MvxAndroidTargetBinding<SGInputValidation, ValidationError>
+    public class InputEditTextErrorTargetBinding : MvxAndroidTargetBinding<TInputValidation, ValidationError>
     {
         string _previousValidationError;
 
-        public InputEditTextErrorTargetBinding(SGInputValidation textField)
+        public InputEditTextErrorTargetBinding(TInputValidation textField)
             : base(textField)
         {
         }
 
         public override MvxBindingMode DefaultMode => MvxBindingMode.TwoWay;
 
-        protected override void SetValueImpl(SGInputValidation editTextControl, ValidationError errorValue)
+        protected override void SetValueImpl(TInputValidation editTextControl, ValidationError errorValue)
         {
             if (errorValue == null)
             {

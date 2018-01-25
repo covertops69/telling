@@ -2,15 +2,14 @@
 using Android.Runtime;
 using Android.Views;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Binding.Droid.BindingContext;
-using MvvmCross.Droid.Shared.Attributes;
 using MvvmCross.Droid.Support.V7.RecyclerView;
+using MvvmCross.Droid.Views.Attributes;
 using Telling.Core.ViewModels;
 using Telling.Core.ViewModels.Games;
 
 namespace Telling.Droid.Views.Fragments
 {
-    [MvxFragment(typeof(MainViewModel), Resource.Id.content_frame)]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame)]
     [Register("telling.droid.views.fragments.GameSelectionFragment")]
 
     public class GameSelectionFragment : BaseFragment<GameSelectionViewModel>

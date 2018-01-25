@@ -2,15 +2,15 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Droid.Shared.Attributes;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using Telling.Core.ViewModels;
 using Telling.Core.ViewModels.Sessions;
-using com.refractored.fab;
+using MvvmCross.Droid.Views.Attributes;
+using Refractored.Fab;
 
 namespace Telling.Droid.Views.Fragments
 {
-    [MvxFragment(typeof(MainViewModel), Resource.Id.content_frame)]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, AddToBackStack = true)]
     [Register("telling.droid.views.fragments.SessionListingFragment")]
     public class SessionListingFragment : BaseFragment<SessionListingViewModel>
     {

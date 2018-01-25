@@ -9,14 +9,15 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using MvvmCross.Droid.Shared.Attributes;
+
 using Telling.Core.ViewModels;
 using Telling.Core.ViewModels.Modals;
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.Droid.Views.Attributes;
 
 namespace Telling.Droid.Views.Fragments.Modals
 {
-    [MvxFragment(typeof(MainViewModel), Resource.Id.content_frame)]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame)]
     [Register("telling.droid.views.fragments.modals.ExceptionModalFragment")]
     class ExceptionModalFragment : BaseFragment<ModalViewModel>
     {

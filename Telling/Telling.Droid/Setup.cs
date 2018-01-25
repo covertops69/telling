@@ -1,9 +1,6 @@
 using Android.Content;
-using MvvmCross.Droid.Platform;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.Platform;
-using MvvmCross.Droid.Views;
-using MvvmCross.Droid.Shared.Presenter;
 using MvvmCross.Platform;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using System.Collections.Generic;
