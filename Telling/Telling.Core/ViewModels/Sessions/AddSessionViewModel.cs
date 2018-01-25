@@ -20,7 +20,7 @@ namespace Telling.Core.ViewModels.Sessions
 {
     public class AddSessionViewModel : BaseViewModel
     {
-        private SessionValidator _validator;
+        //private SessionValidator _validator;
 
         protected IValidateRequest _validateRequest;
         protected ISessionService SessionService { get; }
@@ -29,31 +29,31 @@ namespace Telling.Core.ViewModels.Sessions
 
         private MvxSubscriptionToken _messageToken;
 
-        private ObservableCollection<Game> _gamesCollection;
-        public ObservableCollection<Game> GamesCollection
-        {
-            get
-            {
-                return _gamesCollection;
-            }
-            set
-            {
-                SetProperty(ref _gamesCollection, value);
-            }
-        }
+        //private ObservableCollection<Game> _gamesCollection;
+        //public ObservableCollection<Game> GamesCollection
+        //{
+        //    get
+        //    {
+        //        return _gamesCollection;
+        //    }
+        //    set
+        //    {
+        //        SetProperty(ref _gamesCollection, value);
+        //    }
+        //}
 
-        private ObservableCollection<Player> _playerCollection;
-        public ObservableCollection<Player> PlayerCollection
-        {
-            get
-            {
-                return _playerCollection;
-            }
-            set
-            {
-                SetProperty(ref _playerCollection, value);
-            }
-        }
+        //private ObservableCollection<Player> _playerCollection;
+        //public ObservableCollection<Player> PlayerCollection
+        //{
+        //    get
+        //    {
+        //        return _playerCollection;
+        //    }
+        //    set
+        //    {
+        //        SetProperty(ref _playerCollection, value);
+        //    }
+        //}
 
         private DateTime _sessionDate = DateTime.Now;
         public DateTime SessionDate
@@ -120,52 +120,52 @@ namespace Telling.Core.ViewModels.Sessions
             //await LoadPlayerAsync();
         }
 
-        private async Task LoadGamesAsync()
-        {
-            try
-            {
-                IsBusy = true;
+        //private async Task LoadGamesAsync()
+        //{
+        //    try
+        //    {
+        //        IsBusy = true;
 
-                var gamesResponse = await GameService.GetGamesAsync();
+        //        var gamesResponse = await GameService.GetGamesAsync();
 
-                if (!ProcessResponse(gamesResponse))
-                    return;
+        //        if (!ProcessResponse(gamesResponse))
+        //            return;
 
-                GamesCollection = gamesResponse.Result.ToObservableCollection();
-                SelectedGame = GamesCollection[0];
-            }
-            catch (Exception ex)
-            {
-                ShowException(ex);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
+        //        GamesCollection = gamesResponse.Result.ToObservableCollection();
+        //        SelectedGame = GamesCollection[0];
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ShowException(ex);
+        //    }
+        //    finally
+        //    {
+        //        IsBusy = false;
+        //    }
+        //}
 
-        private async Task LoadPlayerAsync()
-        {
-            try
-            {
-                IsBusy = true;
+        //private async Task LoadPlayerAsync()
+        //{
+        //    try
+        //    {
+        //        IsBusy = true;
 
-                var playersResponse = await PlayerService.GetPlayersAsync();
+        //        var playersResponse = await PlayerService.GetPlayersAsync();
 
-                if (!ProcessResponse(playersResponse))
-                    return;
+        //        if (!ProcessResponse(playersResponse))
+        //            return;
 
-                PlayerCollection = playersResponse.Result.ToObservableCollection();
-            }
-            catch (Exception ex)
-            {
-                ShowException(ex);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
+        //        PlayerCollection = playersResponse.Result.ToObservableCollection();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ShowException(ex);
+        //    }
+        //    finally
+        //    {
+        //        IsBusy = false;
+        //    }
+        //}
 
         IMvxAsyncCommand _saveCommand;
         public IMvxAsyncCommand SaveCommand
