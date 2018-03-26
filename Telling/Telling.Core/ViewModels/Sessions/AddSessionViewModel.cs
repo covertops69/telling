@@ -15,6 +15,7 @@ using Telling.Core.StateMachine;
 using Telling.Core.Validation;
 using Telling.Core.Validators;
 using Telling.Core.ViewModels.Games;
+using Telling.Core.ViewModels.Players;
 
 namespace Telling.Core.ViewModels.Sessions
 {
@@ -81,6 +82,20 @@ namespace Telling.Core.ViewModels.Sessions
             {
                 SetProperty(ref _selectedGame, value);
                 ValidateChange<Game, Session, SessionValidator>(value, _validateRequest, nameof(Session.Game));
+            }
+        }
+
+        private Player _selectedPlayer;
+        public Player SelectedPlayer
+        {
+            get
+            {
+                return _selectedPlayer;
+            }
+            set
+            {
+                SetProperty(ref _selectedPlayer, value);
+                ValidateChange<Player, Session, SessionValidator>(value, _validateRequest, nameof(Session.Player));
             }
         }
 
@@ -226,6 +241,18 @@ namespace Telling.Core.ViewModels.Sessions
                 return _selectGameCommand ?? (_selectGameCommand = new MvxCommand(() =>
                 {
                     ShowViewModel<GameSelectionViewModel>();
+                }));
+            }
+        }
+
+        private MvxCommand _selectPlayerCommand;
+        public MvxCommand SelectPlayerCommand
+        {
+            get
+            {
+                return _selectPlayerCommand ?? (_selectPlayerCommand = new MvxCommand(() =>
+                {
+                    ShowViewModel<PlayerSelectionViewModel>();
                 }));
             }
         }

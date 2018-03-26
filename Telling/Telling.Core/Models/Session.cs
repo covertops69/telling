@@ -12,14 +12,15 @@ namespace Telling.Core.Models
     {
         public int SessionId { get; set; }
         public Game Game { get; set; }
+        public Player Player { get; set; }
         public DateTime SessionDate { get; set; }
         public string Venue { get; set; }
 
-        public List<Player> Players { get; set; }
+        //public List<Player> Players { get; set; }
 
-        public Session()
-        {
-            Players = new List<Player>();
-        }
+        //public Session()
+        //{
+        //    Players = new List<Player>();
+        //}
     }
 }

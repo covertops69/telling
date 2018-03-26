@@ -54,6 +54,7 @@
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Responses\ServerErrorResponse.cs" />
     <Compile Include="Models\RefreshRequestMessage.cs" />
+    <Compile Include="Models\SelectedPlayerMessage.cs" />
     <Compile Include="Models\SelectedGameMessage.cs" />
     <Compile Include="Models\ServiceResponseType.cs" />
     <Compile Include="Models\Session.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Modals\ModalViewModel.cs" />
     <Compile Include="ViewModels\Modals\PickerModalViewModel.cs" />
+    <Compile Include="ViewModels\Players\PlayerSelectionViewModel.cs" />
     <Compile Include="ViewModels\Sessions\AddSessionViewModel.cs" />
     <Compile Include="ViewModels\Sessions\SessionListingViewModel.cs" />
   </ItemGroup>
@@ -126,7 +128,6 @@
   <ItemGroup>
     <Folder Include="Managers\" />
     <Folder Include="Validation\Validators\" />
-    <Folder Include="ViewModels\Players\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\NETStandard.Library.2.0.1\build\NETStandard.Library.targets" Condition="Exists('..\..\packages\NETStandard.Library.2.0.1\build\NETStandard.Library.targets')" />

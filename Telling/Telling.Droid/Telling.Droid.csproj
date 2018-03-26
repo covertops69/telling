@@ -181,6 +181,7 @@
     <Compile Include="Views\Fragments\AddSessionFragment.cs" />
     <Compile Include="Views\Fragments\BaseFragment.cs" />
     <Compile Include="Views\Fragments\DatePickerFragment.cs" />
+    <Compile Include="Views\Fragments\PlayerSelectionFragment.cs" />
     <Compile Include="Views\Fragments\GameSelectionFragment.cs" />
     <Compile Include="Views\Fragments\SessionListingFragment.cs" />
     <Compile Include="Helper\FontsOverride.cs" />
@@ -276,6 +277,10 @@
     <AndroidResource Include="Resources\drawable\shadows.jpg" />
     <AndroidResource Include="Resources\drawable\startrekcatan.jpg" />
     <AndroidResource Include="Resources\drawable\dixit.jpg" />
+    <AndroidResource Include="Resources\layout\fragment_playerselection.xml" />
+    <AndroidResource Include="Resources\layout\playerlistitem_recycler_view.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">
