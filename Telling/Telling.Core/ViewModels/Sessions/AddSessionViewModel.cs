@@ -192,17 +192,17 @@ namespace Telling.Core.ViewModels.Sessions
                                 //        .Select(x => x.PlayerId)
                                 //        .ToArray<Int32>();
 
-                                //var session = new Session
-                                //{
-                                //    GameId = SelectedGame.GameId,
-                                //    SessionDate = SessionDate,
-                                //    Venue = Venue,
-                                //};
+                                var session = new Session
+                                {
+                                    Venue = Venue,
+                                    SessionDate = SessionDate,
+                                    Game = SelectedGame
+                                };
 
-                                //await SessionService.CreateSessionAsync(session);
-                                //_mvxMessenger.Publish<RefreshRequestMessage>(new RefreshRequestMessage(this));
+                                await SessionService.CreateSessionAsync(session);
+                                _mvxMessenger.Publish<RefreshRequestMessage>(new RefreshRequestMessage(this));
 
-                                //Close(this);
+                                Close(this);
                             }
                         }
                         catch (Exception ex)
@@ -257,37 +257,7 @@ namespace Telling.Core.ViewModels.Sessions
                 return false;
             }
 
-            return false;
-
-            //ValidationErrors.Clear();
-
-            //var model = new Session
-            //{
-            //    SessionDate = SessionDate,
-            //    Venue = Venue
-            //};
-
-            //if (SelectedGame != null)
-            //    model.GameId = SelectedGame.GameId;
-
-            //var validationResults = _validateRequest.Validate<Session, SessionValidator>(model);
-
-            //if (validationResults.Errors.Count == 0)
-            //    validationResults.IsValid = true;
-
-            //foreach (var error in validationResults.Errors)
-            //    if (!ValidationErrors.ContainsKey(error.Key))
-            //        ValidationErrors.Add(error.Key, error.Value);
-
-            //// TODO :: Remove once we know why this isn't happening automatically
-            //RaisePropertyChanged(() => ValidationErrors);
-
-            //if (!validationResults.IsValid || ValidationErrors.Count > 0)
-            //{
-            //    return false;
-            //}
-
-            //return true;
+            return true;
         }
     }
 }

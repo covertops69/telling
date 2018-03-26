@@ -97,7 +97,7 @@ namespace Telling.Core.Services
         }
 
         /// <summary>
-        /// Handle the Sanlam success flow.
+        /// Handle success flow.
         /// </summary>
         /// <typeparam name="TResp">The type of the response.</typeparam>
         /// <param name="successMessage">The success message.</param>
@@ -111,7 +111,7 @@ namespace Telling.Core.Services
         }
 
         /// <summary>
-        /// Handle the Sanlam error flow.
+        /// Handle the error flow.
         /// </summary>
         /// <typeparam name="TResp">The type of the response.</typeparam>
         /// <param name="httpType">Type of the HTTP.</param>
@@ -123,7 +123,7 @@ namespace Telling.Core.Services
         internal BaseResponse<TResp> HandleError<TResp>(string httpType, Endpoint endpoint, string errorMessage, string errorMessageException, HttpStatusCode statusCode)
              where TResp : class
         {
-            Mvx.Error("ERROR on Sanlam Service [" + httpType + " : " + endpoint.Url + "] Message : {0} >>>>> Exception: {1}", errorMessage, errorMessageException);
+            Mvx.Error("ERROR on Service [" + httpType + " : " + endpoint.Url + "] Message : {0} >>>>> Exception: {1}", errorMessage, errorMessageException);
 
             //_eventLogger.TrackEvent(Constants.ERROR_EVENT_NAME, endpoint.UrlAction, $"{statusCode.ToString()} || {errorMessage}");
 
@@ -131,7 +131,7 @@ namespace Telling.Core.Services
         }
 
         /// <summary>
-        /// Handle the timeout on the Sanlam API.
+        /// Handle the timeout on the API.
         /// </summary>
         /// <typeparam name="TResp">The type of the response.</typeparam>
         /// <param name="httpType">Type of the HTTP.</param>
@@ -144,7 +144,7 @@ namespace Telling.Core.Services
         internal BaseResponse<TResp> HandleTimeout<TResp>(string httpType, Endpoint endpoint, Exception exception, HttpStatusCode statusCode, string suffix = "")
              where TResp : class
         {
-            Mvx.Error("TIMEOUT on Sanlam Service [" + httpType + " : URL: " + endpoint.Url + "] {0}{1}", exception.Message, suffix);
+            Mvx.Error("TIMEOUT on Service [" + httpType + " : URL: " + endpoint.Url + "] {0}{1}", exception.Message, suffix);
 
             //_eventLogger.TrackEvent(Constants.TIMEOUT_EVENT_NAME, endpoint.UrlAction, $"{statusCode.ToString()} || {exception?.Message}{ suffix }");
 
@@ -152,7 +152,7 @@ namespace Telling.Core.Services
         }
 
         /// <summary>
-        /// Handle a crash against the Sanlam API.
+        /// Handle a crash against the API.
         /// </summary>
         /// <typeparam name="TResp">The type of the response.</typeparam>
         /// <param name="httpType">Type of the HTTP.</param>
@@ -164,7 +164,7 @@ namespace Telling.Core.Services
         internal BaseResponse<TResp> HandleCrash<TResp>(string httpType, Endpoint endpoint, Exception exception, HttpStatusCode statusCode)
              where TResp : class
         {
-            Mvx.Error("CRASH on Sanlam Service [" + httpType + " : URL: " + endpoint.Url + "] Message: {0} >>>>> StackTrace: {1}", exception.Message, exception.StackTrace);
+            Mvx.Error("CRASH on Service [" + httpType + " : URL: " + endpoint.Url + "] Message: {0} >>>>> StackTrace: {1}", exception.Message, exception.StackTrace);
 
             //_eventLogger.TrackEvent(Constants.CRASH_EVENT_NAME, endpoint.UrlAction, $"{(statusCode == HttpStatusCode.BadRequest ? "n/a" : statusCode.ToString())} || {exception?.Message}");
 
@@ -172,7 +172,7 @@ namespace Telling.Core.Services
         }
 
         /// <summary>
-        /// Handle a lost connectivity against the Sanlam API.
+        /// Handle a lost connectivity against the API.
         /// </summary>
         /// <typeparam name="TResp">The type of the response.</typeparam>
         /// <param name="httpType">Type of the HTTP.</param>

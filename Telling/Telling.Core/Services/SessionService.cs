@@ -30,16 +30,5 @@ namespace Telling.Core.Services
         {
             return await CallToApi<EmptyDto>(session, Endpoint.CREATE_SESSION);
         }
-
-        //public async Task CreateSessionAsync(Session session)
-        //{
-        //    var parameters = new Dictionary<string, object>();
-        //    parameters.Add("GameId", session.GameId);
-        //    parameters.Add("SessionDate", session.SessionDate);
-        //    parameters.Add("Venue", session.Venue);
-        //    parameters.Add("PlayerIds", session.PlayerIds);
-
-        //    await RestService.PostAsync<MyClass>(SESSIONS_URL, parameters).ConfigureAwait(false);
-        //}
     }
 }

@@ -17,10 +17,10 @@
   <color name="blue">#0000FF</color>
   <color name="green">#008000</color>
 
-  <color name="text">@color/black</color>
+  <color name="text">@color/white</color>
   <color name="hint">@color/orange</color>
   <color name="validation">@color/yellow</color>
-  <color name="divider">@color/blue</color>
-  <color name="dividerFocused">@color/green</color>
-  
+  <color name="divider">@color/dark_red</color>
+  <color name="dividerFocused">@color/dark_red</color>
+
 </resources>
