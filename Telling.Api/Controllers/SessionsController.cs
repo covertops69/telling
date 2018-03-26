@@ -33,14 +33,20 @@ namespace Telling.Api.Controllers
                     {
                         while (reader.Read())
                         {
+
+                            
+
                             response.Add(new Session
                             {
                                 SessionId = Convert.ToInt32(reader["SessionId"].ToString()),
-                                GameId = Convert.ToInt32(reader["GameId"].ToString()),
-                                GameName = reader["GameName"].ToString(),
-                                ImageName = reader["ImageName"].ToString(),
                                 SessionDate = DateTime.Parse(reader["SessionDate"].ToString()),
-                                Venue = reader["Venue"].ToString()
+                                Venue = reader["Venue"].ToString(),
+
+                                Game = new Game {
+                                    GameId = Convert.ToInt32(reader["GameId"].ToString()),
+                                    Name = reader["GameName"].ToString(),
+                                    ImageName = reader["ImageName"].ToString(),
+                                },
                             });
                         }
                     }
@@ -86,7 +92,7 @@ namespace Telling.Api.Controllers
             command.CommandType = CommandType.StoredProcedure;
             command.CommandTimeout = 5;
 
-            command.Parameters.Add("@GameId", SqlDbType.Int).Value = session.GameId;
+            command.Parameters.Add("@GameId", SqlDbType.Int).Value = session.Game.GameId;
             command.Parameters.Add("@SessionDate", SqlDbType.Date).Value = session.SessionDate;
             command.Parameters.Add("@Venue", SqlDbType.NVarChar).Value = session.Venue;
 
@@ -95,13 +101,13 @@ namespace Telling.Api.Controllers
 
         private static void InsertPlayers(Session session, SqlConnection connection)
         {
-            foreach (Int32 playerId in session.PlayerIds)
+            foreach (Player p in session.Players)
             {
                 SqlCommand command = new SqlCommand("spInsertSessionPlayer", connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandTimeout = 5;
 
-                command.Parameters.Add("@PlayerId", SqlDbType.Int).Value = playerId;
+                command.Parameters.Add("@PlayerId", SqlDbType.Int).Value = p.PlayerId;
                 command.Parameters.Add("@SessionId", SqlDbType.Int).Value = session.SessionId;
 
                 command.ExecuteNonQuery();

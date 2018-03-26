@@ -12,9 +12,9 @@ namespace Telling.Core.Validators
     {
         public SessionValidator()
         {
-            RuleFor(a => a.SessionDate).NotEmpty();
-            RuleFor(a => a.GameId).NotEmpty();
-            RuleFor(a => a.Venue).NotEmpty();
+            RuleFor(a => a.SessionDate).NotEmpty().WithMessage("You haven't selected a date.");
+            RuleFor(a => a.Game).NotEmpty().WithMessage("You haven't selected a game.");
+            RuleFor(a => a.Venue).NotEmpty().WithMessage("You haven't specified the venue.");
         }
     }
 }

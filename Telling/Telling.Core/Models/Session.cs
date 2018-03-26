@@ -10,13 +10,16 @@ namespace Telling.Core.Models
 {
     public class Session : MvxViewModel
     {
-        public Int32 SessionId { get; set; }
-        public Int32 GameId { get; set; }
-        public string GameName { get; set; }
-        public string ImageName { get; set; }
+        public int SessionId { get; set; }
+        public Game Game { get; set; }
         public DateTime SessionDate { get; set; }
         public string Venue { get; set; }
 
-        public Int32[] PlayerIds { get; set; }
+        public List<Player> Players { get; set; }
+
+        public Session()
+        {
+            Players = new List<Player>();
+        }
     }
 }

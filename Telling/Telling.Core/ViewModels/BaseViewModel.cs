@@ -88,8 +88,15 @@ namespace Telling.Core.ViewModels
         ObservableDictionary<string, ValidationError> _validationErrors;
         public ObservableDictionary<string, ValidationError> ValidationErrors
         {
-            get => _validationErrors ?? (_validationErrors = new ObservableDictionary<string, ValidationError>());
-            set => SetProperty(ref _validationErrors, value);
+            get
+            {
+                return _validationErrors ?? (_validationErrors = new ObservableDictionary<string, ValidationError>());
+            }
+
+            set
+            {
+                SetProperty(ref _validationErrors, value);
+            }
         }
 
         #endregion

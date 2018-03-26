@@ -13,7 +13,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:id="@+id/gameImageView"
-        local:MvxBind="DrawableName ImageName(ImageName)" />
+        local:MvxBind="DrawableName ImageName(Game.ImageName)" />
     <TTextView
         android:id="@+id/titleTextView"
         android:textSize="@dimen/text_medium"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/gameImageView"
         android:layout_toRightOf="@+id/gameImageView"
-        local:MvxBind="Text GameName" />
+        local:MvxBind="Text Game.Name" />
     <TTextView
         android:id="@+id/dateTextView"
         android:textSize="@dimen/text_tinier"

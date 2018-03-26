@@ -80,7 +80,7 @@ namespace Telling.Core.ViewModels.Sessions
             set
             {
                 SetProperty(ref _selectedGame, value);
-                ValidateChange<int, Session, SessionValidator>(value.GameId, _validateRequest, nameof(Session.SessionDate));
+                ValidateChange<Game, Session, SessionValidator>(value, _validateRequest, nameof(Session.Game));
             }
         }
 
@@ -232,28 +232,52 @@ namespace Telling.Core.ViewModels.Sessions
 
         public bool Validate()
         {
-            if (ValidationErrors == null)
-                ValidationErrors = new ObservableDictionary<string, ValidationError>();
-
             ValidationErrors.Clear();
+            RaisePropertyChanged(() => ValidationErrors);
 
-            var model = new Session
+            var validationResults = _validateRequest.Validate<Session, SessionValidator>(new Session
             {
+                Venue = Venue,
                 SessionDate = SessionDate,
-                Venue = Venue
-            };
+                Game = SelectedGame
+            });
 
-            if (SelectedGame != null)
-                model.GameId = SelectedGame.GameId;
+            if (!validationResults.IsValid)
+            {
+                foreach (var error in validationResults.Errors)
+                {
+                    if (!ValidationErrors.ContainsKey(error.Key))
+                    {
+                        ValidationErrors.Add(error.Key, error.Value);
+                    }
+                }
 
-            var validationResults = _validateRequest.Validate<Session, SessionValidator>(model);
+                RaisePropertyChanged(() => ValidationErrors);
 
-            if (validationResults.Errors.Count == 0)
-                validationResults.IsValid = true;
+                return false;
+            }
 
-            foreach (var error in validationResults.Errors)
-                if (!ValidationErrors.ContainsKey(error.Key))
-                    ValidationErrors.Add(error.Key, error.Value);
+            return false;
+
+            //ValidationErrors.Clear();
+
+            //var model = new Session
+            //{
+            //    SessionDate = SessionDate,
+            //    Venue = Venue
+            //};
+
+            //if (SelectedGame != null)
+            //    model.GameId = SelectedGame.GameId;
+
+            //var validationResults = _validateRequest.Validate<Session, SessionValidator>(model);
+
+            //if (validationResults.Errors.Count == 0)
+            //    validationResults.IsValid = true;
+
+            //foreach (var error in validationResults.Errors)
+            //    if (!ValidationErrors.ContainsKey(error.Key))
+            //        ValidationErrors.Add(error.Key, error.Value);
 
             //// TODO :: Remove once we know why this isn't happening automatically
             //RaisePropertyChanged(() => ValidationErrors);
@@ -263,7 +287,7 @@ namespace Telling.Core.ViewModels.Sessions
             //    return false;
             //}
 
-            return true;
+            //return true;
         }
     }
 }

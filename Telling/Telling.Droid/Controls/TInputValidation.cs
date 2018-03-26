@@ -174,7 +174,9 @@ namespace Telling.Droid.Controls
         EditText CreateEditText()
         {
             EditTextControl = string.IsNullOrEmpty(Mask) ? new TextInputEditText(Context) : new MaskedEditText(Context, Mask);
+
             var lpEditText = new LinearLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
+
             EditTextControl.LayoutParameters = lpEditText;
             EditTextControl.Hint = TextHint;
             EditTextControl.Text = Text;
@@ -197,7 +199,9 @@ namespace Telling.Droid.Controls
         View CreateDivider()
         {
             DividerLine = new View(Context);
+
             var lpDivider = new LinearLayout.LayoutParams(LayoutParams.MatchParent, (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, 2, Resources.DisplayMetrics));
+
             DividerLine.LayoutParameters = lpDivider;
             DividerLine.SetBackgroundColor(new Color(DividerColor.ToArgb()));
 
@@ -207,7 +211,9 @@ namespace Telling.Droid.Controls
         TextView CreateErrorTextLabel()
         {
             TextViewError = new TextView(Context);
+
             var lpTextViewError = new LinearLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
+
             TextViewError.LayoutParameters = lpTextViewError;
             TextViewError.SetPadding(0, _padding2dp, 0, 0);
             TextViewError.SetTextColor(ContextCompat.GetColorStateList(Context, Resource.Color.validation));
@@ -225,12 +231,12 @@ namespace Telling.Droid.Controls
 
                 if (string.IsNullOrWhiteSpace(ErrorText))
                 {
-                    //TextViewError.Visibility = ViewStates.Invisible;
+                    TextViewError.Visibility = ViewStates.Invisible;
                     DividerLine.SetBackgroundColor(new Color(ContextCompat.GetColor(Context, Resource.Color.divider)));
                 }
                 else
                 {
-                    //TextViewError.Visibility = ViewStates.Visible;
+                    TextViewError.Visibility = ViewStates.Visible;
                     DividerLine.SetBackgroundColor(new Color(ContextCompat.GetColor(Context, Resource.Color.validation)));
                 }
             }
