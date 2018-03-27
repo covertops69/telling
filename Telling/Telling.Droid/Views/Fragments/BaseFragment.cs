@@ -40,29 +40,6 @@ namespace Telling.Droid.Views.Fragments
 
             return view;
         }
-
-        //protected Toolbar Toolbar { get; set; }
-
-        //public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        //{
-        //    return base.OnCreateView(inflater, container, savedInstanceState);
-        //}
-        //{
-        //    base.OnCreate(bundle);
-
-        //    SetContentView(LayoutResource);
-
-        //    Toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-
-        //    if (Toolbar != null)
-        //    {
-        //        SetSupportActionBar(Toolbar);
-        //        SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-        //        SupportActionBar.SetHomeButtonEnabled(true);
-        //    }
-        //}
-
-        //protected abstract int LayoutResource { get; }
     }
 
     public abstract class BaseFragment<TViewModel> : BaseFragment

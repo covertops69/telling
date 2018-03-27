@@ -6,6 +6,7 @@ using Telling.Core.ViewModels;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 using Android.Views;
 using Telling.Droid.Views.Fragments;
+using Android.Widget;
 
 namespace Telling.Droid.Activities
 {
@@ -25,9 +26,6 @@ namespace Telling.Droid.Activities
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
-
-            //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-            //SupportActionBar.SetDisplayShowHomeEnabled(false);
         }
 
         public override void OnBackPressed()
@@ -43,29 +41,16 @@ namespace Telling.Droid.Activities
                     base.OnBackPressed();
                     return true;
 
-                default:
-                    return base.OnOptionsItemSelected(item);
+                case Resource.Id.action_edit:
+                    Toast.MakeText(this, "You pressed edit action!", ToastLength.Short).Show();
+                    break;
+
+                //case Resource.Id.action_save:
+                //    Toast.MakeText(this, "You pressed save action!", ToastLength.Short).Show();
+                //    break;
             }
+
+            return base.OnOptionsItemSelected(item);
         }
-
-        //#region Fragment LifeCycle
-
-        //public override void OnFragmentCreated(IMvxCachedFragmentInfo fragmentInfo, Android.Support.V4.App.FragmentTransaction transaction)
-        //{
-        //    base.OnFragmentCreated(fragmentInfo, transaction);
-
-        //    if (!(fragmentInfo.CachedFragment is SessionListingFragment))
-        //    {
-        //        fragmentInfo.AddToBackStack = true;
-        //    }
-        //}
-
-        //public override void OnBeforeFragmentChanging(IMvxCachedFragmentInfo fragmentInfo, Android.Support.V4.App.FragmentTransaction transaction)
-        //{
-        //    base.OnBeforeFragmentChanging(fragmentInfo, transaction);
-        //    //transaction.SetCustomAnimations(Resource.Animation.enter_from_right, Resource.Animation.exit_to_right);
-        //}
-
-        //#endregion
     }
 }

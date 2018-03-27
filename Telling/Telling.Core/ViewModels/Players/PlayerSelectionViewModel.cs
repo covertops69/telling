@@ -2,6 +2,7 @@
 using MvvmCross.Plugins.Messenger;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Telling.Core.Extensions;
 using Telling.Core.Models;
@@ -15,39 +16,26 @@ namespace Telling.Core.ViewModels.Players
 
         IMvxMessenger _mvxMessenger;
 
-        MvxAsyncCommand<Player> _itemSelectedCommand;
-        public MvxAsyncCommand<Player> ItemSelectedCommand =>
-            _itemSelectedCommand ?? (_itemSelectedCommand = new MvxAsyncCommand<Player>(SelectedPlayer));
+        MvxAsyncCommand<PlayerViewModel> _itemSelectedCommand;
+        public MvxAsyncCommand<PlayerViewModel> ItemSelectedCommand =>
+            _itemSelectedCommand ?? (_itemSelectedCommand = new MvxAsyncCommand<PlayerViewModel>(SelectedPlayer));
 
-        private ObservableCollection<Player> _gamesCollection;
-        public ObservableCollection<Player> PlayersCollection
+        private ObservableCollection<PlayerViewModel> _playersCollection;
+        public ObservableCollection<PlayerViewModel> PlayersCollection
         {
             get
             {
-                return _gamesCollection;
+                return _playersCollection;
             }
             set
             {
-                SetProperty(ref _gamesCollection, value);
+                SetProperty(ref _playersCollection, value);
             }
         }
 
-        //private Player _gameSelected;
-        //public Player PlayerSelected
-        //{
-        //    get
-        //    {
-        //        return _gameSelected;
-        //    }
-        //    set
-        //    {
-        //        SetProperty(ref _gameSelected, value);
-        //    }
-        //}
-
-        public PlayerSelectionViewModel(IPlayerService gameService, IMvxMessenger mvxMessenger)
+        public PlayerSelectionViewModel(IPlayerService playerService, IMvxMessenger mvxMessenger)
         {
-            PlayerService = gameService;
+            PlayerService = playerService;
             _mvxMessenger = mvxMessenger;
 
             Title = "Players";
@@ -65,12 +53,12 @@ namespace Telling.Core.ViewModels.Players
             {
                 IsBusy = true;
 
-                var gamesResponse = await PlayerService.GetPlayersAsync();
+                var playersResponse = await PlayerService.GetPlayersAsync();
 
-                if (!ProcessResponse(gamesResponse))
+                if (!ProcessResponse(playersResponse))
                     return;
 
-                PlayersCollection = gamesResponse.Result.ToObservableCollection();
+                PlayersCollection = playersResponse.Result.ToObservableCollection();
             }
             catch (Exception ex)
             {
@@ -82,10 +70,13 @@ namespace Telling.Core.ViewModels.Players
             }
         }
 
-        async Task SelectedPlayer(Player game)
+        async Task SelectedPlayer(PlayerViewModel player)
         {
-            _mvxMessenger.Publish<SelectedPlayerMessage>(new SelectedPlayerMessage(this, game));
-            Close(this);
+            player.IsSelected = !player.IsSelected;
+
+            //player.Sel
+            //_mvxMessenger.Publish<SelectedPlayerMessage>(new SelectedPlayerMessage(this, game));
+            //Close(this);
         }
     }
 }

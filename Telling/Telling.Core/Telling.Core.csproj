@@ -79,6 +79,7 @@
     <Compile Include="ViewModels\Modals\ModalViewModel.cs" />
     <Compile Include="ViewModels\Modals\PickerModalViewModel.cs" />
     <Compile Include="ViewModels\Players\PlayerSelectionViewModel.cs" />
+    <Compile Include="ViewModels\Players\PlayerViewModel.cs" />
     <Compile Include="ViewModels\Sessions\AddSessionViewModel.cs" />
     <Compile Include="ViewModels\Sessions\SessionListingViewModel.cs" />
   </ItemGroup>
