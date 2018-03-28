@@ -14,7 +14,10 @@ namespace Telling.Droid.Activities
         Label = "Telling",
         Theme = "@style/MyTheme",
         LaunchMode = LaunchMode.SingleTask,
-        Name = "telling.droid.activities.MainActivity"
+        Name = "telling.droid.activities.MainActivity",
+        ScreenOrientation = ScreenOrientation.Portrait,
+        ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden,
+        WindowSoftInputMode = SoftInput.AdjustPan
     )]
     public class MainActivity : MvxAppCompatActivity<MainViewModel>
     {

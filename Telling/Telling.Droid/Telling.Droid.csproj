@@ -293,6 +293,8 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\menu\menu_playerselection.xml" />
+    <AndroidResource Include="Resources\layout\shape_player_selection.xml" />
+    <AndroidResource Include="Resources\layout\shape_plus_circle.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">
