@@ -4841,9 +4841,6 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f0800af
 			public const int action_divider = 2131230895;
 			
-			// aapt resource value: 0x7f0800be
-			public const int action_edit = 2131230910;
-			
 			// aapt resource value: 0x7f0800a9
 			public const int action_image = 2131230889;
 			
@@ -4861,6 +4858,9 @@ namespace Telling.Droid
 			
 			// aapt resource value: 0x7f08005e
 			public const int action_mode_close_button = 2131230814;
+			
+			// aapt resource value: 0x7f0800be
+			public const int action_save = 2131230910;
 			
 			// aapt resource value: 0x7f0800aa
 			public const int action_text = 2131230890;
@@ -5643,7 +5643,7 @@ namespace Telling.Droid
 		{
 			
 			// aapt resource value: 0x7f0f0000
-			public const int menu1 = 2131689472;
+			public const int menu_playerselection = 2131689472;
 			
 			static Menu()
 			{

@@ -10,6 +10,11 @@ using Telling.Core.Services;
 
 namespace Telling.Core.ViewModels.Players
 {
+    public class PlayerSelectionChangedEventArgs
+    {
+        public bool HasPlayers { get; set; }
+    }
+
     public class PlayerSelectionViewModel : BaseViewModel
     {
         protected IPlayerService PlayerService { get; }
@@ -33,6 +38,19 @@ namespace Telling.Core.ViewModels.Players
             }
         }
 
+        //private bool _isPlayerSelected;
+        //public bool IsPlayerSelected
+        //{
+        //    get
+        //    {
+        //        return _isPlayerSelected;
+        //    }
+        //    set
+        //    {
+        //        SetProperty(ref _isPlayerSelected, value);
+        //    }
+        //}
+
         public PlayerSelectionViewModel(IPlayerService playerService, IMvxMessenger mvxMessenger)
         {
             PlayerService = playerService;
@@ -40,6 +58,8 @@ namespace Telling.Core.ViewModels.Players
 
             Title = "Players";
         }
+
+        public event EventHandler<PlayerSelectionChangedEventArgs> PlayerSelectionChanged;
 
         public async override void Start()
         {
@@ -70,9 +90,25 @@ namespace Telling.Core.ViewModels.Players
             }
         }
 
+        public void SelectedPlayers()
+        {
+            _mvxMessenger.Publish<SelectedPlayerMessage>(new SelectedPlayerMessage(this, PlayersCollection));
+        }
+
         async Task SelectedPlayer(PlayerViewModel player)
         {
             player.IsSelected = !player.IsSelected;
+
+            if (PlayersCollection.Where(p => p.IsSelected).Count() > 0)
+            {
+                PlayerSelectionChanged?.Invoke(this, new PlayerSelectionChangedEventArgs { HasPlayers = true });
+                Title = string.Format("{0} selected", PlayersCollection.Where(p => p.IsSelected).Count());
+            }
+            else
+            {
+                PlayerSelectionChanged?.Invoke(this, new PlayerSelectionChangedEventArgs { HasPlayers = false });
+                Title = "Players";
+            }
 
             //player.Sel
             //_mvxMessenger.Publish<SelectedPlayerMessage>(new SelectedPlayerMessage(this, game));

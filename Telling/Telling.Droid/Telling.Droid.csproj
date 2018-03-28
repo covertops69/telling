@@ -292,7 +292,7 @@
     <AndroidResource Include="Resources\layout\playerlistitem_recycler_view.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\menu\menu1.xml" />
+    <AndroidResource Include="Resources\menu\menu_playerselection.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">

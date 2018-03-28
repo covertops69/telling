@@ -40,14 +40,6 @@ namespace Telling.Droid.Activities
                 case Android.Resource.Id.Home:
                     base.OnBackPressed();
                     return true;
-
-                case Resource.Id.action_edit:
-                    Toast.MakeText(this, "You pressed edit action!", ToastLength.Short).Show();
-                    break;
-
-                //case Resource.Id.action_save:
-                //    Toast.MakeText(this, "You pressed save action!", ToastLength.Short).Show();
-                //    break;
             }
 
             return base.OnOptionsItemSelected(item);
