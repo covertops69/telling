@@ -178,7 +178,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\MainActivity.cs" />
-    <Compile Include="Bindings\MenuItemClickEventTargetBinding.cs" />
     <Compile Include="Bindings\SelectedPlayersCollectionTargetBinding.cs" />
     <Compile Include="Bindings\MenuItemVisibilityTargetBinding.cs" />
     <Compile Include="Bindings\InputEditTextErrorTargetBinding.cs" />

@@ -17,15 +17,11 @@ namespace Telling.Droid.Views.Fragments
         protected override int FragmentId => Resource.Layout.fragment_gameselection;
 
         MvxRecyclerView _recyclerView;
-        //SGamesRecyclerViewAdapter _recyclerViewAdapter;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
             _recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.recycler_view);
-
-            //_recyclerViewAdapter = new GamesRecyclerViewAdapter(BindingContext as IMvxAndroidBindingContext);
-            //_recyclerView.SetAdapter(_recyclerViewAdapter);
 
             var bindingSet = this.CreateBindingSet<GameSelectionFragment, GameSelectionViewModel>();
             bindingSet.Bind(_recyclerView).For(c => c.ItemClick).To(vm => vm.ItemSelectedCommand);
@@ -34,15 +30,4 @@ namespace Telling.Droid.Views.Fragments
             return view;
         }
     }
-
-    //public class GamesRecyclerViewAdapter : MvxRecyclerAdapter
-    //{
-    //    public GamesRecyclerViewAdapter(IMvxAndroidBindingContext bindingContext)
-    //      : base(bindingContext)
-    //    {
-
-    //    }
-
-    //    override 
-    //}
 }

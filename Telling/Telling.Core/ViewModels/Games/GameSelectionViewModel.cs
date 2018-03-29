@@ -15,9 +15,13 @@ namespace Telling.Core.ViewModels.Games
 
         IMvxMessenger _mvxMessenger;
 
-        MvxAsyncCommand<Game> _itemSelectedCommand;
-        public MvxAsyncCommand<Game> ItemSelectedCommand =>
-            _itemSelectedCommand ?? (_itemSelectedCommand = new MvxAsyncCommand<Game>(SelectedGame));
+        MvxCommand<Game> _itemSelectedCommand;
+        public MvxCommand<Game> ItemSelectedCommand =>
+            _itemSelectedCommand ?? (_itemSelectedCommand = new MvxCommand<Game>((game) =>
+            {
+                _mvxMessenger.Publish<SelectedGameMessage>(new SelectedGameMessage(this, game));
+                Close(this);
+            }));
 
         private ObservableCollection<Game> _gamesCollection;
         public ObservableCollection<Game> GamesCollection
@@ -31,19 +35,6 @@ namespace Telling.Core.ViewModels.Games
                 SetProperty(ref _gamesCollection, value);
             }
         }
-
-        //private Game _gameSelected;
-        //public Game GameSelected
-        //{
-        //    get
-        //    {
-        //        return _gameSelected;
-        //    }
-        //    set
-        //    {
-        //        SetProperty(ref _gameSelected, value);
-        //    }
-        //}
 
         public GameSelectionViewModel(IGameService gameService, IMvxMessenger mvxMessenger)
         {
@@ -80,12 +71,6 @@ namespace Telling.Core.ViewModels.Games
             {
                 IsBusy = false;
             }
-        }
-
-        async Task SelectedGame(Game game)
-        {
-            _mvxMessenger.Publish<SelectedGameMessage>(new SelectedGameMessage(this, game));
-            Close(this);
         }
     }
 }

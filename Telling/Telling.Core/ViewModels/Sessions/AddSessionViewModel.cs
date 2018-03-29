@@ -29,7 +29,8 @@ namespace Telling.Core.ViewModels.Sessions
         protected IPlayerService PlayerService { get; }
 
         private IMvxMessenger _mvxMessenger;
-        private MvxSubscriptionToken _messageToken;
+        private MvxSubscriptionToken _messageTokenGame;
+        private MvxSubscriptionToken _messageTokenPlayers;
 
         private ObservableCollection<PlayerViewModel> _selectedPlayers;
         public ObservableCollection<PlayerViewModel> SelectedPlayers
@@ -109,12 +110,12 @@ namespace Telling.Core.ViewModels.Sessions
             _validateRequest = validateRequest;
 
             _mvxMessenger = mvxMessenger;
-            _messageToken = _mvxMessenger.Subscribe<SelectedGameMessage>((obj) =>
+            _messageTokenGame = _mvxMessenger.Subscribe<SelectedGameMessage>((obj) =>
             {
                 SelectedGame = obj.SelectedGame;
             });
 
-            _messageToken = _mvxMessenger.Subscribe<SelectedPlayersMessage>((obj) =>
+            _messageTokenPlayers = _mvxMessenger.Subscribe<SelectedPlayersMessage>((obj) =>
             {
                 SelectedPlayers = obj.SelectedPlayers;
             });

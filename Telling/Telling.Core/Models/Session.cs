@@ -11,7 +11,9 @@ namespace Telling.Core.Models
     public class Session : MvxViewModel
     {
         public int SessionId { get; set; }
+
         public Game Game { get; set; }
+
         public Player Player { get; set; }
         public DateTime SessionDate { get; set; }
         public string Venue { get; set; }
