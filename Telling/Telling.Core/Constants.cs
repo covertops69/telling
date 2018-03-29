@@ -19,5 +19,6 @@ namespace Telling.Core
         public const string INPUT_VALIDATION_ERROR = "Error";
         public const string INPUT_VALIDATION_TEXT = "Text";
         public const string INPUT_CLICK = "Click";
+        public const string MENU_ITEM_VISIBILITY = "MenuItemVisibility";
     }
 }

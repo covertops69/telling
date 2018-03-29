@@ -21,9 +21,9 @@ namespace Telling.Core.ViewModels.Players
 
         IMvxMessenger _mvxMessenger;
 
-        MvxAsyncCommand<PlayerViewModel> _itemSelectedCommand;
-        public MvxAsyncCommand<PlayerViewModel> ItemSelectedCommand =>
-            _itemSelectedCommand ?? (_itemSelectedCommand = new MvxAsyncCommand<PlayerViewModel>(SelectedPlayer));
+        MvxCommand<PlayerViewModel> _itemSelectedCommand;
+        public MvxCommand<PlayerViewModel> ItemSelectedCommand =>
+            _itemSelectedCommand ?? (_itemSelectedCommand = new MvxCommand<PlayerViewModel>(SelectedPlayer));
 
         private ObservableCollection<PlayerViewModel> _playersCollection;
         public ObservableCollection<PlayerViewModel> PlayersCollection
@@ -38,18 +38,18 @@ namespace Telling.Core.ViewModels.Players
             }
         }
 
-        //private bool _isPlayerSelected;
-        //public bool IsPlayerSelected
-        //{
-        //    get
-        //    {
-        //        return _isPlayerSelected;
-        //    }
-        //    set
-        //    {
-        //        SetProperty(ref _isPlayerSelected, value);
-        //    }
-        //}
+        private bool _isPlayerSelected;
+        public bool IsPlayerSelected
+        {
+            get
+            {
+                return _isPlayerSelected;
+            }
+            set
+            {
+                SetProperty(ref _isPlayerSelected, value);
+            }
+        }
 
         public PlayerSelectionViewModel(IPlayerService playerService, IMvxMessenger mvxMessenger)
         {
@@ -58,8 +58,6 @@ namespace Telling.Core.ViewModels.Players
 
             Title = "Players";
         }
-
-        public event EventHandler<PlayerSelectionChangedEventArgs> PlayerSelectionChanged;
 
         public async override void Start()
         {
@@ -95,24 +93,20 @@ namespace Telling.Core.ViewModels.Players
             _mvxMessenger.Publish<SelectedPlayerMessage>(new SelectedPlayerMessage(this, PlayersCollection));
         }
 
-        async Task SelectedPlayer(PlayerViewModel player)
+        void SelectedPlayer(PlayerViewModel player)
         {
             player.IsSelected = !player.IsSelected;
 
             if (PlayersCollection.Where(p => p.IsSelected).Count() > 0)
             {
-                PlayerSelectionChanged?.Invoke(this, new PlayerSelectionChangedEventArgs { HasPlayers = true });
+                IsPlayerSelected = true;
                 Title = string.Format("{0} selected", PlayersCollection.Where(p => p.IsSelected).Count());
             }
             else
             {
-                PlayerSelectionChanged?.Invoke(this, new PlayerSelectionChangedEventArgs { HasPlayers = false });
+                IsPlayerSelected = false;
                 Title = "Players";
             }
-
-            //player.Sel
-            //_mvxMessenger.Publish<SelectedPlayerMessage>(new SelectedPlayerMessage(this, game));
-            //Close(this);
         }
     }
 }

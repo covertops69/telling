@@ -7,7 +7,9 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Droid.Support.V7.RecyclerView;
 using MvvmCross.Droid.Views.Attributes;
+using MvvmCross.Plugins.Visibility;
 using System.Windows.Input;
+using Telling.Core;
 using Telling.Core.ViewModels;
 using Telling.Core.ViewModels.Players;
 
@@ -38,7 +40,7 @@ namespace Telling.Droid.Views.Fragments
 
             _bindingSet.Apply();
 
-            ViewModel.PlayerSelectionChanged += PlayerSelectionChanged;
+            //ViewModel.PlayerSelectionChanged += PlayerSelectionChanged;
 
             HasOptionsMenu = true;
 
@@ -57,7 +59,9 @@ namespace Telling.Droid.Views.Fragments
             ((AppCompatActivity)Activity).MenuInflater.Inflate(Resource.Menu.menu_playerselection, menu);
 
             _saveMenuItem = menu.FindItem(Resource.Id.action_save);
-            _saveMenuItem.SetVisible(false);
+
+            _bindingSet.Bind(_saveMenuItem).For(Constants.MENU_ITEM_VISIBILITY).To(vm => vm.IsPlayerSelected);
+            _bindingSet.Apply();
 
             base.OnCreateOptionsMenu(menu, inflater);
         }
