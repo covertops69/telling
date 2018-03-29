@@ -3,6 +3,7 @@
 
   <dimen name="standard_margin">15dp</dimen>
   <dimen name="drawer_width">240dp</dimen>
+  <dimen name="player_tile_dimension">48dp</dimen>
 
   <dimen name="text_tinier">9sp</dimen>
 

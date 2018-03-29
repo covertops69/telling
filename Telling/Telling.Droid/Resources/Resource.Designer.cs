@@ -4044,14 +4044,14 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f07008f
 			public const int compat_control_corner_material = 2131165327;
 			
-			// aapt resource value: 0x7f0700a6
-			public const int default_edit_textsize = 2131165350;
-			
 			// aapt resource value: 0x7f0700a7
-			public const int default_error_textsize = 2131165351;
+			public const int default_edit_textsize = 2131165351;
 			
 			// aapt resource value: 0x7f0700a8
-			public const int default_label_textsize = 2131165352;
+			public const int default_error_textsize = 2131165352;
+			
+			// aapt resource value: 0x7f0700a9
+			public const int default_label_textsize = 2131165353;
 			
 			// aapt resource value: 0x7f070069
 			public const int design_appbar_elevation = 2131165289;
@@ -4275,20 +4275,23 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f07009a
 			public const int notification_top_pad_large_text = 2131165338;
 			
+			// aapt resource value: 0x7f0700a2
+			public const int player_tile_dimension = 2131165346;
+			
 			// aapt resource value: 0x7f0700a0
 			public const int standard_margin = 2131165344;
 			
-			// aapt resource value: 0x7f0700a5
-			public const int text_medium = 2131165349;
-			
-			// aapt resource value: 0x7f0700a3
-			public const int text_small = 2131165347;
+			// aapt resource value: 0x7f0700a6
+			public const int text_medium = 2131165350;
 			
 			// aapt resource value: 0x7f0700a4
-			public const int text_smaller = 2131165348;
+			public const int text_small = 2131165348;
 			
-			// aapt resource value: 0x7f0700a2
-			public const int text_tinier = 2131165346;
+			// aapt resource value: 0x7f0700a5
+			public const int text_smaller = 2131165349;
+			
+			// aapt resource value: 0x7f0700a3
+			public const int text_tinier = 2131165347;
 			
 			// aapt resource value: 0x7f070059
 			public const int tooltip_corner_radius = 2131165273;
@@ -5120,11 +5123,14 @@ namespace Telling.Droid
 			// aapt resource value: 0x7f08004f
 			public const int pin = 2131230799;
 			
-			// aapt resource value: 0x7f0800a2
-			public const int player_drop_area = 2131230882;
+			// aapt resource value: 0x7f0800a1
+			public const int player_drop_area = 2131230881;
 			
 			// aapt resource value: 0x7f0800a3
 			public const int player_selection = 2131230883;
+			
+			// aapt resource value: 0x7f0800a2
+			public const int players_selected = 2131230882;
 			
 			// aapt resource value: 0x7f080006
 			public const int progress_circular = 2131230726;
@@ -5215,9 +5221,6 @@ namespace Telling.Droid
 			
 			// aapt resource value: 0x7f0800a0
 			public const int session_game = 2131230880;
-			
-			// aapt resource value: 0x7f0800a1
-			public const int session_player = 2131230881;
 			
 			// aapt resource value: 0x7f08009e
 			public const int session_venue = 2131230878;
@@ -5627,19 +5630,22 @@ namespace Telling.Droid
 			public const int shape_player_selection = 2130903107;
 			
 			// aapt resource value: 0x7f030044
-			public const int shape_plus_circle = 2130903108;
+			public const int shape_player_tile = 2130903108;
 			
 			// aapt resource value: 0x7f030045
-			public const int splash_screen = 2130903109;
+			public const int shape_plus_circle = 2130903109;
 			
 			// aapt resource value: 0x7f030046
-			public const int support_simple_spinner_dropdown_item = 2130903110;
+			public const int splash_screen = 2130903110;
 			
 			// aapt resource value: 0x7f030047
-			public const int toolbar_view = 2130903111;
+			public const int support_simple_spinner_dropdown_item = 2130903111;
 			
 			// aapt resource value: 0x7f030048
-			public const int tooltip = 2130903112;
+			public const int toolbar_view = 2130903112;
+			
+			// aapt resource value: 0x7f030049
+			public const int tooltip = 2130903113;
 			
 			static Layout()
 			{

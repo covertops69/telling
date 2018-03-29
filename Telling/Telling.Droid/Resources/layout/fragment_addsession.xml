@@ -1,79 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:local="http://schemas.android.com/apk/res-auto"
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:local="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+  <LinearLayout
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginLeft="@dimen/standard_margin"
+  android:layout_marginRight="@dimen/standard_margin"
+  android:layout_marginTop="@dimen/standard_margin"
+  android:paddingBottom="@dimen/standard_margin"
+  android:orientation="vertical">
+
+    <TInputValidation
+    android:id="@+id/session_venue"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/session_venue_hint" />
+
+    <TInputValidation
+    android:id="@+id/session_date"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/session_date_hint"
+    android:imeOptions="actionNext"
+    android:inputType="date" />
+
+    <TInputValidation
+    android:id="@+id/session_game"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/session_game_hint" />
+
+    <!--<TInputValidation
+    android:id="@+id/session_player"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/session_player_hint" />-->
+
+    <ImageView android:id="@+id/player_drop_area"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@layout/shape_player_selection" />
+
+    <RelativeLayout
+    android:id="@+id/players_selected"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/standard_margin"
-    android:layout_marginRight="@dimen/standard_margin"
-    android:layout_marginTop="@dimen/standard_margin"
-    android:paddingBottom="@dimen/standard_margin"
-    android:orientation="vertical">
-
-    <TInputValidation
-      android:id="@+id/session_venue"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/session_venue_hint" />
-
-    <TInputValidation
-      android:id="@+id/session_date"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/session_date_hint"
-      android:imeOptions="actionNext"
-      android:inputType="date" />
-
-    <TInputValidation
-      android:id="@+id/session_game"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/session_game_hint" />
-
-    <TInputValidation
-      android:id="@+id/session_player"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:hint="@string/session_player_hint" />
-
-    <ImageView android:id="@+id/player_drop_area"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:src="@layout/shape_player_selection" />
-
-    <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
-
       <View android:id="@+id/player_selection"
-        android:background="@layout/shape_player_selection"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+      android:background="@layout/shape_player_selection"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
       </View>
 
       <View
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:background="@layout/shape_plus_circle"/>
+      android:layout_centerHorizontal="true"
+      android:layout_centerVertical="true"
+      android:layout_width="56dp"
+      android:layout_height="56dp"
+      android:background="@layout/shape_plus_circle"/>
 
     </RelativeLayout>
 
   </LinearLayout>
 
   <Refractored.Fab.FloatingActionButton
-      android:id="@+id/fab"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
-      android:layout_alignParentRight="true"
-      android:layout_margin="@dimen/standard_margin"
-      local:fab_colorNormal="@color/dark_red"
-      android:src="@drawable/tick" />
+  android:id="@+id/fab"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_alignParentBottom="true"
+  android:layout_alignParentRight="true"
+  android:layout_margin="@dimen/standard_margin"
+  local:fab_colorNormal="@color/dark_red"
+  android:src="@drawable/tick" />
 
 </RelativeLayout>

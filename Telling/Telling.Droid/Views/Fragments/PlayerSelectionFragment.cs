@@ -71,7 +71,7 @@ namespace Telling.Droid.Views.Fragments
             switch (item.ItemId)
             {
                 case Resource.Id.action_save:
-                    ViewModel.SelectedPlayers();
+                    ViewModel.SaveCommand.Execute();
                     break;
             }
 

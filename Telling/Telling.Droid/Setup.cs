@@ -12,6 +12,7 @@ using Telling.Core;
 using Telling.Droid.Controls;
 using Telling.Droid.Bindings;
 using Android.Views;
+using Android.Widget;
 
 namespace Telling.Droid
 {
@@ -50,8 +51,8 @@ namespace Telling.Droid
 
             registry.RegisterCustomBindingFactory<TInputValidation>(Constants.INPUT_VALIDATION_TEXT, input => new InputEditTextTargetBinding(input));
             registry.RegisterCustomBindingFactory<TInputValidation>(Constants.INPUT_VALIDATION_ERROR, input => new InputEditTextErrorTargetBinding(input));
-
             registry.RegisterCustomBindingFactory<IMenuItem>(Constants.MENU_ITEM_VISIBILITY, input => new MenuItemVisibilityTargetBinding(input));
+            registry.RegisterCustomBindingFactory<RelativeLayout>(Constants.SELECTED_PLAYERS_VIEW, input => new SelectedPlayersCollectionTargetBinding(input));
 
         }
 

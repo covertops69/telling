@@ -178,6 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="Bindings\MenuItemClickEventTargetBinding.cs" />
+    <Compile Include="Bindings\SelectedPlayersCollectionTargetBinding.cs" />
     <Compile Include="Bindings\MenuItemVisibilityTargetBinding.cs" />
     <Compile Include="Bindings\InputEditTextErrorTargetBinding.cs" />
     <Compile Include="Bindings\InputEditTextTargetBinding.cs" />
@@ -188,6 +190,7 @@
     <Compile Include="Controls\TImageView.cs" />
     <Compile Include="Controls\TInputValidation.cs" />
     <Compile Include="Controls\TTextView.cs" />
+    <Compile Include="Controls\UserTileView.cs" />
     <Compile Include="Converters\BackgroundValueConverter.cs" />
     <Compile Include="Converters\FormatDateTimeValueConverter.cs" />
     <Compile Include="Converters\ImageNameValueConverter.cs" />
@@ -303,6 +306,7 @@
     <AndroidResource Include="Resources\menu\menu_playerselection.xml" />
     <AndroidResource Include="Resources\layout\shape_player_selection.xml" />
     <AndroidResource Include="Resources\layout\shape_plus_circle.xml" />
+    <AndroidResource Include="Resources\layout\shape_player_tile.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Telling.Core\Telling.Core.csproj">

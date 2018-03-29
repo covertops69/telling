@@ -9,11 +9,11 @@ using Telling.Core.ViewModels.Players;
 
 namespace Telling.Core.Models
 {
-    class SelectedPlayerMessage : MvxMessage
+    class SelectedPlayersMessage : MvxMessage
     {
         public ObservableCollection<PlayerViewModel> SelectedPlayers { get; set; }
 
-        public SelectedPlayerMessage(object sender, ObservableCollection<PlayerViewModel> selectedPlayers)
+        public SelectedPlayersMessage(object sender, ObservableCollection<PlayerViewModel> selectedPlayers)
         : base(sender)
         {
             SelectedPlayers = selectedPlayers;

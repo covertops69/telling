@@ -25,6 +25,14 @@ namespace Telling.Core.ViewModels.Players
         public MvxCommand<PlayerViewModel> ItemSelectedCommand =>
             _itemSelectedCommand ?? (_itemSelectedCommand = new MvxCommand<PlayerViewModel>(SelectedPlayer));
 
+        MvxCommand _saveCommand;
+        public MvxCommand SaveCommand =>
+            _saveCommand ?? (_saveCommand = new MvxCommand(() =>
+            {
+                _mvxMessenger.Publish<SelectedPlayersMessage>(new SelectedPlayersMessage(this, PlayersCollection));
+                Close(this);
+            }));
+
         private ObservableCollection<PlayerViewModel> _playersCollection;
         public ObservableCollection<PlayerViewModel> PlayersCollection
         {
@@ -88,10 +96,10 @@ namespace Telling.Core.ViewModels.Players
             }
         }
 
-        public void SelectedPlayers()
-        {
-            _mvxMessenger.Publish<SelectedPlayerMessage>(new SelectedPlayerMessage(this, PlayersCollection));
-        }
+        //public void SelectedPlayers()
+        //{
+        //    _mvxMessenger.Publish<SelectedPlayersMessage>(new SelectedPlayersMessage(this, PlayersCollection));
+        //}
 
         void SelectedPlayer(PlayerViewModel player)
         {

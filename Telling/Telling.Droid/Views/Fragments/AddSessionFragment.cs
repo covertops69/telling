@@ -11,6 +11,7 @@ using Android.Views.InputMethods;
 using Telling.Core;
 using MvvmCross.Droid.Views.Attributes;
 using Refractored.Fab;
+using Android.Widget;
 
 namespace Telling.Droid.Views.Fragments
 {
@@ -21,8 +22,9 @@ namespace Telling.Droid.Views.Fragments
     {
         protected override int FragmentId => Resource.Layout.fragment_addsession;
 
-        TInputValidation _sessionVenueInput, _sessionDateInput, _sessionGameInput, _sessionPlayerInput;
+        TInputValidation _sessionVenueInput, _sessionDateInput, _sessionGameInput;//, _sessionPlayerInput;
         FloatingActionButton _floatingActionButton;
+        RelativeLayout _selectedPlayersLayout;
 
         EventHandler DateInputTap()
             => delegate
@@ -104,7 +106,8 @@ namespace Telling.Droid.Views.Fragments
             _sessionVenueInput = view.FindViewById<TInputValidation>(Resource.Id.session_venue);
             _sessionDateInput = view.FindViewById<TInputValidation>(Resource.Id.session_date);
             _sessionGameInput = view.FindViewById<TInputValidation>(Resource.Id.session_game);
-            _sessionPlayerInput = view.FindViewById<TInputValidation>(Resource.Id.session_player);
+            //_sessionPlayerInput = view.FindViewById<TInputValidation>(Resource.Id.session_player);
+            _selectedPlayersLayout = view.FindViewById<RelativeLayout>(Resource.Id.players_selected);
 
             _floatingActionButton = view.FindViewById<FloatingActionButton>(Resource.Id.fab);
 
@@ -114,8 +117,8 @@ namespace Telling.Droid.Views.Fragments
             _sessionGameInput.EditTextControl.SetCursorVisible(false);
             _sessionGameInput.EditTextControl.ShowSoftInputOnFocus = false;
 
-            _sessionPlayerInput.EditTextControl.SetCursorVisible(false);
-            _sessionPlayerInput.EditTextControl.ShowSoftInputOnFocus = false;
+            //_sessionPlayerInput.EditTextControl.SetCursorVisible(false);
+            //_sessionPlayerInput.EditTextControl.ShowSoftInputOnFocus = false;
 
             Bind();
 
@@ -132,8 +135,8 @@ namespace Telling.Droid.Views.Fragments
             _sessionGameInput.EditTextControl.Click += GameInputTap();
             _sessionGameInput.EditTextControl.FocusChange += GameInputFocusChange();
 
-            _sessionPlayerInput.EditTextControl.Click += PlayerInputTap();
-            _sessionPlayerInput.EditTextControl.FocusChange += PlayerInputFocusChange();
+            //_sessionPlayerInput.EditTextControl.Click += PlayerInputTap();
+            //_sessionPlayerInput.EditTextControl.FocusChange += PlayerInputFocusChange();
         }
 
         public override void OnPause()
@@ -146,8 +149,8 @@ namespace Telling.Droid.Views.Fragments
             _sessionGameInput.EditTextControl.Click -= GameInputTap();
             _sessionGameInput.EditTextControl.FocusChange -= GameInputFocusChange();
 
-            _sessionPlayerInput.EditTextControl.Click -= PlayerInputTap();
-            _sessionPlayerInput.EditTextControl.FocusChange -= PlayerInputFocusChange();
+            //_sessionPlayerInput.EditTextControl.Click -= PlayerInputTap();
+           // _sessionPlayerInput.EditTextControl.FocusChange -= PlayerInputFocusChange();
         }
 
         void Bind()
@@ -157,12 +160,14 @@ namespace Telling.Droid.Views.Fragments
             bindingSet.Bind(_sessionVenueInput).For(Constants.INPUT_VALIDATION_TEXT).To(vm => vm.Venue);
             bindingSet.Bind(_sessionDateInput).For(Constants.INPUT_VALIDATION_TEXT).To(vm => vm.SessionDate).WithConversion(new DateToShortDateNullValueConverter()).OneWay();
             bindingSet.Bind(_sessionGameInput).For(Constants.INPUT_VALIDATION_TEXT).To(vm => vm.SelectedGame.Name);
-            bindingSet.Bind(_sessionPlayerInput).For(Constants.INPUT_VALIDATION_TEXT).To(vm => vm.SelectedPlayer.Name);
+            //bindingSet.Bind(_sessionPlayerInput).For(Constants.INPUT_VALIDATION_TEXT).To(vm => vm.SelectedPlayer.Name);
 
             bindingSet.Bind(_sessionVenueInput).For(Constants.INPUT_VALIDATION_ERROR).To(vm => vm.ValidationErrors[nameof(Core.Models.Session.Venue)]);
             bindingSet.Bind(_sessionDateInput).For(Constants.INPUT_VALIDATION_ERROR).To(vm => vm.ValidationErrors[nameof(Core.Models.Session.SessionDate)]);
             bindingSet.Bind(_sessionGameInput).For(Constants.INPUT_VALIDATION_ERROR).To(vm => vm.ValidationErrors[nameof(Core.Models.Session.Game)]);
-            bindingSet.Bind(_sessionPlayerInput).For(Constants.INPUT_VALIDATION_ERROR).To(vm => vm.ValidationErrors[nameof(Core.Models.Session.Player)]);
+            //bindingSet.Bind(_sessionPlayerInput).For(Constants.INPUT_VALIDATION_ERROR).To(vm => vm.ValidationErrors[nameof(Core.Models.Session.Player)]);
+
+            bindingSet.Bind(_selectedPlayersLayout).For(Constants.SELECTED_PLAYERS_VIEW).To(vm => vm.SelectedPlayers);
 
             bindingSet.Bind(_floatingActionButton).For(Constants.INPUT_CLICK).To(vm => vm.SaveCommand);
 

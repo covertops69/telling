@@ -20,5 +20,7 @@ namespace Telling.Core
         public const string INPUT_VALIDATION_TEXT = "Text";
         public const string INPUT_CLICK = "Click";
         public const string MENU_ITEM_VISIBILITY = "MenuItemVisibility";
+        public const string MENU_ITEM_CLICK_EVENT = "MenuItemClickEvent";
+        public const string SELECTED_PLAYERS_VIEW = "SelectedPlayers";
     }
 }

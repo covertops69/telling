@@ -31,31 +31,18 @@ namespace Telling.Core.ViewModels.Sessions
         private IMvxMessenger _mvxMessenger;
         private MvxSubscriptionToken _messageToken;
 
-        //private ObservableCollection<Game> _gamesCollection;
-        //public ObservableCollection<Game> GamesCollection
-        //{
-        //    get
-        //    {
-        //        return _gamesCollection;
-        //    }
-        //    set
-        //    {
-        //        SetProperty(ref _gamesCollection, value);
-        //    }
-        //}
-
-        //private ObservableCollection<Player> _playerCollection;
-        //public ObservableCollection<Player> PlayerCollection
-        //{
-        //    get
-        //    {
-        //        return _playerCollection;
-        //    }
-        //    set
-        //    {
-        //        SetProperty(ref _playerCollection, value);
-        //    }
-        //}
+        private ObservableCollection<PlayerViewModel> _selectedPlayers;
+        public ObservableCollection<PlayerViewModel> SelectedPlayers
+        {
+            get
+            {
+                return _selectedPlayers;
+            }
+            set
+            {
+                SetProperty(ref _selectedPlayers, value);
+            }
+        }
 
         private DateTime _sessionDate = DateTime.Now;
         public DateTime SessionDate
@@ -122,14 +109,17 @@ namespace Telling.Core.ViewModels.Sessions
             _validateRequest = validateRequest;
 
             _mvxMessenger = mvxMessenger;
-            _messageToken = _mvxMessenger.Subscribe<SelectedGameMessage>(OnGameSelected);
+            _messageToken = _mvxMessenger.Subscribe<SelectedGameMessage>((obj) =>
+            {
+                SelectedGame = obj.SelectedGame;
+            });
+
+            _messageToken = _mvxMessenger.Subscribe<SelectedPlayersMessage>((obj) =>
+            {
+                SelectedPlayers = obj.SelectedPlayers;
+            });
 
             Title = "New Session";
-        }
-
-        private void OnGameSelected(SelectedGameMessage obj)
-        {
-            SelectedGame = obj.SelectedGame;
         }
 
         //public async override void Start()
